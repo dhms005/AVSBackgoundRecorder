@@ -195,7 +195,6 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
             Toasty.error(Video_Save_Schedule_Activity.this, Video_Save_Schedule_Activity.this.getString(R.string.low_memory_cant_save), 0).show();
         } else {
             if (schedeluLisst.size() == 0) {
-                Log.e("#TESTSCHEDULE", "schedeluLisst size 0");
                 Intent replyIntent = new Intent();
                 replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
                 setResult(RESULT_OK, replyIntent);
@@ -203,8 +202,6 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
                 intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
                 SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
-                Log.e("#TESTSCHEDULE", "" + now.getTimeInMillis());
-                Log.e("#TESTSCHEDULE", "" + Video_TimeHelper.GetTimeandDatefromMiliSeconds((long) now.getTimeInMillis()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Video_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                 } else {

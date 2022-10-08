@@ -30,15 +30,19 @@ import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_Fi
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_TimeHelper;
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Audio_AlarmReceiver;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.ScheduleVideo;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -64,6 +68,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
     private TimePickerDialog tpd;
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private WordViewModel mWordViewModel;
+    public static ArrayList<ScheduleVideo> schedeluLisst = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -71,7 +76,12 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
         this.mContext = this;
         setContentView(R.layout.audio_scheduletime_activity);
         mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
-
+        mWordViewModel.getScheduleAudio().observe(this, scheduleVideos -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                schedeluLisst.clear();
+                schedeluLisst.addAll(scheduleVideos);
+            }
+        });
 
         btnSave = findViewById(R.id.btn_save);
         tvDate = findViewById(R.id.tv_show_date_frag);
@@ -186,24 +196,33 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
         if (Audio_FileHelper.getAvailableExternalMemory() < 50) {
             Toasty.error(Audio_Save_Schedule_Activity.this, Audio_Save_Schedule_Activity.this.getString(R.string.low_memory_cant_save), 0).show();
         } else {
-            Intent replyIntent = new Intent();
-            replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
-            setResult(RESULT_OK, replyIntent);
+            if (schedeluLisst.size() == 0) {
+                Intent replyIntent = new Intent();
+                replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
+                setResult(RESULT_OK, replyIntent);
+                Intent intent = new Intent(mContext, Audio_AlarmReceiver.class);
+                intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
+                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
+                SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE));
+                } else {
+                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+                }
+                Context context = mContext;
+                Toast.makeText(context, "Start recorder at : " + Audio_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(mContext, Video_AlarmReceiver.class);
-            intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
-            intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE));
+                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(),FROM_AUDIO,duration,String.valueOf(tvUseCam.equals(getString(R.string.front))));
+                mWordViewModel.insert(word);
             } else {
-                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
-            }
-            Context context = mContext;
-            Toast.makeText(context, "Start recorder at : " + Audio_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
+                 Intent replyIntent = new Intent();
+                replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
+                setResult(RESULT_OK, replyIntent);
+                Toast.makeText(mContext, "Start recorder at : " + Audio_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
 
-            ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(),FROM_AUDIO,duration,String.valueOf(tvUseCam.equals(getString(R.string.front))));
-            mWordViewModel.insert(word);
-//            Toasty.success(context, "Start recorder at : " + CY_M_TimeHelper.parseCalen2Str(now), 0).show();
+                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(),FROM_AUDIO,duration,String.valueOf(tvUseCam.equals(getString(R.string.front))));
+                mWordViewModel.insert(word);
+            }
         }
     }
 
