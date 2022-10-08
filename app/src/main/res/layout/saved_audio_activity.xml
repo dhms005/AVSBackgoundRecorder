@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:tint="@color/white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5.0dip"
+                android:layout_toRightOf="@+id/drawer_menu"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/popins_reguler"
+                android:singleLine="true"
+                android:text="Play Audio And Share"
+                android:textColor="@color/white"
+                android:textSize="18.0dip" />
+
+
+            <RelativeLayout
+                android:id="@+id/home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/home"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom"
+                android:layout_margin="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <VideoView
+                            android:id="@+id/vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/playicon" />
+
+                        <RelativeLayout
+                            android:id="@+id/playing_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/play_pause"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/playicon" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/whatsapp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_weight="0.25"
+                    app:cardBackgroundColor="@color/cardbg"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/shareWhatsapp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/whatsapp"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/facebook"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_weight="0.25"
+                    app:cardBackgroundColor="@color/cardbg"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/shareFacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/fb"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/insta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_weight="0.25"
+                    app:cardBackgroundColor="@color/cardbg"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/shareInsta"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/insta"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/more"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_weight="0.25"
+                    app:cardBackgroundColor="@color/cardbg"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/shareImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/more"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/delete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_weight="0.25"
+                    app:cardBackgroundColor="@color/cardbg"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/detail_delete"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:gravity="center"
+        android:orientation="vertical" />
+
+    <RelativeLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:id="@+id/hscrollContainer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitStart" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

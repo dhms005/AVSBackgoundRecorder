@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/cardbg"
+    android:padding="15.0dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/record_duration"
+        android:textColor="@color/white"
+        android:textSize="20.0sp"
+        android:fontFamily="@font/popins_reguler"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20.0dip"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:layout_weight="3.0"
+            android:max="58"
+            android:progress="0" />
+
+        <TextView
+            android:fontFamily="@font/popins_reguler"
+            android:id="@+id/tv_duration_dialog"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5.0dip"
+            android:layout_toRightOf="@+id/seekBar1"
+            android:layout_weight="1.0"
+            android:gravity="right"
+            android:text="2 min"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

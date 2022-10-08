@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent">
+
+    <com.raed.drawingview.DrawingView
+        android:id="@+id/drawview"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:background="@android:color/transparent"
+        android:visibility="visible"
+        app:brush="calligraphy"
+        app:brush_size="1.0"
+        app:drawing_background_color="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.raed.drawingview.BrushView
+        android:id="@+id/brush_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:background="#59707070"
+        android:padding="4.0dip"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/container_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/layout_brush"
+        layout="@layout/screenrecorder_floating_brush"
+        android:layout_width="0.0dip"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="5.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_color"
+        android:layout_width="fill_parent"
+        android:layout_height="140.0dip"
+        android:background="@drawable/screen_recorder_shape_bg_color"
+        android:padding="16.0dip"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/size"
+            android:textColor="#ff000000"
+            android:textSize="16.0sp"
+            app:layout_constraintBottom_toBottomOf="@+id/size_seek_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/size_seek_bar" />
+
+        <SeekBar
+            android:id="@+id/size_seek_bar"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40.0dip"
+            android:backgroundTint="@color/colorRed"
+            android:padding="8.0dip"
+            android:progress="50"
+            android:thumbTint="@color/colorRed"
+            app:layout_constraintEnd_toStartOf="@+id/imv_close"
+            app:layout_constraintStart_toEndOf="@+id/tv_size"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imv_close"
+            android:layout_width="24.0dip"
+            android:layout_height="24.0dip"
+            android:padding="4.0dip"
+            android:src="@drawable/ic_close_brush_black"
+            app:layout_constraintBottom_toBottomOf="@+id/size_seek_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/size_seek_bar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_marginTop="16.0dip"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/size_seek_bar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardbg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_marginEnd="10.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:gravity="center"
+        android:text="Your Device Does not Have A Magnetic Field Sensor Due to This App Is Not Working On your Phone, Please Try on Another Device with Builtin Magnetic Sensor"
+        android:textColor="@color/white" />
+</RelativeLayout>

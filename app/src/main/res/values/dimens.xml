@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="back_arrow_width">22dp</dimen>
+    <dimen name="back_arrow_height">22dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="dimen10">10dp</dimen>
+    <dimen name="dimen5">5dp</dimen>
+
+    <dimen name="native_11">300dp</dimen>
+    <dimen name="native_16">120dp</dimen>
+    <dimen name="native_banner_1">62dp</dimen>
+
+    <dimen name="_0sdp">0dp</dimen>
+
+
+
+    <dimen name="banner_height">50dp</dimen>
+
+
+    <dimen name="pencil_max_stroke_size">15dp</dimen>
+    <dimen name="pencil_min_stroke_size">1dp</dimen>
+    <dimen name="eraser_max_stroke_size">30dp</dimen>
+    <dimen name="eraser_min_stroke_size">1dp</dimen>
+    <dimen name="pen_min_stroke_size">1dp</dimen>
+    <dimen name="pen_max_stroke_size">40dp</dimen>
+    <dimen name="calligraphy_max_stroke_size">30dp</dimen>
+    <dimen name="calligraphy_min_stroke_size">3dp</dimen>
+    <dimen name="brush0_max_stroke_size">15dp</dimen>
+    <dimen name="brush0_min_stroke_size">1dp</dimen>
+    <dimen name="size_bubble_icon">48dp</dimen>
+    <dimen name="recording_button_distance">56dp</dimen>
+    <dimen name="recording_icon_square">36dp</dimen>
+
+</resources>

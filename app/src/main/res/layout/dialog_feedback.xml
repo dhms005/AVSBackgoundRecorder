@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp"
+        android:tag="layout/dialog_feedback_0">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cardbg"
+            app:cardCornerRadius="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_8sdp"
+                    android:text="Feedback"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp"
+                    app:fontFamily="@font/bold" />
+
+                <EditText
+                    android:id="@+id/etFeedBack"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/radio_bg"
+                    android:gravity="start"
+                    android:hint="Please tell us where we can improve"
+                    android:padding="@dimen/_7sdp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCancel"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:foreground="?selectableItemBackground"
+                        app:cardBackgroundColor="@color/cancel"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:cardElevation="0.0dip">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="Cancel"
+                            android:textColor="@color/txtcolr"
+                            android:textSize="@dimen/_14sdp"
+                            app:fontFamily="@font/bold" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardSent"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:foreground="?selectableItemBackground"
+                        app:cardBackgroundColor="@color/save"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:cardElevation="0.0dip">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="Submit"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp"
+                            app:fontFamily="@font/bold" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firstscreen_bg"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/mNativeBannerAd"
+        android:fillViewport="true"
+        android:fitsSystemWindows="false">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <!--<include-->
+            <!--android:id="@+id/tool_bar"-->
+            <!--layout="@layout/toolbar_main" />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/_160sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/top_text" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:id="@+id/Admob_Native_Frame_two"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="vertical" />
+
+                        <LinearLayout
+                            android:id="@+id/hscrollContainer2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/img_header"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/z_ad_border" />
+                        </LinearLayout>
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/hscrollContainer"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="vertical" />-->
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/img_start1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/selector_start"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/img_start"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:adjustViewBounds="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:src="@drawable/btn_get_start" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        android:paddingTop="0dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_125sdp"
+                            android:layout_marginBottom="@dimen/_25sdp">
+
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_140sdp"
+                                android:layout_marginBottom="@dimen/_25sdp">
+
+
+                                <LinearLayout
+                                    android:id="@+id/mainll"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_180sdp"
+                                    android:layout_marginStart="@dimen/_20sdp"
+                                    android:layout_marginEnd="@dimen/_20sdp"
+                                    android:background="@drawable/btn_bs"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/img_moreapp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_40sdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_5sdp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_weight="1"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/btn_more"
+                                        android:visibility="visible" />
+
+                                    <ImageView
+                                        android:id="@+id/img_shareapp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_40sdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_5sdp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_weight="1"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/btn_share"
+                                        android:visibility="visible" />
+
+                                    <ImageView
+                                        android:id="@+id/img_rateapp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_40sdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_5sdp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_weight="1"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/btn_rate"
+                                        android:visibility="visible" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:id="@+id/text_privacy_policy"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_weight="1"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/btn_privacy" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_qureka_ad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/img_qureka1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/qureka_button1" />
+
+                        <ImageView
+                            android:id="@+id/img_qureka2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/qureka_button3" />
+
+                        <ImageView
+                            android:id="@+id/img_qureka3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/qureka_button6" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="6.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="6.0dip"
+                    android:layout_marginBottom="3.0dip"
+                    android:background="@color/grey"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.github.mylibrary.Notification.CustomUIControl.CustomLatoTextViewBold
+                        android:id="@+id/text_load"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Loading Ad..."
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="6.0dip"
+                    android:layout_marginBottom="3.0dip"
+                    app:cardBackgroundColor="#ffffffff">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+                        <com.github.mylibrary.Notification.CustomUIControl.CustomLatoTextViewRegular
+                            android:id="@+id/text_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:text="Useful Links"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_static"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clipToPadding="false"
+                                android:scrollbars="none" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/text_title_new_update_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:paddingLeft="5dp"
+                    android:text="New &amp; Updated Apps"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+
+                <LinearLayout
+                    android:id="@+id/cardview_new_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_new_update_app"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:scrollbars="none" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/text_title_treading_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Trending Apps"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:id="@+id/cardview_treading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_trading_app"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:scrollbars="none" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="6.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="6.0dip"
+                    android:layout_marginBottom="3.0dip"
+                    android:background="@color/grey"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.github.mylibrary.Notification.CustomUIControl.CustomLatoTextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Loading Ad..."
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!-- <LinearLayout
+                 android:id="@+id/fb_banner"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:layout_alignParentLeft="true"
+                 android:orientation="vertical">
+
+                 <RelativeLayout
+                     android:id="@+id/adViewContainer"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content" />
+
+             </LinearLayout>-->
+
+            <ProgressBar
+                android:id="@+id/progress_HistoryLoader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <com.github.mylibrary.Notification.CustomUIControl.CustomLatoTextViewRegular
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/Privacy_Policy"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <com.github.mylibrary.Notification.CustomUIControl.CustomLatoTextViewRegular
+                android:id="@+id/text_disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/Disclaimer"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" />
+</RelativeLayout>

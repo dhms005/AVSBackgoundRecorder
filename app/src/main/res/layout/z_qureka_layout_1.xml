@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/int_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ad_choices_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/qu_bg_round_right"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/gotham_medium"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="AD"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_100sdp"
+                app:cardElevation="@dimen/_1sdp">
+
+                <ImageView
+                    android:id="@+id/ImgClose"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/qu_ic_close"
+                    android:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_medium"
+                    android:gravity="center"
+                    android:minWidth="@dimen/_20sdp"
+                    android:minHeight="@dimen/_20sdp"
+                    android:text="5"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:visibility="gone" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llPersonalAd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_20sdp">
+
+                    <ImageView
+                        android:id="@+id/native_ad_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/app_logo"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/aa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/native_ad_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:gravity="center"
+                            android:lineSpacingExtra="@dimen/_5sdp"
+                            android:maxLines="2"
+                            android:text="My Photo Phone Dialer - Photo Caller Dialer 2021"
+                            android:textColor="@android:color/black"
+                            android:textSize="22dp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/gotham_medium"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="@dimen/_10sdp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/querkaText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/gotham_medium"
+                        android:text="Play &amp; Win Coins Daily"
+                        android:textColor="#595959"
+                        android:textSize="@dimen/_17sdp"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:id="@+id/userCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_30sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_rate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/gotham_medium"
+                                    android:gravity="center"
+                                    android:text="4.7"
+                                    android:textColor="#787777"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_16sdp"
+                                    android:layout_height="@dimen/_16sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:src="@drawable/qu_star"
+                                    android:tint="#787777" />
+                            </LinearLayout>
+
+                            <RatingBar
+                                android:id="@+id/ad_stars"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:stepSize="0.5" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="wrap_content"
+                            android:background="#c7c5c5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_download"
+                                android:tint="#787777" />
+
+                            <TextView
+                                android:id="@+id/txt_download"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:fontFamily="@font/gotham_medium"
+                                android:text="10000+"
+                                android:textColor="#c7c5c5"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/native_ad_media"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:src="@drawable/qu_banner" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/native_ad_social_context"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/gotham_medium"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/_5sdp"
+                android:maxLines="2"
+                android:textColor="#c7c5c5"
+                android:textSize="17dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/adPersonalLlPlayStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/qu_playstore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="Google Playstore"
+                    android:textColor="#595959"
+                    android:textSize="@dimen/_14sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/adPersonalLlCloseInstallBtns"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/_20sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/adPersonalCloseBtn"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/qu_ad_btn_close_border"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/gotham_medium"
+                        android:gravity="center"
+                        android:text="Close"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/gotham_medium"
+                        android:gravity="center"
+                        android:text="  |  "
+                        android:textSize="@dimen/_14sdp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/gotham_medium"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:gravity="center"
+                            android:src="@drawable/qu_ic_done"
+                            android:visibility="visible" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/native_ad_call_to_action"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/qu_ad_install_btn_border"
+                    android:fontFamily="@font/gotham_medium"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15sdp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

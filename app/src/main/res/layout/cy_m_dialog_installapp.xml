@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+
+    android:orientation="vertical"
+    android:padding="20.0dip">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="200.0dip"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:src="@drawable/newappdialog" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff">
+
+        <TextView
+            android:id="@+id/lable"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15.0dip"
+            android:gravity="center"
+            android:text="Install App"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40.0dip"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lable"
+            android:layout_marginTop="20.0dip"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="7.0dip"
+                android:paddingRight="7.0dip"
+                android:text="Install our new app now and enjoy"
+                android:textColor="#ff505050"
+                android:textSize="16.0dip"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center"
+                android:paddingLeft="7.0dip"
+                android:paddingRight="7.0dip"
+                android:text="We have transferred our server, so install our new app by clicking the button below to enjoy the new features of app."
+                android:textColor="#ff505050"
+                android:textSize="14.0dip" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data"
+            android:layout_marginTop="20.0dip"
+            android:layout_marginBottom="15.0dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/install_btn_extra_dul"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Install Now"
+                android:textColor="#ffffffff"
+                android:textSize="17.0dip"
+                android:textStyle="bold">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8.0dip"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Install Now"
+                    android:textColor="#ffffffff"
+                    android:textSize="17.0dip"
+                    android:textStyle="bold">
+
+                    <TextView
+                        android:id="@+id/update"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40.0dip"
+                        android:layout_margin="7.0dip"
+                        android:background="@drawable/install_btn"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingLeft="20.0dip"
+                        android:paddingRight="20.0dip"
+                        android:text="Install Now"
+                        android:textColor="@color/black"
+                        android:textSize="17.0dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

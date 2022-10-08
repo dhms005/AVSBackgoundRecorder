@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/whitebg"
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80.0dip"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="8.0"
+            android:gravity="center_vertical"
+            android:paddingTop="5.0dip"
+            android:paddingBottom="5.0dip">
+
+
+            <ImageView
+                android:id="@+id/vidoplayer"
+                android:layout_width="50.0dip"
+                android:layout_height="50.0dip"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/ic_mp4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25.0dip"
+                android:layout_toRightOf="@+id/vidoplayer"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_video_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="@string/video_name"
+                    android:textColor="@color/white"
+                    android:textSize="13.0sp" />
+
+                <TextView
+                    android:id="@+id/tv_video_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="@string/time"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="13.0sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_video_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="@string/date"
+                    android:textColor="#000A0A0B"
+                    android:textSize="13.0sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="2.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/item_cb"
+                android:layout_width="25.0dip"
+                android:layout_height="25.0dip"
+                android:src="@drawable/ic_video_menu"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

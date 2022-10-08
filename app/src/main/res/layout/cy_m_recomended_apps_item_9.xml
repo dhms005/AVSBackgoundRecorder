@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/cardview_VoterCardAdapter"
+            android:layout_width="111dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/ad_launch_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/appicon"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Download"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/img_RecomendedAppsAdapter"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:src="@drawable/app_logo" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/key_RecomendedAppsAdapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2.0dip"
+                android:layout_marginBottom="5.0dip"
+                android:gravity="center"
+                android:text="★ ★ ★ ★ ★"
+                android:textColor="#ffffc900"
+                android:textSize="12.0dip"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/btn_using_ppo_no_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:src="@drawable/install_btn"
+                        card_view:tint="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/txtInstall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Install"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ll_cctv_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:src="@drawable/menu_btn_files_cctv_recording" />
+
+            <ImageView
+                android:id="@+id/ll_audio_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:src="@drawable/menu_btn_files_audio_rec" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ll_cctv_schedule_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:src="@drawable/menu_btn_files_scheduled_cctv_re" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ll_screenshot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:src="@drawable/menu_btn_files_screenshots" />
+
+            <ImageView
+                android:id="@+id/ll_audio_schedule_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:src="@drawable/menu_btn_files_scheduled_audio_re" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

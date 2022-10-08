@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    tools:context=".CY_M_Activities.CY_M_PatterLock_Activity">
+
+    <TextView
+        android:id="@+id/tvPatterStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/patternLockView"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/str_enter_pattern"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_21sdp"
+        android:textStyle="bold" />
+
+    <com.itsxtt.patternlock.PatternLockView
+        android:id="@+id/patternLockView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

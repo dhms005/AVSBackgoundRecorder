@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    tools:context=".CY_M_Activities.ExploreActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/splash_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/back_arrow_width"
+                android:layout_height="@dimen/back_arrow_height"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="?attr/actionBarItemBackground"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center_vertical"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingLeft="@dimen/_15sdp"
+                android:singleLine="true"
+                android:text="Explore"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgExplore1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/explore1" />
+
+            <ImageView
+                android:id="@+id/imgExplore2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/explore2" />
+
+            <ImageView
+                android:id="@+id/imgExplore3"
+                android:layout_width="match_parent"
+                android:padding="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/explore3" />
+
+            <ImageView
+                android:id="@+id/imgExplore4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/explore4" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

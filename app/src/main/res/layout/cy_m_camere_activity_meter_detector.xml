@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/splash_bg">
+
+
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+
+
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/sensor_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/drawer_menu"
+            android:layout_weight="0.6"
+            android:fontFamily="@font/popins_medium"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="Move Phone Near Suspected Devices"
+            android:textColor="@color/white"
+            android:textSize="15.0dip"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/onlyspeed"
+        android:layout_below="@+id/topbar"
+
+        android:visibility="visible">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp" />
+    </FrameLayout>
+
+    <com.github.anastr.speedviewlib.SpeedView
+        android:id="@+id/onlyspeed"
+        android:layout_width="180.0dip"
+        android:layout_height="fill_parent"
+
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10.0dip"
+        app:sv_centerCircleColor="@color/colorAccent"
+        app:sv_indicatorColor="@color/colorPrimary"
+        app:sv_markColor="@color/white"
+        app:sv_maxSpeed="100"
+        app:sv_speedTextColor="@color/black"
+        app:sv_speedometerColor="#ffffb700"
+        app:sv_textColor="@color/white"
+        app:sv_trianglesColor="#fff7f2ff"
+        app:sv_unitTextColor="#ff074def"
+        app:sv_unitTextSize="0.0dip" />
+
+    <TextView
+        android:id="@+id/m_value_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onlyspeed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5.0dip"
+        android:text="0.0 µT"
+        android:textColor="@color/white"
+        android:textSize="22.0dip"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/xyzlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/m_value_speed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="80.0dip"
+            android:layout_toLeftOf="@+id/y"
+            android:text="X"
+            android:textColor="@color/white"
+            android:textSize="20.0dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Y"
+            android:textColor="@color/white"
+            android:textSize="20.0dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80.0dip"
+            android:layout_toRightOf="@+id/y"
+            android:text="Z"
+            android:textColor="@color/white"
+            android:textSize="20.0dip"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/txtxyz"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xyzlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8.0dip">
+
+        <TextView
+            android:id="@+id/txtx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="80.0dip"
+            android:layout_toLeftOf="@+id/txty"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20.0dip" />
+
+        <TextView
+            android:id="@+id/txty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20.0dip" />
+
+        <TextView
+            android:id="@+id/txtz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80.0dip"
+            android:layout_toRightOf="@+id/txty"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20.0dip" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/status_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:layout_below="@+id/txtxyz"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15.0dip"
+        android:gravity="center"
+        android:text="NOTHING DETECTED"
+        android:textColor="#ffff0011"
+        android:textSize="18.0dip"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+    <RelativeLayout
+        android:id="@+id/card_free_diamonds"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30.0dip"
+                android:layout_height="55.0dip"
+                android:layout_marginLeft="15.0dip"
+                android:padding="5.0dip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0dip"
+                android:fontFamily="@font/popins_reguler"
+                android:text="Setting"
+                android:textColor="@color/white"
+                android:textSize="18.0dip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:layout_below="@+id/card_free_diamonds"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/privacy_policy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@color/cardbg"
+                android:orientation="horizontal"
+                android:padding="10.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10.0dip"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/white"
+                    android:textSize="18.0sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="7.0dip"
+                    android:padding="5.0dip"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@color/cardbg"
+                android:orientation="horizontal"
+                android:padding="10.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10.0dip"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="Version"
+                    android:textColor="@color/white"
+                    android:textSize="18.0sp" />
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10.0dip"
+                    android:fontFamily="@font/popins_reguler"
+                    android:padding="5.0dip"
+                    android:text="Version"
+                    android:textColor="@color/white"
+                    android:textSize="15.0sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rateus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@color/cardbg"
+                android:orientation="horizontal"
+                android:padding="10.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10.0dip"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="Rate us"
+                    android:textColor="@color/white"
+                    android:textSize="18.0sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="7.0dip"
+                    android:padding="5.0dip"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/shareapp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@color/cardbg"
+                android:orientation="horizontal"
+                android:padding="10.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10.0dip"
+                    android:fontFamily="@font/popins_reguler"
+                    android:text="Share App"
+                    android:textColor="@color/white"
+                    android:textSize="18.0sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="7.0dip"
+                    android:padding="5.0dip"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:gravity="center"
+        android:orientation="horizontal" />
+</RelativeLayout>

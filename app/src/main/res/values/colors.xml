@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#74BDF7</color>
+    <color name="colorBlack">#39394b</color>
+    <color name="colorPrimary">#74BDF7</color>
+    <color name="colorPrimaryDark">#74BDF7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="trans">#004A4A4A</color>
+
+    <color name="gray">#929292</color>
+    <color name="light_gray">#DFDFDF</color>
+    <color name="grey">#ff8c8e91</color>
+
+
+    <color name="install_color">#55A929</color>
+    <color name="color_bg_btnshare">#7CB342</color>
+
+    <color name="textcolor">#aa000000</color>
+    <color name="adback">#1B2233</color>
+    <color name="sp">#F5CB5D</color>
+
+    <color name="tran_white">#E6FFFFFF</color>
+
+
+
+
+
+
+
+
+    <color name="colorPrimaryLight">#3374BDF7</color>
+    <color name="colorview">#32000000</color>
+    <color name="primary_white_text">@android:color/white</color>
+    <color name="red">#ff0000</color>
+    <color name="red_light">#FF5858</color>
+    <color name="red_light_tra">#33FF6262</color>
+    <color name="tab_background_selected">#2499e0</color>
+    <color name="text_color">#4DB0FF</color>
+    <color name="txt_blue">#136af6</color>
+
+
+    <color name="delete_ok">#2499e0</color>
+    <color name="delete_ok_tra">#332499E0</color>
+
+
+    <color name="bg1">#E9E9E9</color>
+    <color name="bg2">#FFFFFF</color>
+    <color name="button">#74BDF7</color>
+    <color name="cancel">#C3E4FF</color>
+    <color name="cardbg">#1B2233</color>
+    <color name="color1">#ffffff</color>
+    <color name="color2">#902cf4</color>
+    <color name="color3">#2f2cda</color>
+    <color name="color4">#da2c55</color>
+    <color name="color5">#2cdaa6</color>
+    <color name="color6">#f4c82c</color>
+    <color name="color7">#f95ce5</color>
+    <color name="color8">#3eb3ba</color>
+    <color name="color9">#ff6565</color>
+    <color name="colorPrimaryAlpha">#50009eff</color>
+    <color name="divider2">#384892</color>
+    <color name="divider3">#a4a4ab</color>
+    <color name="halfTransparentBackground">#50000000</color>
+    <color name="icon">#a4a4ab</color>
+    <color name="native_large_button_text_color">#ffffff</color>
+    <color name="native_med_sub_text_color">#000000</color>
+    <color name="native_med_text_color">#000000</color>
+    <color name="radio_color">#7e64ff</color>
+    <color name="radio_unselect">#acacac</color>
+    <color name="save">#74BDF7</color>
+    <color name="semi_black_transparent">#990073f6</color>
+    <color name="txtcolr">#2b3664</color>
+    <color name="white2">#909090</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="dimgray">#696969</color>
+    <color name="darkgray">#93959A</color>
+    <color name="tab_unselected_color">#45516C</color>
+
+    <color name="radio_card_bg">#121723</color>
+    <color name="colorRed">#4DB0FF</color>
+    <color name="colorRedDark">#045EA6</color>
+    <color name="colorRed_trans">#744DB0FF</color>
+    <color name="TRANSPARENT">#00000000</color>
+    <color name="text_color2">#808080</color>
+
+</resources>

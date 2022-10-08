@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ds.audio.video.screen.backgroundrecorder">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".ads.CY_M_MyApplication"
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/app_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Video_Record.Activities.Video_ScheduleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Audio_Record.Activities.Audio_ScheduleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_FaqActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_PermissionScreen"
+            android:exported="false" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_FeatureActivity"
+            android:exported="false" />
+        <activity android:name=".Video_Record.Activities.Video_Save_Schedule_Activity" />
+        <activity android:name=".Audio_Record.Activities.Audio_Save_Schedule_Activity" />
+        <activity android:name=".CY_M_Activities.CY_M_PatterLock_Activity" />
+        <activity android:name=".CY_M_Activities.CY_M_PatterLock_FirstScreen" />
+        <activity
+            android:name=".CY_M_Activities.InAppPurchaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CY_M_Activities.ExploreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InAppPurchase.Activities.InAppPurchase"
+            android:exported="true" />
+        <activity
+            android:name=".InAppPurchase.Activities.PurchaseItemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InAppPurchase.Activities.SubScribeItemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Video_Record.Activities.Video_SaveVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Audio_Record.Activities.Audio_SaveAudioActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_Activity_SettingActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+        <activity
+            android:name=".CY_M_Activities.CY_M_Master_SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CY_M_Activities.CY_M_ActivityHomeMenu"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_Menu" />
+        <activity
+            android:name=".Video_Record.Activities.Video_ActivityPager"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ScreenRecord.Activities.ScreenRecord_ActivityPager"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Audio_Record.Activities.Audio_ActivityPager"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Video_Record.Activities.Video_SavedList_Activity"
+            android:exported="true"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Audio_Record.Activities.Audio_SavedList_Activity"
+            android:exported="true"
+            android:label=""
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Video_Record.Activities.Video_Setting_Activity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Setting" />
+
+        <activity
+            android:name=".Audio_Record.Activities.Audio_Setting_Activity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Setting" />
+
+        <activity
+            android:name=".CY_M_Activities.CY_M_ActivityQuickStart"
+            android:label="Quick record"
+            android:screenOrientation="portrait">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+
+        <service android:name=".Video_Record.services.Video_RecorderService" />
+        <service android:name=".Audio_Record.services.Audio_Recorder_Service" />
+
+        <receiver android:name=".Video_Record.Receiver.Video_AlarmReceiver" />
+
+        <activity
+            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.Transparent.Permission" /> <!-- <provider -->
+
+        <service
+            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false" />
+        <service
+            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_job_service_default"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver
+            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths_app" />
+        </provider>
+
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Camere_Test_Sensore_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Home_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_HowTo_Work_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Sensore_Detail_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_TipaTricke_Detail_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_TipsAnd_Trick_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraDetecter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraDetectorByGraph"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraFinderSelection"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraScene"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_meterDetector"
+            android:screenOrientation="portrait" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name="com.karumi.dexter.DexterActivity"
+            android:theme="@style/Dexter.Internal.Theme.Transparent" /> <!-- ................................. Module Activity Start...................................... -->
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.Notification_MainActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.DailogeNotice"
+            android:exported="true"
+            android:theme="@style/AppTheme.Dialog" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.Dailoge_Option"
+            android:exported="true"
+            android:theme="@style/AppTheme.Dialog" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.Dailoge_Text"
+            android:exported="true"
+            android:theme="@style/AppTheme.Dialog" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.CustomeWebView"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.PreferenceActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".Utils.CY_M_FIRMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.s4ittech.mylibrary.SDK.FCMActivity.NEW_NOTIFICATION" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.github.mylibrary.Notification.Push.FCMActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.github.mylibrary.Notification.UI.CategorySelectionActivity"
+            android:label="@string/title_activity_category_selection"
+            android:theme="@style/AppTheme" /> <!-- ....................................... Module Activity End...................................... -->
+        <activity
+            android:name=".ads.CY_M_QurekaAd_Activity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_DeviceInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_SystemUsageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_BatterySaverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_NPMActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_UPSActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_InUPSActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_EPSActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_InEPSActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_SpeedBoosterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_CPUCoolerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_ScannerCPUActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_LanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Extra.CY_M_Activities.CY_M_AppSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_FirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CY_M_Activities.CY_M_Second_StartScreen"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".exit.CY_M_RecomendedAppsDialog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".exit.CY_M_ThankYou_Screen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ads.CY_M_PrivacyPolicyActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="MrgJE0oyKKvNsHkcIUFhKgzhMCZzmSl7IQRXQDTlXN7Oes_xKFdfwaLGnvEXM-ffO5BqJfZr1hEgXEcsTEVNps" />
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+        <activity
+            android:name=".ScreenshotApp.activities.PhotoEditorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScreenshotApp.activities.GalleryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScreenshotApp.activities.EditImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" /> <!-- <service -->
+        <!-- android:name=".ScreenshotApp.utills.MyFirebaseMessagingService" -->
+        <!-- android:exported="false"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <provider -->
+        <!-- android:name="androidx.core.content.FileProvider" -->
+        <!-- android:authorities="com.getapp54.a5cctvcamerarecorder.provider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/main_provider_paths" /> -->
+        <!-- </provider> -->
+        <!-- <activity -->
+        <!-- android:name="com.futuretech.screenshot.activities.ProVersionActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" > -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name="com.futuretech.screenshot.activities.SplashActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".ScreenshotApp.activities.MainActivity"
+            android:allowEmbedded="true"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScreenshotApp.activities.FullShotDisclosure"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScreenshotApp.activities.ScreenshotRequestActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/ScreenshotActivityTheme" />
+        <activity
+            android:name=".ScreenshotApp.activities.WebviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScreenshotApp.activities.ResultViewerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".ScreenshotApp.Service.FloatingService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <activity
+            android:name=".ScreenshotApp.activities.FullImageActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <receiver
+            android:name=".ScreenshotApp.utills.ScreenshotNotificationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="Screenshot" />
+                <action android:name="exit" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+            android:exported="false"
+            android:label=""
+            android:theme="@style/EasyPermissions.Transparent" />
+        <activity
+            android:name="Utils.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <!--screen recorder-->
+
+        <service
+            android:name=".ScreenRecord.services.HBService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <receiver android:name=".ScreenRecord.receivers.RecordingServiceStopReceiver" />
+
+        <service
+            android:name=".ScreenRecord.services.ToolsService"
+            android:enabled="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".ScreenRecord.services.FloatingControlBrushService"
+            android:enabled="true" />
+        <service
+            android:name=".ScreenRecord.services.BrushService"
+            android:enabled="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".ScreenRecord.services.FloatingControlCaptureService"
+            android:enabled="true" />
+        <service
+            android:name=".ScreenRecord.services.FloatingSSCapService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <service
+            android:name="com.hbisoft.hbrecorder.ScreenRecordService"
+            android:foregroundServiceType="mediaProjection" />
+        <receiver android:name="com.hbisoft.hbrecorder.NotificationReceiver" />
+
+        <!--        <service-->
+        <!--            android:name="com.hbisoft.hbrecorder.FloatingControlCameraService"-->
+        <!--            android:enabled="true" />-->
+        <!--        <service-->
+        <!--            android:name="com.hbisoft.hbrecorder.FloatingCameraViewService"-->
+        <!--            android:configChanges="orientation"-->
+        <!--            android:exported="false" />-->
+
+        <activity
+            android:name=".ScreenRecord.Activities.ScreenRecorder_SavedList_Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ScreenRecord.Activities.ScreenRecorder_SettingsActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Setting" />
+
+        <activity
+            android:name=".ScreenRecord.Activities.ScreenShotActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme_Transparent1" />
+
+    </application>
+
+</manifest>

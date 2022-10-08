@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:key="prefKey" >
+
+    <PreferenceCategory android:title="Settings" >
+        <Preference
+            android:key="cat"
+            android:summary="Select categories to filter notifications."
+            android:title="Categories" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="App" >
+        <PreferenceScreen
+            android:summary="Developed Exclusively"
+            android:title="S4 IT Tech" >
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:summary="s4ittech@gmail.com"
+            android:title="Contact Us" >
+        </PreferenceScreen>
+     
+    </PreferenceCategory>
+
+</PreferenceScreen>

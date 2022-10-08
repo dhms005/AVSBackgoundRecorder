@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/colorRed_trans" />
+            <size android:height="192.0dip" android:width="192.0dip" />
+        </shape>
+    </item>
+    <item android:left="1.0dip" android:right="1.0dip" android:bottom="2.0dip">
+        <shape android:shape="oval">
+            <solid android:color="@color/colorRed_trans" />
+            <corners android:radius="5.0dip" />
+        </shape>
+    </item>
+</layer-list>

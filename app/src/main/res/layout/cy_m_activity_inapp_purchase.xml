@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/pur_top_banner"></ImageView>
+
+                <LinearLayout
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imgClose"
+                        android:layout_width="@dimen/back_arrow_width"
+                        android:layout_height="@dimen/back_arrow_height"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:adjustViewBounds="true"
+                        android:background="?attr/actionBarItemBackground"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/white" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/pur_top_title"
+                        android:paddingLeft="10dp"
+                         />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/toolbar"
+                    android:layout_marginTop="@dimen/_70sdp"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_20sdp">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/imgRecord"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_centerVertical="true"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/pur_recordvideo" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/imgRecord"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:includeFontPadding="false"
+                                android:text="Record Unlimited Video"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:text="no limit to record video now"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/_8sdp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/imgRecord1"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/pur_hdvideo" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/imgRecord1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:includeFontPadding="false"
+                                android:text="HD viewing / Recording "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:text="On as many devices as you want"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/_8sdp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/imgRecord2"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/pur_nomoread" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/imgRecord2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:includeFontPadding="false"
+                                android:text="No More Ads"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:text="Zero distractions "
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/_8sdp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp">
+
+                        <ImageView
+                            android:id="@+id/imgRecord4"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/pur_zoom" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/imgRecord4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:includeFontPadding="false"
+                                android:text="New 4.0X Zoom "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/opensans_regular"
+                                android:text="4.0x Pinch-to-Zoom"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/_8sdp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_terms_of_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:fontFamily="@font/popins_semibold"
+                        android:gravity="center"
+                        android:text="@string/term_of_service"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@drawable/pur_half_bg"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp"
+                   android:src="@drawable/pure_subcrition_text"></ImageView>
+
+               <LinearLayout
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/_15sdp"
+                   android:layout_marginTop="@dimen/_8sdp"
+                   android:layout_marginRight="@dimen/_15sdp"
+                   android:orientation="horizontal"
+                   android:weightSum="2">
+
+                   <LinearLayout
+                       android:id="@+id/ll3months"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_70sdp"
+                       android:layout_gravity="center"
+                       android:layout_marginRight="@dimen/_3sdp"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:background="@drawable/pur_payment_border_selected"
+                       android:orientation="vertical"
+                       android:padding="@dimen/_8sdp">
+
+                       <TextView
+                           android:id="@+id/tv_3month_title"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_bold"
+                           android:gravity="center"
+                           android:includeFontPadding="false"
+                           android:text="3"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_20sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_3month_des"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="@dimen/_minus5sdp"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="Months"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_5sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_3month_price"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="₹99"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_12sdp" />
+
+
+                   </LinearLayout>
+
+
+                   <LinearLayout
+                       android:id="@+id/ll6months"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_70sdp"
+                       android:layout_gravity="center"
+                       android:layout_marginLeft="@dimen/_3sdp"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:background="@drawable/pur_payment_border"
+                       android:orientation="vertical"
+                       android:padding="@dimen/_8sdp">
+
+                       <TextView
+                           android:id="@+id/tv_6month_title"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_bold"
+                           android:gravity="center"
+                           android:text="6"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_20sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_6month_des"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="@dimen/_minus5sdp"
+                           android:fontFamily="@font/popins_reguler"
+                           android:gravity="center"
+                           android:text="Months"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_5sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_6month_price"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:gravity="center"
+                           android:text="₹199"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_12sdp" />
+
+                   </LinearLayout>
+
+
+               </LinearLayout>
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/_15sdp"
+                   android:layout_marginTop="@dimen/_6sdp"
+                   android:layout_marginRight="@dimen/_15sdp"
+                   android:orientation="horizontal"
+
+                   android:weightSum="2">
+
+                   <LinearLayout
+                       android:id="@+id/ll9months"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_70sdp"
+                       android:layout_gravity="center"
+                       android:layout_marginRight="@dimen/_3sdp"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:background="@drawable/pur_payment_border"
+                       android:orientation="vertical"
+                       android:padding="@dimen/_8sdp">
+
+                       <TextView
+                           android:id="@+id/tv_9month_title"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_bold"
+                           android:gravity="center"
+                           android:text="12"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_20sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_9month_des"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="@dimen/_minus5sdp"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="Months"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_5sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_9month_price"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="₹399"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_12sdp" />
+
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:id="@+id/llliftimemonths"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_70sdp"
+                       android:layout_gravity="center"
+                       android:layout_marginLeft="@dimen/_3sdp"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:background="@drawable/pur_payment_border"
+                       android:orientation="vertical"
+                       android:padding="@dimen/_8sdp">
+
+                       <TextView
+                           android:id="@+id/tv_lifetime_title"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_bold"
+                           android:gravity="center"
+                           android:text="Life Time"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_20sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_lifetime_des"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="@dimen/_minus5sdp"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="Forever"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_5sdp" />
+
+                       <TextView
+                           android:id="@+id/tv_lifetime_price"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/opensans_regular"
+                           android:gravity="center"
+                           android:text="₹999"
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/_12sdp" />
+
+                   </LinearLayout>
+
+               </LinearLayout>
+
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:id="@+id/tvPayment"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_15sdp"
+                   app:layout_constraintTop_toBottomOf="@+id/cl_vip_type">
+
+
+                   <com.airbnb.lottie.LottieAnimationView
+                       android:id="@+id/lav_splash"
+                       android:layout_width="fill_parent"
+                       android:layout_height="0.0dip"
+                       android:layout_marginLeft="@dimen/_15sdp"
+                       android:layout_marginRight="@dimen/_15sdp"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintDimensionRatio="941:188"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       app:lottie_autoPlay="true"
+                       app:lottie_fileName="continue_white.json"
+                       app:lottie_loop="true" />
+
+                   <TextView
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:fontFamily="@font/opensans_bold"
+                       android:gravity="center"
+                       android:text="Continue"
+                       android:textColor="#ffffffff"
+                       android:textSize="24.0sp"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+               </androidx.constraintlayout.widget.ConstraintLayout>
+
+               <TextView
+                   android:id="@+id/tvSkipNow"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginTop="@dimen/_10sdp"
+                   android:layout_weight="1.2"
+                   android:fontFamily="@font/popins_reguler"
+                   android:gravity="center"
+                   android:paddingLeft="3dp"
+                   android:paddingRight="3dp"
+                   android:text="@string/already_paided"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/_10sdp" />
+
+               <androidx.cardview.widget.CardView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="@dimen/_15sdp"
+                   android:visibility="gone"
+                   app:cardCornerRadius="@dimen/_50sdp">
+
+                   <ImageView
+                       android:layout_width="@dimen/_70sdp"
+                       android:layout_height="@dimen/_70sdp"
+                       android:src="@drawable/app_logo" />
+
+               </androidx.cardview.widget.CardView>
+           </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#FFF3E0"
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryLight"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@color/colorPrimary"
+                android:gravity="end"
+                android:padding="2dp"
+                android:visibility="gone"
+                android:scaleType="fitXY"
+                android:src="@drawable/z_ic_action_cancel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="internet.json"
+                    app:lottie_loop="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="Oops !! NO INTERNET"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="Please check your internet connection and try again"
+                    android:textColor="@color/textcolor"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen5"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="2dp">
+
+                    <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewRegular
+                        android:id="@+id/yes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/z_roundborder"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen10"
+                        android:text="Try Again"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen5"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="2dp">
+
+                    <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewRegular
+                        android:id="@+id/action_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/z_roundborder"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen10"
+                        android:text="Setting"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

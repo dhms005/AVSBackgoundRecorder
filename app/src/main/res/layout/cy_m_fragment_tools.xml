@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/Admob_Native_Frame_two"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/hide_camera_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_hidden_camera" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="Hidden Camera"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btn_device_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_device_info" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="Device Info"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/img_system_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_system_usage" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="System Usage"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/img_battery_saver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_battery_saver" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="Bettery Saver"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/img_speed_booster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_speed_booster" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="Speed Booster"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/img_cpu_cooler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_cpu_cooler" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="CPU Cooler"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/img_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:src="@drawable/tool_btn_language" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:text="Language"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/tool_btn_line" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp">
+
+            </View>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

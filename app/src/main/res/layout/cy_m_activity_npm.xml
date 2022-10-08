@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splash_bg">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/ic_header"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/back_arrow_width"
+            android:layout_height="@dimen/back_arrow_height"
+            android:background="?attr/actionBarItemBackground"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:fontFamily="@font/regular"
+            android:text="Normal Power Mode"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+        <ImageView
+            android:id="@+id/qureka_ad"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:onClick="querka"
+            android:src="@drawable/qureka_button1" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/mNativeBannerAd"
+        android:layout_below="@+id/toolbar">
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:gravity="center">
+
+                <com.hookedonplay.decoviewlib.DecoView
+                    android:id="@+id/dynamicArcView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-6dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    app:dv_lineWidth="30dp" />
+
+                <TextView
+                    android:id="@+id/completion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/regular"
+                    android:text="25%"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_30sdp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="20">
+
+                <ImageView
+                    android:id="@+id/istpic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_grey_dot"
+                    android:visibility="visible"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/ist"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="27dp"
+                    android:layout_weight="18.5"
+                    android:fontFamily="@font/regular"
+                    android:gravity="left|center_vertical|center_horizontal|center"
+                    android:text="Decreasing Brightness from 80% to Normal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_one"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorview"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="20">
+
+                <ImageView
+                    android:id="@+id/secpic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_grey_dot"
+                    app:tint="@color/white"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/sec"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="27dp"
+                    android:layout_weight="18.5"
+                    android:fontFamily="@font/regular"
+                    android:gravity="left|center_vertical|center_horizontal|center"
+                    android:text="Decreasing Device Performance to Normal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_two"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorview"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="20">
+
+                <ImageView
+                    android:id="@+id/thipic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.5"
+                    android:padding="@dimen/_5sdp"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_grey_dot"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/thi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="27dp"
+                    android:layout_weight="18.5"
+                    android:fontFamily="@font/regular"
+                    android:gravity="left|center_vertical|center_horizontal|center"
+                    android:text="Decreasing Apps from Closing"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_three"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorview"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="20">
+
+                <ImageView
+                    android:id="@+id/foupic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_weight="1.5"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_grey_dot"
+                    app:tint="@color/white"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/fou"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="27dp"
+                    android:layout_weight="18.5"
+                    android:fontFamily="@font/regular"
+                    android:gravity="left|center_vertical|center_horizontal|center"
+                    android:text="Decreasing System Services."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_four"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorview"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/regular" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
+</RelativeLayout>

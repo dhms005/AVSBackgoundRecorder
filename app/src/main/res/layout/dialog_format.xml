@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp"
+        android:tag="layout/dialog_format_0">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/radio_card_bg"
+            app:cardCornerRadius="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_7sdp"
+                    android:text="Image File Format"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp"
+                    app:fontFamily="@font/bold" />
+
+                <RadioGroup
+                    android:id="@+id/group"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rdJpg"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_bg"
+                        android:checked="true"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:paddingLeft="10.0dip"
+                        android:text="JPG"
+                        android:textColor="@color/white"
+                        android:theme="@style/RadioButtonStyle" />
+
+                    <RadioButton
+                        android:id="@+id/rdPng"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/radio_bg"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:paddingLeft="10.0dip"
+                        android:text="PNG"
+                        android:textColor="@color/white"
+                        android:theme="@style/RadioButtonStyle" />
+                </RadioGroup>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

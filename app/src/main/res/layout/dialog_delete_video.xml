@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardbg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20.0dip">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardbg"
+        android:elevation="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardbg">
+
+            <TextView
+                android:id="@+id/lable"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15.0dip"
+                android:fontFamily="@font/gotham_medium"
+                android:gravity="center"
+                android:text="Confirm Delete"
+                android:textColor="@color/white"
+                android:textSize="30.0dip"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/Admob_Native_Frame_two"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lable"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/data"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Admob_Native_Frame_two"
+                android:layout_marginTop="20.0dip"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:gravity="center"
+                    android:paddingLeft="7.0dip"
+                    android:paddingRight="7.0dip"
+                    android:text="Are you sure want to delete this video?"
+                    android:textColor="@color/white"
+                    android:textSize="18.0dip"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/data"
+                android:layout_marginTop="20.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/delete_cancel_back"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Install Now"
+                    android:textColor="#ffffffff"
+                    android:textSize="17.0dip"
+                    android:textStyle="bold">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8.0dip"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Install Now"
+                        android:textColor="#ffffffff"
+                        android:textSize="17.0dip"
+                        android:textStyle="bold">
+
+                        <TextView
+                            android:id="@+id/cancel"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="40.0dip"
+                            android:layout_margin="7.0dip"
+                            android:background="@drawable/delete_cancel"
+                            android:fontFamily="@font/gotham_medium"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="20.0dip"
+                            android:paddingRight="20.0dip"
+                            android:text="Cancel"
+                            android:textColor="@color/white"
+                            android:textSize="17.0dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:background="@drawable/delete_ok_back"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Install Now"
+                    android:textColor="#ffffffff"
+                    android:textSize="17.0dip"
+                    android:textStyle="bold">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8.0dip"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Install Now"
+                        android:textColor="#ffffffff"
+                        android:textSize="17.0dip"
+                        android:textStyle="bold">
+
+                        <TextView
+                            android:id="@+id/update"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="40.0dip"
+                            android:layout_margin="7.0dip"
+                            android:background="@drawable/delete_ok"
+                            android:fontFamily="@font/gotham_medium"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="20.0dip"
+                            android:paddingRight="20.0dip"
+                            android:text="Ok"
+                            android:textColor="@color/white"
+                            android:textSize="17.0dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

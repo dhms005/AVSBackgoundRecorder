@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/splash_bg">
+
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/sensor_graph"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/drawer_menu"
+            android:layout_weight="0.6"
+            android:fontFamily="@font/popins_medium"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="Move Phone Near Suspected Devices"
+            android:textColor="@color/white"
+            android:textSize="15.0dip"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <com.github.anastr.speedviewlib.ProgressiveGauge
+        android:id="@+id/showinprogress"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/topbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13.0dip"
+        app:sv_backgroundCircleColor="#ffec272e"
+        app:sv_centerCircleColor="#ffd41bbb"
+        app:sv_indicatorColor="#acff0e01"
+        app:sv_markColor="#ff0314ff"
+        app:sv_maxSpeed="100"
+        app:sv_pointerColor="#ffffffff"
+        app:sv_speedTextColor="#ffae2a05"
+        app:sv_speedometerColor="#ffff0015"
+        app:sv_textColor="#ff0b0b0b"
+        app:sv_trianglesColor="#4109E8"
+        app:sv_unitTextColor="#ffef2a07"
+        app:sv_unitTextSize="0.0dip" />
+
+    <TextView
+        android:id="@+id/m_value_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showinprogress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:fontFamily="@font/popins_reguler"
+        android:text="0.0 µT"
+        android:textColor="@color/white"
+        android:textSize="22.0dip" />
+
+    <TextView
+        android:id="@+id/status_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/m_value_graph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:fontFamily="@font/popins_reguler"
+        android:gravity="center"
+        android:text="NOTHING DETECTED"
+        android:textColor="@color/white"
+        android:textSize="18.0dip" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:layout_below="@+id/status_graph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:orientation="horizontal">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/mygraph_fullchart"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
+</RelativeLayout>

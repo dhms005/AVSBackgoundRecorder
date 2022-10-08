@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/thank_t"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/thnku_text" />
+
+            <FrameLayout
+                android:id="@+id/Admob_Native_Frame_two"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thank_t"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/_10sdp"
+
+                android:orientation="vertical" />
+
+            <ImageView
+                android:id="@+id/ok_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/Admob_Native_Frame_two"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:src="@drawable/thnku_ok" />
+
+            <Button
+                android:id="@+id/ok_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/Admob_Native_Frame_two"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/first_button_color"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text="@string/thank_u_ok"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="1dp" />
+
+
+</RelativeLayout>

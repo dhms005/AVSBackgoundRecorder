@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/splash_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5.0dip"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/popins_reguler"
+            android:text="How it Works?"
+            android:textColor="@color/white"
+            android:textSize="20.0dip" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/nav"
+        android:layout_below="@+id/header"
+        android:scrollbars="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="10.0dip"
+            app:cardBackgroundColor="@color/cardbg"
+            app:cardCornerRadius="15.0dip"
+            app:cardElevation="20.0dip">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:fontFamily="@font/popins_reguler"
+                android:text="@string/how"
+                android:textColor="@color/white"
+                android:textSize="16.0dip" />
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/Admob_Native_Frame_two"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" />
+
+
+        <LinearLayout
+            android:id="@+id/hscrollContainer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/img_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitStart" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

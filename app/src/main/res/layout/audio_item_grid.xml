@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:elevation="@dimen/_10sdp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/cardbg"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/whitebg"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/cardbg"
+                    android:layout_margin="@dimen/_3sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/vidoplayer"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/pref_audio" />
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_image"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_video_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:maxLines="2"
+                    android:text="@string/video_name"
+                    android:textColor="@color/white"
+                    android:textSize="13.0sp" />
+
+                <TextView
+                    android:id="@+id/tv_video_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:maxLines="1"
+                    android:text="@string/time"
+                    android:textColor="@color/white"
+                    android:textSize="13.0sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_video_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popins_reguler"
+                    android:maxLines="1"
+                    android:text="@string/date"
+                    android:textColor="@color/white"
+                    android:textSize="13.0sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/item_cb"
+                android:layout_width="25.0dip"
+                android:layout_height="25.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_video_menu"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

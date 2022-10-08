@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    tools:context=".CY_M_Activities.CY_M_PermissionScreen">
+
+    <TextView
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/str_permission_top"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvAccept"
+        android:layout_below="@id/top">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/btn_bg">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:src="@drawable/per_storage" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/icon"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Storage Permission"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Required to save video recording to internal and external storage"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/btn_bg">
+
+                    <ImageView
+                        android:id="@+id/icon1"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:src="@drawable/per_record" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/icon1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Record audio permission"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You must enable this permission to record sound"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/btn_bg">
+
+                    <ImageView
+                        android:id="@+id/icon2"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:src="@drawable/per_camera" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/icon2"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Camera permission"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Required to record videos"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/btn_bg">
+
+                    <ImageView
+                        android:id="@+id/icon3"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:src="@drawable/per_overlay" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/icon3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Screen overlay permission"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Required to show video preivew over other application"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_accept"
+        android:fontFamily="@font/gotham_medium"
+        android:gravity="center"
+        android:paddingLeft="@dimen/_40sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingRight="@dimen/_40sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:text="ACCEPT"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_17sdp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="5.0dip">
+
+
+    <LinearLayout
+        android:id="@+id/cardview_VoterCardAdapter"
+        android:layout_width="107dp"
+        android:layout_height="150.0dip"
+        android:background="@drawable/ad_launch_border">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="150.0dip"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/img_RecomendedAppsAdapter"
+                    android:layout_width="70.0dip"
+                    android:layout_height="70.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7.0dip"
+                    android:adjustViewBounds="true"
+                    android:padding="5.0dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/app_logo" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3.0dip"
+                    android:layout_marginRight="3.0dip"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/key_RecomendedAppsAdapter"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="App Title"
+                        android:textColor="@color/black"
+                        android:textSize="6.0pt" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:gravity="center"
+                        android:text="★ ★ ★ ★ ★"
+                        android:textColor="#ffffc900"
+                        android:textSize="12.0dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_using_ppo_no_click"
+                    android:layout_width="80.0dip"
+                    android:layout_height="22.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_marginBottom="5.0dip"
+                    android:background="@drawable/bg_installnow"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18.0dip"
+                        android:layout_height="fill_parent"
+                        android:padding="2.0dip"
+                        android:src="@drawable/ic_download"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:id="@+id/txtInstall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2.0dip"
+                        android:gravity="center"
+                        android:text="Download"
+                        android:textColor="@color/black"
+                        android:textSize="10.0dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

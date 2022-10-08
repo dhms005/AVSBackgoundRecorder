@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigationItem"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:minHeight="60.0dip">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewBold
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Whats Your Good Name..?"
+            android:textColor="#2196F3"
+            android:textSize="20dp"
+
+            android:textStyle="bold" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="false"
+                android:padding="3dp"
+                android:layout_marginLeft="10dp"
+                android:text="Male"
+                android:textColor="#AA000000"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="false"
+                android:padding="3dp"
+                android:layout_marginLeft="10dp"
+                android:text="Female"
+                android:textColor="#AA000000"
+                android:textSize="20dp" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#11000000"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/btn_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewBold
+                android:id="@+id/tv_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_description"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Notification"
+                android:textColor="#2196F3"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.github.mylibrary.Notification.CustomUIControl.CustomRobotoTextViewBold
+                android:id="@+id/tv_btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_description"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Cancel"
+                android:textColor="#2196F3"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

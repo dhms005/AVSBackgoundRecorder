@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AVS Background Recorder</string>
+    <string name="audio_source">Audio Source</string>
+    <string name="back">Back</string>
+    <string name="camera_running">Camera service is running</string>
+    <string name="audio_running">Audio service is running</string>
+    <string name="cancel">Cancel</string>
+    <string name="check_free">Check Free Storage</string>
+    <string name="get_s_start">GET START</string>
+    <string name="thank_u_ok">OK</string>
+    <string name="click_to_record">👇 Click Below Icon To Record 👇</string>
+    <string name="click_to_stop">Click To Stop</string>
+    <string name="confirm">Confirm</string>
+    <string name="date">Date</string>
+    <string name="delete">Delete</string>
+    <string name="display">DISPLAY</string>
+    <string name="do_you_want_delete">Do you want to delete video?</string>
+    <string name="front">Front</string>
+    <string name="internal_media">Interal media player</string>
+    <string name="loading">Loading...</string>
+    <string name="low_memory">Your moblie is low on memory!</string>
+    <string name="low_memory_cant_save">"Your moblie is too low on memory! Can't save video recorder"</string>
+    <string name="min">Min</string>
+    <string name="need_permission">We need permission for use background recording!</string>
+    <string name="ok">Ok</string>
+    <string name="orientation">Orientation</string>
+    <string name="record_duration">Recording Duration</string>
+    <string name="record_success">Video Recording Saved</string>
+    <string name="record_success_screenrecorder">Screen Recording Saved</string>
+    <string name="record_success_audio">Audio Recording Saved</string>
+    <string name="rename">Rename</string>
+    <string name="select_all">Select All</string>
+    <string name="setting">Setting</string>
+    <string name="share">Share</string>
+    <string name="should_clear_data">Available external memory. You should clear data!</string>
+    <string name="show_notifi">Show Notification</string>
+    <string name="slient_record">Silent Record</string>
+    <string name="stop">Stop</string>
+
+    <string name="str_share_this_video">Share to</string>
+    <string name="summary_low_memory">Recording will stop if low available storage</string>
+    <string name="summary_notify">Notification will be shown when recording</string>
+    <string name="summary_slient">Video will have no sound. It could save your videos size</string>
+    <string name="tap_to_open">Tap to open now</string>
+    <string name="time">Time</string>
+    <string name="use_internal">Use internal media player to play recordings</string>
+    <string name="video_camera">Video Camera</string>
+    <string name="video_name">Video Name</string>
+    <string name="video_quality">Video Quality</string>
+    <string name="video_setting">VIDEO SETTINGS</string>
+    <string name="audio_setting">AUDIO SETTINGS</string>
+    <string name="acc_security">ACCOUNT SECURITY</string>
+    <string name="others">OTHERS</string>
+    <string name="camera">CAMERA</string>
+    <string name="you_have">You Have</string>
+
+
+    <string name="Accelerometer">Sensors that let you monitor the motion of a device such as tilt, shake, rotation, or swing</string>
+    <string name="Compass">"Provides mobile phones with a simple orientation in relation to the Earth's magnetic field. As a result, your phone always knows which way is North so it can auto rotate your digital maps depending on your physical orientation."</string>
+    <string name="Gyroscope">This is the sensor which is used to maintain and control the position, level or orientation based on the principle of angular momentum. It works with an Accelerometer to detect the rotation of phone and features like tilting of phone to play racing games enhances the overall gaming experience.</string>
+    <string name="Light">Measures the ambient light level (illumination) in lx. Sensors which most device manufacturers use to control screen brightness</string>
+    <string name="Magnetometer">"Measures the ambient geomagnetic      field for all three physical axes (x, y, z) in μT"</string>
+    <string name="Proximity">"Measures the proximity of an object in cm relative to the view screen of a device. This sensor is typically used to determine whether a handset is being held up to a person's ear."</string>
+
+    <string name="share_text">"Hi there, I'm using “AVS Background Recorder" app , click to get it now:-"</string>
+
+    <string name="how">"Hidden Bugs Detector/IR Camera Detector is a free app which works on every smartphone and android. It can be downloaded from Google Play free of cost.
+ Open the app after installation and enjoy easy to use interface to set it to working.
+ It's a very easy-to-use and handy app which is used around the globe on account of its portability and efficiancy.
+
+ Hidden Bugs Detector/IR Camera Detector detect hidden bugs through two methods.
+
+ 1-Infrared Camera Detector: Infrared light cannot seen through nacked eye, while using IR detector if you see any white dot on your screen that could be infrared light, search for hidden camera there. Camera Lens are mostly placed in many things like pen, ballpoint, button, glass, table etc.
+
+ 2- Radiation Detector: All hidden devices like Microphone, cameras or speakers emits radiations which cannot seen, through radiation detector users can find the intensity of radiations emitted by hidden devices. if radiation value gets high, then search for hidden devices around you like cameras, microphones, speakers,tv,radio other electronic devices etc."</string>
+
+
+    <string name="title_activity_category_selection">Category Selection</string>
+    <string name="use_cat">true</string>
+    <string name="str_orange">#fe7b27</string>
+    <string name="basic_action_1">Delete</string>
+    <string name="basic_action_2">Action_2</string>
+
+
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="batt_health">Battery Health</string>
+    <string name="batt_remain">Battery Level</string>
+    <string name="batt_status">Battery Status</string>
+    <string name="batt_technology">Battery Tech.</string>
+    <string name="batt_temp">Battery Temp.</string>
+    <string name="batt_volte">Battery Voltage</string>
+    <string name="battery_saver">Battery Saver</string>
+    <string name="batterysavertxt">Save your battery power and optimize battery usage with just 1 tap, longer the phone battery life up to 80%.</string>
+    <string name="ram_free">Free RAM</string>
+    <string name="ram_total">Total RAM</string>
+    <string name="ram_used">Used RAM</string>
+    <string name="speed_booster">Speed Booster</string>
+    <string name="speedtxt">Optimize your phone\'s speed by using our exclusive feature of eVPN. It will close your running tasks.</string>
+    <string name="storage_free">Free Space</string>
+    <string name="storage_total">Total Space</string>
+
+
+    <string name="disclaimer">Name of all banks and images are brand names and registered trademarks of respective banks. Use of them in this app does not imply any affiliation with or endorsement by banks. Their use in the app are solely meant for information of services provided by the bank. \n\nThe app facilitates and encourages to use services provided by the banker the benefit of bank’s customer. \n\nThe information provided in the app through is complied with utmost care,  the app cannot guarantee that this information is and stays 100% accurate. We therefore reserve all rights of app and accept no liability for any kind of damage directly or indirectly that can come from the use or not able to use the information and functionality provided by app.</string>
+
+    <string name="Privacy_Policy"><u>Privacy Policy</u></string>
+    <string name="already_paided"><u>Already paid for an upgrade?</u></string>
+    <string name="term_of_service"><u>Terms of Service</u></string>
+    <string name="Disclaimer"><u>Disclaimer</u></string>
+
+
+    <string name="camera_and_location_rationale">This app needs access to your storage permission for storing data.</string>
+    `
+    <string name="delete_demo">Delete Demo</string>
+    <string name="desc">We are trying to make the app better! Would you like togive a 5-start rating?</string>
+    <string name="end_capture">Turn Off Screenshot</string>
+    <string name="end_here">End here and capture</string>
+    <string name="label_brush">Brush</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser_mode">Eraser mode</string>
+    <string name="label_filter">Filter</string>
+    <string name="label_shape">Shape</string>
+    <string name="label_text">Text</string>
+    <string name="remove_sticky">Remove Sticky Elements</string>
+    <string name="start_capture">Turn On Screenshot</string>
+    <string name="start_here">Start here</string>
+    <string name="termsOfService">Terms Of Service</string>
+    <string name="termsOfServiceSummery">This app is governed by Cyber Magic Apps’s Terms of Service. By continuing to use this app you represent that you have read and accept the Privacy Policy and Permission disclosure.</string>
+    <string name="acceptAndContinue">Accept</string>
+    <string name="permissionDisclose">Permission Disclosure</string>
+    <string name="capture_whole_page">Capture whole page</string>
+    <string name="no_choose">please choose a image for edit</string>
+
+    <string name="indicator_end_pos">↧</string>
+    <string name="indicator_end_pos_text_id">longshot_indicator_bottom_text</string>
+    <string name="indicator_start_pos">↥</string>
+    <string name="indicator_start_pos_line_id">longshot_indicator_top_line</string>
+    <string name="indicator_start_pos_text_id">longshot_indicator_top_text</string>
+    <string name="str_confirm_pattern">Confirm Pattern</string>
+    <string name="str_enter_pattern">Please Enter Pattern</string>
+    <string name="str_enter_old_pattern">Enter Old Pattern</string>
+
+    <string name="str_fea_schedule_recording">Schedule Video Recording</string>
+    <string name="str_fea_press_valume_key">Press Volume Key For Start Recording</string>
+    <string name="str_fea_screenshot">Start Screenshot Service</string>
+
+    <string name="str_turm_condition"><u>Terms and Conditions</u></string>
+    <string name="str_privacy_olicy"><u>Privacy Policy</u></string>
+
+    <string name="str_permission_top">Following permission must be granted \n in order for tha application to work \n properly. \n Would you line to grant them now?</string>
+
+    <string name="str_q1">Q: Is it safe?</string>
+    <string name="str_a1">A: Yes, it is safe and secure. We do not collect personal information from user. All data generated by this app will be saved on your device. We never use, transfer or back up user data.</string>
+    <string name="str_q2">Q: Is there any way to recover the deleted files?</string>
+    <string name="str_a2">A: No, deleted video cannot be recovered. Since we do not back up your data, we could not do this. The recorded videos are saved on your internal or external SD card.</string>
+    <string name="str_q3">Q: Why is the notification icon displayed during video recording? Is there a way to remove it?</string>
+    <string name="str_a3">A: If we do not display notifications, Android will not allow video recording in the background. But you can change the application name, icon notification icon on the settings screen.</string>
+    <string name="str_q4">Q: Why does recording stop when a video file size reached 3GB (about 30 minutes)?</string>
+    <string name="str_a4">A: The default, Android system will stop a recording when a file size reached 3GB or duration is 30 minutes. Or if you are saving file on SD Card you should format SD Card is exFAT instead of FAT so the app can record video long time (more 30 minutes).</string>
+    <string name="str_q5">Q: Why the volume key does not work when the device is locked for a while?</string>
+    <string name="str_a5">A: This is because Android disables the volume buttons when the device is locked for a long time. You can use the power button for this situation. In addition, you can shake your device and make video recording. You must enable these features on the Settings screen.</string>
+    <string name="str_q6">Q: Why doesn\'t the volume key work when you are talking on the phone or listening to music?</string>
+    <string name="str_a6">A: Since hardware volume buttons are shared resources, only one application can use them simultaneously. While you are talking on the phone, the phone application gets the right to the buttons. All other applications can not use it at the moment.</string>
+
+    <string name="pick_image_intent_chooser_title">Select source</string>
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right" >Rotate</string>
+    <string name="crop_image_menu_crop" >Crop</string>
+    <string name="crop_image_menu_flip" >Flip</string>
+    <string name="crop_image_menu_flip_horizontally" >Flip horizontally</string>
+    <string name="crop_image_menu_flip_vertically" >Flip vertically</string>
+    <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="size">size</string>
+    <string name="preference_vibrate_key">vibrate</string>
+    <string name="prefs">Preferences</string>
+    <string name="running">Running</string>
+    <string name="recordingNotificationMsg">Record Audio/Video/Screen while using any app</string>
+    <string name="tools">Tools</string>
+    <string name="select_option">Select Recording Option</string>
+    <string name="screenshots">Screenshots</string>
+    <string name="brush">Brush</string>
+    <string name="settingsNotSupported">Some settings are not supported by your device</string>
+    <string name="unableToRecord">Unable to record screen, please try again</string>
+
+    <string name="key_audio_source">key_audio_source</string>
+    <string name="key_common_countdown">key_common_countdown</string>
+    <string name="key_output_format">key_output_format</string>
+    <string name="key_record_audio">key_record_audio</string>
+    <string name="key_reward_video">key_reward_video</string>
+    <string name="key_video_bitrate">key_video_bitrate</string>
+    <string name="key_video_encoder">key_video_encoder</string>
+    <string name="key_video_fps">key_video_fps</string>
+    <string name="key_video_resolution">key_video_resolution</string>
+
+    <string name="default_setting_countdown">3</string>
+    <string name="countDown">Countdown</string>
+    <string name="title_record_audio">Record Audio</string>
+    <string name="title_reward_video">Remove Watermark</string>
+    <string name="title_video_resolution">Resolution</string>
+    <string name="summary_record_audio">Should audio be recorded</string>
+    <string name="summary_video_resolution">Specify video size</string>
+</resources>

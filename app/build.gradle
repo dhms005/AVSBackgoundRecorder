@@ -1,0 +1,146 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.ds.audio.video.screen.backgroundrecorder"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
+    buildFeatures {
+
+        dataBinding true
+
+        // for view binding:
+        // viewBinding true
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+//    implementation 'com.kaopiz:kprogresshud:1.2.0'
+//    implementation 'gun0912.ted:tedpermission:2.2.3'
+    // Normal
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+
+
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.airbnb.android:lottie:3.7.1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.5.1"
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging'
+//    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-perf'
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'com.google.firebase:firebase-ads:21.0.0'
+    implementation 'com.google.ads.mediation:facebook:6.11.0.0'
+    implementation 'com.google.android.play:core:1.10.3'
+    implementation 'com.android.volley:volley:1.2.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
+    implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation group: 'cz.msebera.android', name: 'httpclient', version: '4.4.1.1'
+    implementation "com.android.installreferrer:installreferrer:2.2"
+    implementation 'androidx.work:work-runtime-ktx:2.8.0-alpha01'
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+
+
+    // in app purchase
+    implementation 'com.android.billingclient:billing:3.0.1'
+
+    implementation 'com.bogdwellers:pinchtozoom:0.1'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.codemybrainsout.rating:ratingdialog:2.0.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.jaredrummler:colorpicker:1.1.0'
+    implementation 'com.github.yalantis:ucrop:2.2.2'
+
+    implementation 'com.burhanrashid52:photoeditor:1.5.1'
+    // For developers using AndroidX in their applications
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    implementation("org.greenrobot:eventbus:3.3.1")
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
+
+    implementation 'com.github.recruit-lifestyle:FloatingView:2.4.4'
+    implementation 'com.github.Devlight:CornerCutLinearLayout:1.0.5'
+    implementation 'com.github.anastr:speedviewlib:1.6.0'
+
+    implementation 'com.applovin:applovin-sdk:+'
+    implementation 'com.applovin.mediation:adcolony-adapter:+'
+    implementation 'com.applovin.mediation:chartboost-adapter:+'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.applovin.mediation:ironsource-adapter:+'
+    implementation 'com.applovin.mediation:facebook-adapter:+'
+    implementation 'com.applovin.mediation:mintegral-adapter:+'
+    implementation 'com.applovin.mediation:unityads-adapter:+'
+
+    implementation 'io.github.itsxtt:pattern-lock:0.2.0'
+    implementation 'cat.ereza:customactivityoncrash:2.4.0'
+
+    // add below dependency for using room.
+
+    implementation "androidx.room:room-runtime:2.2.5"
+    annotationProcessor "androidx.room:room-compiler:2.2.5"
+
+//    Screen Recorded
+//    implementation 'com.github.HBiSoft:HBRecorder:2.0.5'
+//    implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
+//    implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
+//    api 'com.otaliastudios:cameraview:2.7.2'
+
+
+}

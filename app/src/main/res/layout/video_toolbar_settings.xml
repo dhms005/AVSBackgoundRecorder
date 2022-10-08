@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="56.0dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/splash_bg"
+    app:cardElevation="7.0dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56.0dp"
+        android:theme="@style/ToolbarTheme"
+        android:background="@drawable/splash_bg"
+        app:navigationContentDescription="@string/abc_action_bar_up_description"
+        app:navigationIcon="?homeAsUpIndicator"
+        app:title="Video Setting"
+        app:titleTextColor="@color/white" />
+</androidx.cardview.widget.CardView>

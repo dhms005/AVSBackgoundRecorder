@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:theme="@style/AppTheme.NoActionBar"
+        android:title="@string/acc_security">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_app_lock"
+            android:key="prefAppLock"
+            android:title="App Lock" />
+
+        <Preference
+            android:defaultValue="false"
+            android:enabled="false"
+            android:icon="@drawable/pref_change_patter_lock"
+            android:key="prefChangePattern"
+            android:title="Change Pattern" />
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory
+        android:theme="@style/AppTheme.NoActionBar"
+        android:title="@string/audio_setting">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_vibration"
+            android:key="prefVibration"
+            android:title="Vibration" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/audioLabel"
+            android:entryValues="@array/audioValues"
+            android:icon="@drawable/pref_audio"
+            android:key="pref_Aud_AudioSource"
+            android:title="@string/audio_source" />
+
+
+        <ListPreference
+            android:defaultValue="300"
+            android:entries="@array/videoDurationLabel"
+            android:entryValues="@array/videoDurationValues"
+            android:icon="@drawable/pref_recording_duration"
+            android:key="pref_Aud_Duration"
+            android:title="@string/record_duration" />
+
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@drawable/pref_storage"
+            android:key="prefChkFreeSto"
+            android:summary="@string/summary_low_memory"
+            android:title="@string/check_free" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:theme="@style/AppTheme.NoActionBar"
+        android:title="@string/display">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@drawable/pref_notification"
+            android:key="pref_Aud_ShowNotifi"
+            android:summary="@string/summary_notify"
+            android:title="@string/show_notifi" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@drawable/pref_media_player"
+            android:key="prefWatch"
+            android:summary="@string/use_internal"
+            android:title="@string/internal_media" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:theme="@style/AppTheme.NoActionBar"
+        android:title="@string/others">
+
+        <Preference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_share"
+            android:key="prefShare"
+            android:title="Share" />
+
+        <Preference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_privacy_policy"
+            android:key="prefPrivacyPolicy"
+            android:title="Privacy Policy" />
+
+        <Preference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_rate"
+            android:key="prefRate"
+            android:title="Rate" />
+
+        <!--        <Preference-->
+        <!--            android:defaultValue="false"-->
+        <!--            android:icon="@drawable/pref_private_folder"-->
+        <!--            android:key="prefPrivateFolder"-->
+        <!--            android:title="Private Folder"-->
+        <!--            app:isPreferenceVisible="false" />-->
+
+        <Preference
+            android:defaultValue="false"
+            android:icon="@drawable/pref_faq"
+            android:key="prefFAQ"
+            android:title="FAQ" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

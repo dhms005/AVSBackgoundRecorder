@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardbg">
+
+    <LinearLayout
+        android:id="@+id/shapeRadioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardbg"
+        android:orientation="horizontal"
+        android:padding="@dimen/_6sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeType">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBrush"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_18sdp"
+                app:cardElevation="0.0dip">
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/brush"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLine"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_18sdp"
+                app:cardElevation="0.0dip">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/line"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardOval"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_18sdp"
+                app:cardElevation="0.0dip">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/oval"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRectangle"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_18sdp"
+                app:cardElevation="0.0dip">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/rectangle"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/shapeSize"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="8.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:progress="15"
+        android:progressDrawable="@drawable/style"
+        android:thumb="@drawable/thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtShapeSize" />
+
+    <SeekBar
+        android:id="@+id/shapeOpacity"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="8.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:max="255"
+        android:progress="255"
+        android:progressDrawable="@drawable/style"
+        android:thumb="@drawable/thumb"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOpacity" />
+
+    <TextView
+        android:id="@+id/txtShapeSize"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="8.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:text="Brush"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        app:fontFamily="@font/bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeRadioGroup" />
+
+    <TextView
+        android:id="@+id/txtOpacity"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="32.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:text="Opacity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        app:fontFamily="@font/bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtShapeSize" />
+
+    <TextView
+        android:id="@+id/shapeType"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="8.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:text="Shape"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shapeColors"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8.0dip"
+        android:layout_marginTop="20.0dip"
+        android:layout_marginEnd="8.0dip"
+        android:layout_marginBottom="6.0dip"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeOpacity" />
+</androidx.constraintlayout.widget.ConstraintLayout>

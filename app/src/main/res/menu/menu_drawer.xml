@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/dv_rateUs"
+        android:title="Rate Us"
+        android:icon="@drawable/pref_rate"/>
+
+    <item
+        android:id="@+id/dv_share"
+        android:icon="@drawable/pref_share"
+        android:title="Share" />
+
+    <item
+        android:id="@+id/dv_privacyPolicy"
+        android:icon="@drawable/pref_privacy_policy"
+        android:title="Privacy Policy" />
+
+    <item
+        android:id="@+id/dv_faq"
+        android:icon="@drawable/pref_faq"
+        android:title="FAQ" />
+</menu>

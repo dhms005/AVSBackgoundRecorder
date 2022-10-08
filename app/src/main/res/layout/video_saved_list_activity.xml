@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/splash_bg">
+
+    <RelativeLayout
+        android:id="@+id/card_tool"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/splash_bg"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toLeftOf="@id/imgViewChnage"
+            android:layout_toRightOf="@+id/back"
+            android:layout_weight="0.6"
+            android:fontFamily="@font/popins_reguler"
+            android:singleLine="true"
+            android:text="Recorded CCTV Videos"
+            android:textColor="@color/white"
+            android:textSize="18.0dip" />
+
+        <ImageView
+            android:id="@+id/imgViewChnage"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:src="@drawable/ic_video_grid"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_folder_activity"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/_150sdp" />
+
+
+    <!--    <androidx.cardview.widget.CardView
+            android:id="@+id/card_tool"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/black"
+            app:cardElevation="7.0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_folder_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:theme="@style/ToolbarTheme"
+                app:navigationContentDescription="@string/abc_action_bar_up_description"
+                app:navigationIcon="?homeAsUpIndicator"
+                app:titleTextColor="@color/black" />
+        </androidx.cardview.widget.CardView>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:layout_below="@id/card_tool">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/Admob_Native_Frame_two"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical" />
+
+
+                <LinearLayout
+                    android:id="@+id/hscrollContainer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/img_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/z_ad_border" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_videos"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/nav"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_videos_grid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/nav"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/noVideoText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/nav"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gotham_medium"
+                android:gravity="center"
+                android:text="No Video Found..."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
+</RelativeLayout>

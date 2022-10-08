@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <SurfaceView
+        android:id="@+id/preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#8d0c71ae" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="If you see a white light in dark room which you cannot see with naked eye, this may be a Hidden Camera"
+        android:textColor="#ffffffff"
+        android:textSize="18.0dip" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_above="@+id/mNativeBannerAd"
+        android:layout_marginLeft="30.0dip"
+        android:layout_marginRight="30.0dip"
+        android:layout_marginBottom="40.0dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/minusZoom"
+            android:layout_width="47.0dip"
+            android:layout_height="47.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="50.0sp" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="fill_parent"
+            android:layout_height="60.0dip"
+            android:layout_weight="2.0"
+            android:thumb="@android:drawable/ic_menu_search"
+            android:thumbTint="@color/white" />
+
+        <TextView
+            android:id="@+id/plusZoom"
+            android:layout_width="45.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:text="+"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="40.0sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mNativeBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
+</RelativeLayout>

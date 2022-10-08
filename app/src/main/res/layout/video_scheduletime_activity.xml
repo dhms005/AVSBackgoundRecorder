@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_setting_frag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/cardbg">
+
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/ic_close"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:fontFamily="@font/gotham_medium"
+                android:text="SAVE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_medium"
+                android:text="Video Schedule start date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/tv_edit_date_frag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_schedule_back"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_show_date_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="Today"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow_down" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/gotham_medium"
+                android:text="Video Schedule start time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/tv_edit_time_frag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_schedule_back"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_show_time_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="00:00"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow_down" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/gotham_medium"
+                android:text="Set video recording duration"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/tv_edit_duration_frag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_schedule_back"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_show_duration_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="30 Minutes"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow_down" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/gotham_medium"
+                android:text="Choose camera direction"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/tv_edit_use_cam_frag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_schedule_back"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_show_use_cam_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="Back"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow_down" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@color/colorPrimary"-->
+    <!--            android:padding="@dimen/_15sdp"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textSize="@dimen/_17sdp"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textStyle="bold"-->
+    <!--                android:text="Create video schedule"/>-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textSize="@dimen/_15sdp"-->
+    <!--                android:textStyle="bold"-->
+    <!--                android:text="Create a schedule to "/>-->
+
+    <!--        </LinearLayout>-->
+
+
+    <!--    </RelativeLayout>-->
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="fill_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:padding="@dimen/cotent_time_fragment"-->
+    <!--        android:visibility="gone">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:fontFamily="@font/popins_medium"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/tap_to_set_time"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="18.0sp" />-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/marin_top_item_time_frag">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/txt_time"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentLeft="true"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/time"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_show_time_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/txt_time"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_edit_time_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentRight="true"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:layout_marginRight="20.0dip"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/edit"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+    <!--        </RelativeLayout>-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/marin_top_item_time_frag">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/txt_date"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentLeft="true"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/date"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_show_date_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/txt_date"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_edit_date_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentRight="true"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:layout_marginRight="20.0dip"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/edit"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+    <!--        </RelativeLayout>-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/marin_top_item_time_frag">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/txt_duration"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentLeft="true"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/duration"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_show_duration_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/txt_duration"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_edit_duration_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentRight="true"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:layout_marginRight="20.0dip"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/edit"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+    <!--        </RelativeLayout>-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/marin_top_item_time_frag">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/txt_use_cam"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentLeft="true"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/use_camera"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_show_use_cam_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/txt_use_cam"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/back"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_edit_use_cam_frag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentRight="true"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:layout_marginRight="20.0dip"-->
+    <!--                android:fontFamily="@font/popins_medium"-->
+    <!--                android:text="@string/switch_string"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="15.0sp" />-->
+    <!--        </RelativeLayout>-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/marin_top_item_time_frag"-->
+    <!--            android:fontFamily="@font/popins_medium"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/note_change_cam"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="14.0sp" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/btn_save"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:layout_marginTop="10.0dip"-->
+    <!--            android:background="@drawable/whitebg"-->
+    <!--            android:fontFamily="@font/popins_medium"-->
+    <!--            android:text="@string/save"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="15.0dip" />-->
+    <!--    </LinearLayout>-->
+</FrameLayout>
