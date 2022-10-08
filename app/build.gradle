@@ -41,7 +41,9 @@ android {
         // for view binding:
         // viewBinding true
     }
-
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
 }
 
 dependencies {
@@ -76,7 +78,6 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-perf'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
-
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.firebase:firebase-ads:21.0.0'
     implementation 'com.google.ads.mediation:facebook:6.11.0.0'

@@ -82,9 +82,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         }
     };
     private BroadcastReceiver receiverStop = new BroadcastReceiver() {
-        /* class com.ds.audio.video.screen.backgroundrecorder.CCTVfragment.CCTVRecorderFragment.AnonymousClass2 */
-
-        public void onReceive(Context context, Intent intent) {
+          public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(CY_M_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA)) {
                 Log.e(ScreenRecord_RecorderFragment.TAG, "STOP");
                 ScreenRecord_RecorderFragment.this.stopTimer();

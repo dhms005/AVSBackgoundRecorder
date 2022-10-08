@@ -227,8 +227,6 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
         }
         this.mediaRecorder.setOutputFile(file.getPath());
         this.mediaRecorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
-
-
             public void onInfo(MediaRecorder mediaRecorder, int i, int i2) {
                 if (i == 800 || i == 801) {
                     Video_RecorderService.this.stopSelf();
@@ -245,10 +243,7 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
         try {
             this.mediaRecorder.prepare();
             return true;
-        } catch (IllegalStateException unused) {
-            releaseMediaRecorder();
-            return false;
-        } catch (IOException unused2) {
+        } catch (IllegalStateException | IOException unused) {
             releaseMediaRecorder();
             return false;
         }

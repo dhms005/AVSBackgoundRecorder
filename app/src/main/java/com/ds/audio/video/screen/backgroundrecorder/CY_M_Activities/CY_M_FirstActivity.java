@@ -144,7 +144,6 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
     private LinearLayout coordinatorLayout;
 
     CY_M_Custom_Full_Ad_Timer ESCustom_full_ad_timer;
-
     CY_M_Custom_AppLovin_Timer custom_appLovin_timer;
     int _showAdTimer;
     Handler handler;

@@ -27,23 +27,23 @@ public class Video_AlarmReceiver extends BroadcastReceiver {
     private WordRepository mRepository;
 
     public void onReceive(Context context, Intent intent) {
-//        Log.e("#TESTSCHEDULE", "1-->   " + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+        Log.e("#TESTSCHEDULE", "1-->   " + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
         mRepository = new WordRepository(getApplication());
         Intent intent2 = new Intent(context, Video_RecorderService.class);
         intent2.putExtra(CY_M_Conts.CAMERA_USE, intent.getStringExtra(CY_M_Conts.CAMERA_USE));
 //        intent2.putExtra(CY_M_Conts.CAMERA_DURATION, intent.getStringExtra(CY_M_Conts.CAMERA_DURATION));
         if (!Video_ServiceHelper.isServiceRunning(Video_RecorderService.class, context)) {
-//            Log.e("#TESTSCHEDULE", "isServiceRunning");
+            Log.e("#TESTSCHEDULE", "isServiceRunning");
             context.startService(intent2);
         } else {
-//            Log.e("#TESTSCHEDULE", "isServiceRunningNot");
+            Log.e("#TESTSCHEDULE", "isServiceRunningNot");
         }
         mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "")));
         if (Video_Save_Schedule_Activity.schedeluLisst.size() > 0) {
-//            Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
+            Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
             try {
                 Thread.sleep(3000);
-//                Log.e("#TESTSCHEDULE", "3-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
+                Log.e("#TESTSCHEDULE", "3-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
                 Intent intent1 = new Intent(context, Video_AlarmReceiver.class);
                 intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
 //                intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
@@ -55,7 +55,7 @@ public class Video_AlarmReceiver extends BroadcastReceiver {
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
-//                Log.e("#TESTSCHEDULE", "InterruptedException-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
+                Log.e("#TESTSCHEDULE", "InterruptedException-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
             }
         }
     }

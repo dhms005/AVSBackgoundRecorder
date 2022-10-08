@@ -137,8 +137,6 @@ public class Video_Setting_Activity extends PreferenceActivity implements Shared
         if (defaultSharedPreferences.getBoolean("prefAppLock", false)) {
             prefChangePattern.setEnabled(true);
         } else {
-
-
             prefChangePattern.setEnabled(false);
         }
         prefChangePattern.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {

@@ -1,6 +1,7 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,9 +22,12 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
+import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_FirstScreen;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.managers.SharedPreferencesManager;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
 
 public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
@@ -33,11 +37,8 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView((int) R.layout.screenrecorder_settings);
-        findViewById(R.id.drawer_menu_button).setOnClickListener(view -> finish());
-//        AdsService.getInstance().showNativeAd((FrameLayout) findViewById(R.id.layout_native_ad), R.layout.admob_native_ad, AdsService.NativeAdType.NATIVE_AD_TYPE_MEDIUM);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, new MainPreferenceFragment()).commit();
+        findViewById(R.id.drawer_menu_button).setOnClickListener(view -> finish());   getSupportFragmentManager().beginTransaction().replace(R.id.content, new MainPreferenceFragment()).commit();
     }
-
 
     public void onBackPressed() {
         super.onBackPressed();
@@ -54,8 +55,10 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
         private ListPreference key_video_fps;
         private ListPreference key_video_resolution;
         private String previous_countdown;
+        SharedPreferences defaultSharedPreferences;
 
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
         }
 
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
         public void onCreate(Bundle bundle) {
             super.onCreate(bundle);
             addPreferencesFromResource(R.xml.screenrecorder_pref_main);
+            defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             key_record_audio = (SwitchPreference) findPreference(getString(R.string.key_record_audio));
             key_reward_video = (SwitchPreference) findPreference(getString(R.string.key_reward_video));
 
@@ -116,6 +120,16 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
                 listPreference6.setOnPreferenceChangeListener(this);
             }
             setPreviousSelectedAsSummary();
+
+            Preference prefAppLock = findPreference("key_reward_video");
+            prefAppLock.setOnPreferenceClickListener(preference -> {
+                if (defaultSharedPreferences.getBoolean("key_reward_video", false)) {
+                    SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, true);
+                } else {
+                    SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, false);
+                }
+                return false;
+            });
         }
 
         private void setColorPreferencesTitle(EditTextPreference textPref, int color) {
@@ -176,63 +190,67 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
                 return true;
 
             }
-//            else if (getString(R.string.key_reward_video).equals(var3_3)) {
-//                if (!Boolean.parseBoolean((String) var2_2.toString())) {
-////                    AdsService.getInstance().showRewardVideo((Activity) this.getActivity());
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//
-//
-//            }
-            else if (getString(R.string.key_common_countdown).equals(var3_3)) {
-
-                if (Integer.valueOf((String) var2_2.toString()) <= 15) {
-                    this.key_common_countdown = (EditTextPreference) this.findPreference((CharSequence) this.getString(R.string.key_common_countdown));
-                    StringBuilder var6_12 = new StringBuilder();
-                    var6_12.append("");
-                    var6_12.append(var2_2.toString());
-                    var6_12.append("s");
-                    key_common_countdown.setSummary((CharSequence) var6_12.toString());
-                    this.previous_countdown = var2_2.toString();
+           /* else if (getString(R.string.key_reward_video).equals(var3_3)) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                if (prefs.getBoolean("key_reward_video", false)) {
+                    Log.e("#DEBUG1", "true");
                     return true;
                 } else {
-                    Toast.makeText((Context) CY_M_MyApplication.getAppContext(), (CharSequence) "Maximum value for countdown is 15 seconds", (int) 0).show();
+                    Log.e("#DEBUG1", "false");
                     return false;
                 }
 
+
+            } */
+            else if (getString(R.string.key_common_countdown).equals(var3_3)) {
+                try {
+                    if (Integer.parseInt(var2_2.toString()) <= 15) {
+                        this.key_common_countdown = (EditTextPreference) this.findPreference((CharSequence) this.getString(R.string.key_common_countdown));
+                        StringBuilder var6_12 = new StringBuilder();
+                        var6_12.append("");
+                        var6_12.append(var2_2);
+                        var6_12.append("s");
+                        key_common_countdown.setSummary((CharSequence) var6_12.toString());
+                        this.previous_countdown = var2_2.toString();
+                        return true;
+                    } else {
+                        Toast.makeText((Context) CY_M_MyApplication.getAppContext(), (CharSequence) "Maximum value for countdown is 15 seconds", (int) 0).show();
+                        return false;
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    Toast.makeText((Context) CY_M_MyApplication.getAppContext(), (CharSequence) "Please enter valid number", (int) 0).show();
+                    return false;
+                }
             } else {
 //                Toast.makeText((Context) BaseApplication.getContext(), (CharSequence) "Maximum value for countdown is 15 seconds", (int) 0).show();
                 return false;
             }
-
-
         }
 
 
         private void setPreviousSelectedAsSummary() {
             if (getActivity() != null) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                String video_resolution = prefs.getString("key_video_resolution", (String) null);
-                boolean audio_enabled = prefs.getBoolean("key_record_audio", true);
+                String video_resolution = prefs.getString(getResources().getString(R.string.key_video_resolution), (String) null);
+                boolean audio_enabled = prefs.getBoolean(getResources().getString(R.string.key_record_audio), true);
 //                boolean reward_video = SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false);
-                boolean reward_video = prefs.getBoolean("key_reward_video", false);
-                String audio_source = prefs.getString("key_audio_source", (String) null);
-                String video_encoder = prefs.getString("key_video_encoder", (String) null);
-                String video_fps = prefs.getString("key_video_fps", (String) null);
-                String video_bitrate = prefs.getString("key_video_bitrate", (String) null);
-                String output_format = prefs.getString("key_output_format", (String) null);
-                this.previous_countdown = prefs.getString("key_common_countdown", (String) null);
-                Log.d("Summary", "common_countdown: " + this.previous_countdown);
-                Log.d("Summary", "reward_video_enabled: " + reward_video);
-                Log.d("Summary", "audio_enabled: " + audio_enabled);
-                Log.d("Summary", "audio_source: " + audio_source);
-                Log.d("Summary", "video_resolution: " + video_resolution);
-                Log.d("Summary", "video_encoder: " + video_encoder);
-                Log.d("Summary", "video_frame_rate: " + video_fps);
-                Log.d("Summary", "video_bit_rate: " + video_bitrate);
-                Log.d("Summary", "output_format: " + output_format);
+                boolean reward_video = prefs.getBoolean(getResources().getString(R.string.key_reward_video), false);
+                String audio_source = prefs.getString(getResources().getString(R.string.key_audio_source), (String) null);
+                String video_encoder = prefs.getString(getResources().getString(R.string.key_video_encoder), (String) null);
+                String video_fps = prefs.getString(getResources().getString(R.string.key_video_fps), (String) null);
+                String video_bitrate = prefs.getString(getResources().getString(R.string.key_video_bitrate), (String) null);
+                String output_format = prefs.getString(getResources().getString(R.string.key_output_format), (String) null);
+                this.previous_countdown = prefs.getString(getResources().getString(R.string.key_common_countdown), (String) null);
+//                Log.d("Summary", "common_countdown: " + this.previous_countdown);
+//                Log.d("Summary", "reward_video_enabled: " + reward_video);
+//                Log.d("Summary", "audio_enabled: " + audio_enabled);
+//                Log.d("Summary", "audio_source: " + audio_source);
+//                Log.d("Summary", "video_resolution: " + video_resolution);
+//                Log.d("Summary", "video_encoder: " + video_encoder);
+//                Log.d("Summary", "video_frame_rate: " + video_fps);
+//                Log.d("Summary", "video_bit_rate: " + video_bitrate);
+//                Log.d("Summary", "output_format: " + output_format);
                 this.key_record_audio.setChecked(audio_enabled);
                 this.key_reward_video.setChecked(reward_video);
                 SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, reward_video);

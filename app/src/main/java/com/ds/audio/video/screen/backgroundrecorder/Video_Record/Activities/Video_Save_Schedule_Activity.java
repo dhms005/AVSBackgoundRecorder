@@ -220,6 +220,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
                 mWordViewModel.insert(word);
             }
+            finish();
         }
     }
 

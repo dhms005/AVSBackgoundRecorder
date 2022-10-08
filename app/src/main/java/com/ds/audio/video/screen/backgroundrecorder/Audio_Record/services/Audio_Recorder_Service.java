@@ -23,6 +23,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
@@ -129,7 +130,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
             builder.setSmallIcon(R.drawable.app_logo);
             builder.setWhen(0);
             builder.setPriority(2);
-            Intent intent2 = new Intent(getApplicationContext(), Video_ActivityPager.class);
+            Intent intent2 = new Intent(getApplicationContext(), Audio_ActivityPager.class);
             TaskStackBuilder create = TaskStackBuilder.create(getApplicationContext());
             create.addNextIntent(intent2);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

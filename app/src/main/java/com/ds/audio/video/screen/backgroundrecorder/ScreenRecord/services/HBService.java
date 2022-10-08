@@ -287,7 +287,7 @@ public class HBService extends Service implements HBRecorderListener {
         this.mImgStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mRecordingStarted){
+                if (mRecordingStarted) {
                     stopRecording();
                 }
 
@@ -319,9 +319,9 @@ public class HBService extends Service implements HBRecorderListener {
                     stopService(new Intent(HBService.this, FloatingControlBrushService.class));
                 }
                 if (hbRecorder.isBusyRecording()) {
-                    if (SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false)) {
-                        SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, false);
-                    }
+//                    if (SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false)) {
+//                        SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, false);
+//                    }
                     toggleView(mWarermarkLayout, 8);
                     mRecordingStarted = false;
                     toggleNavigationButton(8);
@@ -477,7 +477,7 @@ public class HBService extends Service implements HBRecorderListener {
     public void showCountDown() {
         toggleView(this.mCountdownLayout, 0);
 
-        new CountDownTimer(1000 * ((long) (Integer.parseInt(this.prefs.getString("key_common_countdown", ExifInterface.GPS_MEASUREMENT_3D)) + 1)), 1000) {
+        new CountDownTimer(1000 * ((long) (Integer.parseInt(this.prefs.getString(getResources().getString(R.string.key_common_countdown), ExifInterface.GPS_MEASUREMENT_3D)) + 1)), 1000) {
             public void onTick(long l) {
                 HBService hBService = HBService.this;
                 hBService.toggleView(hBService.mViewRoot, 8);
@@ -492,14 +492,14 @@ public class HBService extends Service implements HBRecorderListener {
                 hBService2.toggleView(hBService2.mViewRoot, 0);
                 HBService.this.mRecordingStarted = true;
                 HBService.this.toggleNavigationButton(8);
+                Log.e("#DEBUG", "" + SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false));
                 if (SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false)) {
                     HBService hBService3 = HBService.this;
-                    hBService3.toggleView(hBService3.mWarermarkLayout, 8);
+                    hBService3.toggleView(hBService3.mWarermarkLayout, View.GONE);
                 } else {
                     HBService hBService4 = HBService.this;
-                    hBService4.toggleView(hBService4.mWarermarkLayout, 0);
+                    hBService4.toggleView(hBService4.mWarermarkLayout, View.VISIBLE);
                 }
-
 
                 HBService.this.initRecording();
             }
@@ -643,9 +643,9 @@ public class HBService extends Service implements HBRecorderListener {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if (SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false)) {
-                    SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, false);
-                }
+//                if (SharedPreferencesManager.getInstance().getBoolean(Utils.IS_REWARD_VIDEO, false)) {
+//                    SharedPreferencesManager.getInstance().setBoolean(Utils.IS_REWARD_VIDEO, false);
+//                }
 
                 Log.e("@@@", "recorded");
 

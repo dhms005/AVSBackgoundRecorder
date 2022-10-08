@@ -223,6 +223,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
                 ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(),FROM_AUDIO,duration,String.valueOf(tvUseCam.equals(getString(R.string.front))));
                 mWordViewModel.insert(word);
             }
+            finish();
         }
     }
 
