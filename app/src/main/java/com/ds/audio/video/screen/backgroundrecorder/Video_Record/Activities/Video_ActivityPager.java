@@ -110,7 +110,6 @@ public class Video_ActivityPager extends AppCompatActivity {
             }
         });
 
-
         setupViewPager(this.viewPager);
 
         this.tabLayout.setupWithViewPager(this.viewPager);

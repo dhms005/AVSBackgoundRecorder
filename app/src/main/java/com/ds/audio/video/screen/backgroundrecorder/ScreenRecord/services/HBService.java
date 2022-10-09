@@ -44,6 +44,7 @@ import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenR
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenShot_Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.managers.SharedPreferencesManager;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.services.Video_RecorderService;
 import com.google.android.material.badge.BadgeDrawable;
@@ -858,6 +859,7 @@ public class HBService extends Service implements HBRecorderListener {
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         intent.setAction("Recorder");
+        Log.e("#TESTSCHEDULE", "start_video_service-->   " + CY_M_Conts.isTimerRunning_Video);
         if (CY_M_Conts.isTimerRunning_Video) {
             CY_M_Conts.isTimerRunning_Video = false;
             stopService(intent);

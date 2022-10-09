@@ -82,8 +82,6 @@ public class Video_RecorderFragment extends Fragment {
         }
     };
     private BroadcastReceiver receiverStop = new BroadcastReceiver() {
-        /* class com.ds.audio.video.screen.backgroundrecorder.CCTVfragment.CCTVRecorderFragment.AnonymousClass2 */
-
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(CY_M_Conts.ACTION_STOP_VIDEO_EXTRA)) {
                 Log.e(Video_RecorderFragment.TAG, "STOP");
@@ -199,8 +197,6 @@ public class Video_RecorderFragment extends Fragment {
                         if (Video_FileHelper.getAvailableExternalMemory() < 50) {
                             Toasty.error(Video_RecorderFragment.this.getContext(), Video_RecorderFragment.this.getString(R.string.low_memory_cant_save), 0).show();
                         } else {
-
-
                             if (Utils.isServiceRunning(HBService.class.getName(), getActivity())) {
                                 LocalBroadcastManager instance = LocalBroadcastManager.getInstance(getActivity());
                                 Intent intent = new Intent();
@@ -211,7 +207,6 @@ public class Video_RecorderFragment extends Fragment {
                             } else {
                                 startRecording();
                             }
-
                         }
                     }
 

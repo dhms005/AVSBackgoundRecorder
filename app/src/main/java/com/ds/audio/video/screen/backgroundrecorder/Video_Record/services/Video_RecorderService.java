@@ -1,10 +1,14 @@
 package com.ds.audio.video.screen.backgroundrecorder.Video_Record.services;
 
+import static com.unity3d.services.core.properties.ClientProperties.getApplication;
+
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,19 +21,28 @@ import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Fragment.Video_RecorderFragment;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_CameraHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
+import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordRepository;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -53,6 +66,8 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
     private String useCam;
     private String videoQuality;
     private WindowManager windowManager;
+
+    private WordRepository mRepository;
 
     public IBinder onBind(Intent intent) {
         return null;
@@ -93,6 +108,25 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
     public int onStartCommand(Intent intent, int i, int i2) {
         NotificationCompat.Builder builder;
         super.onStartCommand(intent, i, i2);
+        mRepository = new WordRepository(getApplication());
+        mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "")));
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (Video_Save_Schedule_Activity.schedeluLisst.size() > 0) {
+            Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
+            Intent intent1 = new Intent(this, Video_AlarmReceiver.class);
+            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
+//          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
+            SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime(), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+            } else {
+                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime(), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
+            }
+        }
 
 //        this.recordDuration = intent.getStringExtra(CY_M_Conts.CAMERA_DURATION);
         if (ACTION_STOP_SERVICE.equals(intent.getAction())) {
@@ -104,8 +138,6 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
 //            checkNotify = true;
         }
         if (this.checkNotify) {
-
-
             if (chkVibration) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -114,7 +146,6 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
                     v.vibrate(500);
                 }
             }
-
 
             if (Build.VERSION.SDK_INT >= 26) {
                 builder = new NotificationCompat.Builder(this, BuildConfig.APPLICATION_ID);
