@@ -110,7 +110,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
             }
         }
 
-        mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "")));
+//        mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "")));
         if (Audio_Save_Schedule_Activity.schedeluLisst.size() > 0) {
 //            Log.e("#TESTSCHEDULE", "2-->   " + Audio_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
                 Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
