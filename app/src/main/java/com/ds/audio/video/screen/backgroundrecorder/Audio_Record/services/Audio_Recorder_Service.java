@@ -101,12 +101,18 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
         super.onStartCommand(intent, i, i2);
         mRepository = new WordRepository(getApplication());
 
+        if (!SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
+            mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "")));
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "")));
         if (Audio_Save_Schedule_Activity.schedeluLisst.size() > 0) {
 //            Log.e("#TESTSCHEDULE", "2-->   " + Audio_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
-            try {
-                Thread.sleep(3000);
-//                Log.e("#TESTSCHEDULE", "3-->   " + Audio_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
                 Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
                 intent1.putExtra(CY_M_Conts.CAMERA_USE, Audio_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
 //                intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Audio_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
@@ -116,10 +122,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
                 } else {
                     ((AlarmManager)getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Audio_Save_Schedule_Activity.schedeluLisst.get(0).getTime(), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-//                Log.e("#TESTSCHEDULE", "InterruptedException-->   " + Audio_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
-            }
+
         }
 
         if (Build.VERSION.SDK_INT >= 23 && intent.getStringExtra(CY_M_Conts.CAMERA_USE) != null) {

@@ -285,7 +285,7 @@ public class Audio_Recorder_Fragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
-        intent.putExtra("android.intent.extra.INTENT", intent);
+        intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
 
         getActivity().startService(intent);
     }

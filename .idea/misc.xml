@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="app/src/main/res/layout/activity_home_menu.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/activity_in_app_purchase.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/screenrecord_record_tab.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/video_toolbar_settings.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/xml/screenrecorder_pref_main.xml" value="0.25052083333333336" />
-      </map>
-    </option>
-  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
