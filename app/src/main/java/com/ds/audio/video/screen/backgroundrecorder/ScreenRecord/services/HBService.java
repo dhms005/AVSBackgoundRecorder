@@ -672,6 +672,10 @@ public class HBService extends Service implements HBRecorderListener {
 //                startActivity(intent);
             }
         });
+        if (CY_M_Conts.isTimerRunning_ScreenRecorder) {
+            CY_M_Conts.isTimerRunning_ScreenRecorder = false;
+//
+        }
         this.sharedPreHelper.remove();
         refreshRecordings();
     }
