@@ -203,7 +203,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
         if (Audio_FileHelper.getAvailableExternalMemory() < 50) {
             Toasty.error(Audio_Save_Schedule_Activity.this, Audio_Save_Schedule_Activity.this.getString(R.string.low_memory_cant_save), 0).show();
         } else {
-            if (schedeluLisst.size() == 0) {
+            if (Video_Database_Helper.Audio_getRowCount() == 0) {
                 Intent replyIntent = new Intent();
                 replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
                 setResult(RESULT_OK, replyIntent);
@@ -212,9 +212,9 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
 //                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
                 SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE));
+                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 1, intent, PendingIntent.FLAG_IMMUTABLE));
                 } else {
-                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+                    ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
                 }
                 Context context = mContext;
                 Toast.makeText(context, "Start recorder at : " + Audio_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();

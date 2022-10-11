@@ -116,13 +116,13 @@ public class PurchaseItemActivity extends AppCompatActivity implements Purchases
     private void handleItemAlreadyPurchase(List<Purchase> purchases) {
         StringBuilder purchaseItem = new StringBuilder(txtPremium.getText());
         for (Purchase purchase : purchases) {
-            if (purchase.getSku().equals("lifetime.ad.free")) {
+            if (purchase.getPurchaseToken().equals("lifetime.ad.free")) {
                 ConsumeParams consumeParams = ConsumeParams.newBuilder()
                         .setPurchaseToken(purchase.getPurchaseToken())
                         .build();
                 billingClient.consumeAsync(consumeParams, listener);
             }
-            purchaseItem.append("\n").append(purchase.getSku())
+            purchaseItem.append("\n").append(purchase.getPurchaseToken())
                     .append("\n");
         }
 

@@ -31,11 +31,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_Save_Schedule_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_ScheduleListActivity;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Audio_AlarmReceiver;
@@ -64,7 +66,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
     private Audio_SharedPreHelper sharedPreHelper;
     private SurfaceView surfaceView;
     private WindowManager windowManager;
-
+    private WordRepository mRepository;
 
 
 
@@ -128,12 +130,13 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
             if (!SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
 
                 Video_Database_Helper.Audio_deleteEntry(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, ""));
+                if (Audio_ScheduleListActivity.adapter != null){
+                    Audio_ScheduleListActivity.adapter.notifyDataSetChanged();
+                }
                 ArrayList<UserModel> users = Video_Database_Helper.Audio_getRows();
 
                 new Handler().postDelayed(() -> {
                     //TODO Perform your action here
-
-
                     if (users.size() > 0) {
 //                    Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
                         Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
@@ -141,9 +144,9 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
 //          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
                         SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, users.get(0).getV_time());
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                         } else {
-                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
+                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
                         }
                     }
 
@@ -151,8 +154,6 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
             }
         }
         if (this.checkNotify) {
-
-
             if (chkVibration) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 // Vibrate for 500 milliseconds

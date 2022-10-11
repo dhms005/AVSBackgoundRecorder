@@ -222,7 +222,6 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                     Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "0");
                 }
             } else {
-                Log.e("#TESTSCHEDULE", "schedeluLisst not 0");
                 Intent replyIntent = new Intent();
                 replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
                 setResult(RESULT_OK, replyIntent);

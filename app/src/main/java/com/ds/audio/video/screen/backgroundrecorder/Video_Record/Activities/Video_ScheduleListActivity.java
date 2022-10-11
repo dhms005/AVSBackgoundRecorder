@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Video_ScheduleListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Video_Schedule_ListAdapter adapter;
+   public static Video_Schedule_ListAdapter adapter;
     ArrayList<UserModel> users;
 
     @Override
@@ -62,6 +62,5 @@ public class Video_ScheduleListActivity extends AppCompatActivity {
         super.onResume();
         users = Video_Database_Helper.Video_getRows();
         adapter.notifyDataSetChanged();
-
     }
 }

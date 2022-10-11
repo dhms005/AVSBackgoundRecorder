@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Audio_ScheduleListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Audio_Schedule_ListAdapter adapter;
+    public static Audio_Schedule_ListAdapter adapter;
     ArrayList<UserModel> users;
 
     @Override

@@ -106,7 +106,7 @@ public class Video_Database_Helper {
         users.clear();
         UserModel user;
         db = dbHelper.getReadableDatabase();
-        Cursor projCursor = db.query(Video_TABLE_NAME, null, null, null, null, null, null, null);
+        Cursor projCursor = db.query(Video_TABLE_NAME, null, null, null, null, null, Schedule_Contant.v_time + " ASC", null);
         while (projCursor.moveToNext()) {
 
             user = new UserModel();
@@ -127,7 +127,7 @@ public class Video_Database_Helper {
         users.clear();
         UserModel user;
         db = dbHelper.getReadableDatabase();
-        Cursor projCursor = db.query(Audio_TABLE_NAME, null, null, null, null, null, null, null);
+        Cursor projCursor = db.query(Audio_TABLE_NAME, null, null, null, null, null, Schedule_Contant.v_time + " ASC", null);
         while (projCursor.moveToNext()) {
 
             user = new UserModel();
@@ -160,13 +160,12 @@ public class Video_Database_Helper {
     }
 
 
-
     // method to get Count of Toatal Rows in Table
     public static int Video_getRowCount() {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(Video_TABLE_NAME, null, null, null, null, null, null);
 //        toast("Row Count is "+cursor.getCount());
-  //      db.close();
+        //      db.close();
         return cursor.getCount();
     }
 

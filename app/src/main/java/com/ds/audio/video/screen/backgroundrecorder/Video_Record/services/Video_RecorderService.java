@@ -33,6 +33,7 @@ import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_CameraHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
@@ -127,6 +128,9 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
                 Log.e("Time", "" + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
 
                 Video_Database_Helper.Video_deleteEntry(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+                if (Video_ScheduleListActivity.adapter != null){
+                    Video_ScheduleListActivity.adapter.notifyDataSetChanged();
+                }
                 ArrayList<UserModel> users = Video_Database_Helper.Video_getRows();
 
                 new Handler().postDelayed(() -> {

@@ -41,6 +41,9 @@ public class Audio_Schedule_ListAdapter extends RecyclerView.Adapter<Audio_Sched
 //                Toast.makeText(view.getContext(), "click on item: " + myListData.getV_time(), Toast.LENGTH_LONG).show();
 
                 Video_Database_Helper.Audio_deleteEntry(myListData.getV_time());
+                users.remove(position);
+                notifyDataSetChanged();
+                notifyItemChanged(position);
 
             }
         });
