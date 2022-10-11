@@ -52,6 +52,11 @@ public class Notification_MainActivity extends FCMActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         setContentView(R.layout.z_notification_local_main);
         list = (ListView) findViewById(R.id.list);
         options = new DisplayImageOptions.Builder().cacheInMemory(true)

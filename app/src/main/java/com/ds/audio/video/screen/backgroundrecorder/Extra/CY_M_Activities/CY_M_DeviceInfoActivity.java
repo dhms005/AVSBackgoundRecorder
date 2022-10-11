@@ -74,10 +74,11 @@ public class CY_M_DeviceInfoActivity extends AppCompatActivity {
     }
 
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle); if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+        super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
         setContentView((int) R.layout.cy_m_activity_device_info);
         mNativeAdNew();
@@ -112,7 +113,6 @@ public class CY_M_DeviceInfoActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     public void getDeviceInfo() {
@@ -309,7 +309,6 @@ public class CY_M_DeviceInfoActivity extends AppCompatActivity {
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "0");
         super.onPause();
     }
-
 
 
     private void mNativeAdNew() {

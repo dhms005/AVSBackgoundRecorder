@@ -29,6 +29,8 @@ import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.managers.SharedPreferencesManager;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
     private static final String TAG = "SettingsActivity";
@@ -36,6 +38,11 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
     /* access modifiers changed from: protected */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         setContentView((int) R.layout.screenrecorder_settings);
         findViewById(R.id.drawer_menu_button).setOnClickListener(view -> finish());   getSupportFragmentManager().beginTransaction().replace(R.id.content, new MainPreferenceFragment()).commit();
     }

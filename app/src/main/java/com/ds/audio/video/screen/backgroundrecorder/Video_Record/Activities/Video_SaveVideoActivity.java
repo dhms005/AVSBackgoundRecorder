@@ -306,6 +306,11 @@ public class Video_SaveVideoActivity extends AppCompatActivity {
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
         this.rlPlaypause.setVisibility(View.GONE);
         this.videoView.start();
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
     }
 
 

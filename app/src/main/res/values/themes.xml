@@ -8,7 +8,7 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+       <!-- <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>-->
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -17,11 +17,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+     <!--   <item name="android:navigationBarColor">@color/colorPrimary</item>-->
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="windowActionBar">true</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <!--<item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>-->
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -73,7 +73,7 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowBackground">@drawable/splash_bg</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+       <!-- <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>-->
         <item name="windowNoTitle">true</item>
 
 

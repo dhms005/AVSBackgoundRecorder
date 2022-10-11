@@ -20,6 +20,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.WindowManager;
 
 import androidx.core.app.NotificationCompat;
@@ -37,6 +38,7 @@ import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_Fi
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Audio_AlarmReceiver;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordRepository;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 import java.io.File;

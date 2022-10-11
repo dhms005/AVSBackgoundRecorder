@@ -14,12 +14,19 @@ import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_Ti
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordListAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 public class Audio_ScheduleListActivity extends AppCompatActivity {
     private WordViewModel mWordViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         setContentView(R.layout.audio_schedule_list_activity);
         mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.rvScheduleVideo);

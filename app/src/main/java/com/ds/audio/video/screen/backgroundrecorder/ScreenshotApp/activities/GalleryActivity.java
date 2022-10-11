@@ -53,6 +53,11 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
     
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         ActivityGalleryBinding activityGalleryBinding = (ActivityGalleryBinding) DataBindingUtil.setContentView(this, R.layout.activity_gallery);
         this.binding = activityGalleryBinding;
         instance = this;

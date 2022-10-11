@@ -34,6 +34,8 @@ import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBServ
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 

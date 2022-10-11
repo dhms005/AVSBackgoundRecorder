@@ -96,6 +96,11 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         WebView.enableSlowWholeDocumentDraw();
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         setContentView((int) R.layout.activity_webview);
         if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
             Call_banner();

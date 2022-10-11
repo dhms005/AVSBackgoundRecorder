@@ -22,6 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.github.mylibrary.Notification.Push.DeviceUtils;
 import com.github.mylibrary.Notification.Push.PushUser;
 import com.github.mylibrary.Notification.Server.Server;
@@ -54,6 +56,11 @@ public class Dailoge_Option extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         setContentView(R.layout.z_notification_gcm_dialog_option);
 
 

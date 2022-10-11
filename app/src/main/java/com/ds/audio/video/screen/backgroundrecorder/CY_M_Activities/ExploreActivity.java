@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 public class ExploreActivity extends AppCompatActivity {
 
@@ -19,6 +21,11 @@ public class ExploreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         setContentView(R.layout.activity_explore);
 
         findViews();

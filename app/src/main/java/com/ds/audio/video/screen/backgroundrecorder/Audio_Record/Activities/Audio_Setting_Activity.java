@@ -36,6 +36,8 @@ import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterL
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_PrivacyPolicyActivity;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
 
 ;
@@ -162,6 +164,11 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
 
     public View onCreateView(String str, Context context, AttributeSet attributeSet) {
         View onCreateView = super.onCreateView(str, context, attributeSet);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         if (onCreateView != null) {
             return onCreateView;
         }

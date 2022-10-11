@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +61,11 @@ public class CropImageActivity extends AppCompatActivity
   @SuppressLint("NewApi")
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+      getWindow().getDecorView().setSystemUiVisibility(
+              View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                      View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
     setContentView(R.layout.crop_image_activity);
 
     mCropImageView = findViewById(R.id.cropImageView);

@@ -11,6 +11,8 @@ import com.ds.audio.video.screen.backgroundrecorder.Utils.CY_M_Constant;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 public class FullShotDisclosure extends AppCompatActivity implements View.OnClickListener {
     public static String strPrivacyUri = CY_M_Constant.PRIVACY_POLICY;
@@ -19,6 +21,11 @@ public class FullShotDisclosure extends AppCompatActivity implements View.OnClic
     
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         setContentView((int) R.layout.activity_fullshot_disclosure);
     }
 

@@ -205,4 +205,11 @@
     <string name="title_video_resolution">Resolution</string>
     <string name="summary_record_audio">Should audio be recorded</string>
     <string name="summary_video_resolution">Specify video size</string>
+    <string name="stopRecording">Stop Recording</string>
+    <string name="startVideoService">Start Video Service</string>
+    <string name="stopVideoService">Stop Video Service</string>
+    <string name="startAudioService">Start Audio Service</string>
+    <string name="stopAudioService">Stop Audio Service</string>
+    <string name="startScreenRecorderService">Start Screen Recorder Service</string>
+    <string name="stopScreenRecorderService">Stop Screen Recorder Service</string>
 </resources>

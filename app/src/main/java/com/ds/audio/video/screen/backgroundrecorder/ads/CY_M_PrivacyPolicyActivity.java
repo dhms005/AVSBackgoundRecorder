@@ -20,6 +20,8 @@ import androidx.core.content.ContextCompat;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Utils.CY_M_Constant;
 import com.ds.audio.video.screen.backgroundrecorder.Utils.CY_M_SharedPrefrencesApp;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 
 public class CY_M_PrivacyPolicyActivity extends AppCompatActivity {
@@ -35,6 +37,11 @@ public class CY_M_PrivacyPolicyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         setContentView(R.layout.cy_m_privacy_policy_activity);
         Window window = getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));

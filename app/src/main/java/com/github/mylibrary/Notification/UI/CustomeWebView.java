@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.github.mylibrary.Notification.Database.NoZoomControllWebView;
 
 
@@ -33,7 +36,11 @@ public class CustomeWebView extends AppCompatActivity{
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+			getWindow().getDecorView().setSystemUiVisibility(
+					View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+							View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+		}
 		setContentView(R.layout.z_notification_webview);
 
 		mProgressDialog=new ProgressDialog(CustomeWebView.this);

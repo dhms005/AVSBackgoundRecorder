@@ -65,7 +65,8 @@ public class CY_M_InEPSActivity extends AppCompatActivity {
 
 
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle); if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+        super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -227,7 +228,8 @@ public class CY_M_InEPSActivity extends AppCompatActivity {
 
 
     public void onResume() {
-        super.onResume();   SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
+        super.onResume();
+        SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
         if (this.check == 1) {
             try {
                 CY_M_InUPSActivity.setAutoOrientationEnabled(getApplicationContext(), false);
@@ -258,7 +260,6 @@ public class CY_M_InEPSActivity extends AppCompatActivity {
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "0");
         super.onPause();
     }
-
 
 
     private void mNativeAdNew() {

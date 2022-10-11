@@ -71,6 +71,11 @@ public class ResultViewerActivity extends AppCompatActivity {
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         this.binding = (AfterScreenshotCaptureBinding) DataBindingUtil.setContentView(this, R.layout.after_screenshot_capture);
         CY_M_Conts.mOpenAppChecker = true;
         setToolBar();

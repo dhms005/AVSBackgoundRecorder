@@ -41,7 +41,6 @@ public class Tools_Tab extends Fragment {
     private LinearLayout img_cpu_cooler;
     private LinearLayout img_language;
 
-
     public Tools_Tab() {
 
     }

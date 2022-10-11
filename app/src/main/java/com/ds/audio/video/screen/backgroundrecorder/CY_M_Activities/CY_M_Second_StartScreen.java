@@ -221,6 +221,11 @@ public class CY_M_Second_StartScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
     }
 

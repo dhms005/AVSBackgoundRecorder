@@ -175,7 +175,6 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-
         setContentView(R.layout.cy_m_first_activity);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -837,6 +836,11 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
     @Override
     protected void onResume() {
         super.onResume();
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             mNativeAdNew();
         }

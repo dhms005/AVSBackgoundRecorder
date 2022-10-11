@@ -34,6 +34,7 @@ import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.ScheduleVideo;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
+import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
@@ -72,6 +73,11 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.mContext = this;
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         setContentView(R.layout.video_scheduletime_activity);
         mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
 

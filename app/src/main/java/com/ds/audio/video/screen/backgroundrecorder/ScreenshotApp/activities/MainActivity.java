@@ -94,6 +94,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         shownOnMain = false;
         ActivityMainBinding activityMainBinding = (ActivityMainBinding) DataBindingUtil.setContentView(this, R.layout.activity_main);
         this.binding = activityMainBinding;

@@ -118,6 +118,11 @@ public class EditImageActivity extends AppCompatActivity implements EditingImage
     
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        if (SharePrefUtils.getString(Constant_ad.AD_NAV_BAR, "1").equals("0")) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         ActivityEditImageBinding activityEditImageBinding = (ActivityEditImageBinding) DataBindingUtil.setContentView(this, R.layout.activity_edit_image);
         this.binding = activityEditImageBinding;
 //        AdConstant.loadBanner(this, activityEditImageBinding.frmMainBannerView, this.binding.frmShimmer, this.binding.bannerView);

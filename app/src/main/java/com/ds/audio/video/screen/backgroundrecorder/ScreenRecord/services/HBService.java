@@ -56,6 +56,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 public class HBService extends Service implements HBRecorderListener {
     private static int IMAGES_PRODUCED;
     ContentValues contentValues;
@@ -874,6 +876,7 @@ public class HBService extends Service implements HBRecorderListener {
         startService(intent);
         CY_M_Conts.mRecordingStarted_Other = true;
         toggleNavigationButton(8);
+      //  Toasty.success(HBService.this, getString(R.string.startVideoService), Toasty.LENGTH_LONG).show();
     }
 
     private void stop_video_service() {
@@ -889,6 +892,7 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
+     //   Toasty.success(HBService.this, getString(R.string.stopVideoService), Toasty.LENGTH_LONG).show();
 
     }
 
@@ -910,6 +914,7 @@ public class HBService extends Service implements HBRecorderListener {
         startService(intent);
         CY_M_Conts.mRecordingStarted_Other = true;
         toggleNavigationButton(8);
+        // Toasty.success(HBService.this, getString(R.string.startAudioService), Toasty.LENGTH_LONG).show();
     }
 
     private void stop_audio_service() {
@@ -925,6 +930,7 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
+       // Toasty.success(HBService.this, getString(R.string.stopAudioService), Toasty.LENGTH_LONG).show();
     }
 
     private void start_screenRecorder_service() {
@@ -942,6 +948,7 @@ public class HBService extends Service implements HBRecorderListener {
 //        startService(intent);
         showCountDown();
         toggleNavigationButton(8);
+        //Toasty.success(HBService.this, getString(R.string.startScreenRecorderService), Toasty.LENGTH_LONG).show();
     }
 
     private void stop_screenRecorder_service() {
@@ -953,9 +960,11 @@ public class HBService extends Service implements HBRecorderListener {
             stopRecording();
             return;
         }
+       // Toasty.success(HBService.this, getString(R.string.stopScreenRecorderService), Toasty.LENGTH_LONG).show();
     }
 
     private void stopRecording() {
+       // Toasty.success(HBService.this, getString(R.string.stopRecording), Toasty.LENGTH_LONG).show();
         toggleView(mWarermarkLayout, 8);
         mRecordingStarted = false;
         toggleNavigationButton(8);
@@ -967,5 +976,6 @@ public class HBService extends Service implements HBRecorderListener {
                 refreshRecordings();
             }
         }, 100);
+        Toasty.success(HBService.this, getString(R.string.stopRecording), Toasty.LENGTH_LONG).show();
     }
 }
