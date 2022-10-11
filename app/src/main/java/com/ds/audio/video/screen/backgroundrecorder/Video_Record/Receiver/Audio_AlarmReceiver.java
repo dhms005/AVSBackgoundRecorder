@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -22,13 +23,18 @@ public class Audio_AlarmReceiver extends BroadcastReceiver {
 
 
     public void onReceive(Context context, Intent intent) {
-//        Log.e("#TESTSCHEDULE", "1-->   " + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+        Log.e("#TESTSCHEDULE", "1-->   " + SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, ""));
         Intent intent2 = new Intent(context, Audio_Recorder_Service.class);
-        intent2.putExtra(CY_M_Conts.CAMERA_USE, intent.getStringExtra(CY_M_Conts.CAMERA_USE));
+//        intent2.putExtra(CY_M_Conts.CAMERA_USE, intent.getStringExtra(CY_M_Conts.CAMERA_USE));
 //        intent2.putExtra(CY_M_Conts.CAMERA_DURATION, intent.getStringExtra(CY_M_Conts.CAMERA_DURATION));
         if (!Video_ServiceHelper.isServiceRunning(Audio_Recorder_Service.class, context)) {
 //            Log.e("#TESTSCHEDULE", "isServiceRunning");
-            context.startService(intent2);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(intent2);
+            } else {
+                context.startService(intent2);
+            }
+//            context.startService(intent2);
         } else {
 //            Log.e("#TESTSCHEDULE", "isServiceRunningNot");
         }

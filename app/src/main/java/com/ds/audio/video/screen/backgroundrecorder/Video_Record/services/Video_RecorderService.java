@@ -14,6 +14,7 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -36,11 +37,14 @@ import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_Ca
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
+import com.ds.audio.video.screen.backgroundrecorder.databasetable.UserModel;
+import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordRepository;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Video_RecorderService extends Service implements SurfaceHolder.Callback {
     public static final int MEDIA_TYPE_VIDEO = 2;
@@ -64,6 +68,7 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
     private WindowManager windowManager;
 
     private WordRepository mRepository;
+
 
     public IBinder onBind(Intent intent) {
         return null;
@@ -104,29 +109,8 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
     public int onStartCommand(Intent intent, int i, int i2) {
         NotificationCompat.Builder builder;
         super.onStartCommand(intent, i, i2);
-        mRepository = new WordRepository(getApplication());
+//        mRepository = new WordRepository(getApplication());
 
-        if (!SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "").equals("")) {
-            mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "")));
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (Video_Save_Schedule_Activity.schedeluLisst.size() > 0) {
-            Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
-            Intent intent1 = new Intent(this, Video_AlarmReceiver.class);
-            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
-//          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
-            SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime()));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime(), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
-            } else {
-                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime(), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
-            }
-        }
 
 //        this.recordDuration = intent.getStringExtra(CY_M_Conts.CAMERA_DURATION);
         if (ACTION_STOP_SERVICE.equals(intent.getAction())) {
@@ -136,6 +120,36 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
 //            checkNotify = false;
         } else {
 //            checkNotify = true;
+
+            if (!SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "").equals("")) {
+//            mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "")));
+
+                Log.e("Time", "" + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+
+                Video_Database_Helper.Video_deleteEntry(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+                ArrayList<UserModel> users = Video_Database_Helper.Video_getRows();
+
+                new Handler().postDelayed(() -> {
+                    //TODO Perform your action here
+
+
+
+                    if (users.size() > 0) {
+//                    Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
+                        Intent intent1 = new Intent(this, Video_AlarmReceiver.class);
+//            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
+//          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
+                        SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, users.get(0).getV_time());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+                        } else {
+                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
+                        }
+                    }
+
+                }, 3000);
+
+            }
         }
         if (this.checkNotify) {
             if (chkVibration) {

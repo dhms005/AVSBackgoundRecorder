@@ -24,13 +24,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -69,6 +67,7 @@ import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Custom_Full_Ad_Time
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_PrivacyPolicyActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
+import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.exit.CY_M_RecomendedAppsDailogAdapter_New;
 import com.ds.audio.video.screen.backgroundrecorder.exit.CY_M_RecomendedAppsDialog;
 import com.ds.audio.video.screen.backgroundrecorder.exit.CY_M_RecommandDatabaseModel;
@@ -164,6 +163,7 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
     InstallReferrerClient referrerClient;
 
     BillingClient billingClient;
+    Video_Database_Helper videoDatabaseHelper;
 
 
     @SuppressLint("NewApi")
@@ -177,6 +177,7 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
         }
         setContentView(R.layout.cy_m_first_activity);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        videoDatabaseHelper =new Video_Database_Helper(this);
 
         AdSettings.setDataProcessingOptions(new String[]{});
         AppLovinSdk.getInstance(this).setMediationProvider("max");

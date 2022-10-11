@@ -23,15 +23,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.ScheduleVideo;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
@@ -200,13 +200,13 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
         if (Video_FileHelper.getAvailableExternalMemory() < 50) {
             Toasty.error(Video_Save_Schedule_Activity.this, Video_Save_Schedule_Activity.this.getString(R.string.low_memory_cant_save), 0).show();
         } else {
-            if (schedeluLisst.size() == 0) {
+            if (Video_Database_Helper.Video_getRowCount() == 0) {
                 Intent replyIntent = new Intent();
                 replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
                 setResult(RESULT_OK, replyIntent);
                 Intent intent = new Intent(mContext, Video_AlarmReceiver.class);
-                intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
-                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
+//                intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
+//                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
                 SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Video_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
@@ -215,16 +215,26 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 }
                 Context context = mContext;
                 Toast.makeText(context, "Start recorder at : " + Video_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
-                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
-                mWordViewModel.insert(word);
+
+                if (tvUseCam.equals(getString(R.string.front))){
+                    Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "1");
+                }else {
+                    Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "0");
+                }
             } else {
                 Log.e("#TESTSCHEDULE", "schedeluLisst not 0");
                 Intent replyIntent = new Intent();
                 replyIntent.putExtra(EXTRA_REPLY, now.getTimeInMillis());
                 setResult(RESULT_OK, replyIntent);
                 Toast.makeText(Video_Save_Schedule_Activity.this, "Start recorder at : " + Video_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
-                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
-                mWordViewModel.insert(word);
+//                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
+
+                if (tvUseCam.equals(getString(R.string.front))){
+                    Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "1");
+                }else {
+                    Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "0");
+                }
+
             }
             finish();
         }
@@ -273,8 +283,8 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
-            mWordViewModel.insert(word);
+//            ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
+//            mWordViewModel.insert(word);
 //            Log.e("DBINSERT", "" + mWordViewModel.getAllWords().toString());
         } else {
             Toast.makeText(

@@ -271,7 +271,13 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
 
-        getActivity().startService(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            getActivity().startForegroundService(intent);
+        } else {
+            getActivity().startService(intent);
+        }
+
+//        getActivity().startService(intent);
     }
 
 

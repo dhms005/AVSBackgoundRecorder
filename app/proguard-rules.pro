@@ -226,6 +226,7 @@
  -keep class com.google.android.gms.** { *; }
  -keep public class com.google.android.gms.**
  -dontwarn com.google.android.gms.*
+ -keep public class com.google.android.gms.** { public protected *; }
 
 ##Facebook
 -keep class com.facebook.** { *; }
@@ -337,3 +338,4 @@
     -keepclassmembers,allowobfuscation class * {
       @com.google.gson.annotations.SerializedName <fields>;
     }
+

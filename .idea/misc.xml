@@ -3,25 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_cy_mpermission_screen.xml" value="0.3145833333333333" />
-        <entry key="app/src/main/res/layout/activity_webview.xml" value="0.20885416666666667" />
-        <entry key="app/src/main/res/layout/audio_activity_pager.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/audio_schedule_list_activity.xml" value="0.31927083333333334" />
-        <entry key="app/src/main/res/layout/audio_toolbar_settings.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/layout/cy_m_privacy_policy_activity.xml" value="0.20885416666666667" />
-        <entry key="app/src/main/res/layout/saved_video_activity.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_activity_pager.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_floatbutton_control_capture.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_floating_brush.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_recording.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.31927083333333334" />
-        <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/xml/audio_pref_setting.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/xml/preferences.xml" value="0.32083333333333336" />
-        <entry key="app/src/main/res/xml/screenrecorder_pref_main.xml" value="0.32083333333333336" />
+        <entry key="app/src/main/res/layout/activity_home_menu.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/audio_savedlist_activity.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/audio_schedule_list_activity.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/item_schedule_video.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/item_video_list.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/video_saved_list_activity.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.1453125" />
+        <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25" />
       </map>
     </option>
   </component>
