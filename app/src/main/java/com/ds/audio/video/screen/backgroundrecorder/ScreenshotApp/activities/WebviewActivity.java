@@ -34,7 +34,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
@@ -83,7 +83,7 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
         if (this.webView.canGoBack()) {
             this.webView.goBack();
         } else {
-            CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
                     finish();

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_bg"
-    tools:context=".CY_M_Activities.ExploreActivity">
+    tools:context=".DevSpy_Activities.ExploreActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"

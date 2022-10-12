@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.services.Video_RecorderService;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
@@ -31,6 +31,6 @@ public class Video_Record_Background_Activity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        CY_M_Conts.mOpenAppChecker = true;
+        DevSpy_Conts.mOpenAppChecker = true;
     }
 }

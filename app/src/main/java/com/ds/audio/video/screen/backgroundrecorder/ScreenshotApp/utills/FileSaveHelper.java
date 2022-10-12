@@ -14,7 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 import java.io.File;
 import java.io.IOException;
@@ -79,7 +79,7 @@ public class FileSaveHelper implements LifecycleObserver {
         this.executor.submit(new Runnable() {
             public final void run() {
                 try {
-                    String cachePath = AppConstants.getCachePath(CY_M_MyApplication.getAppContext());
+                    String cachePath = AppConstants.getCachePath(DevSpy_MyApplication.getAppContext());
                     File file = new File(cachePath, System.currentTimeMillis() + ".png");
                     updateResult(true, file.getAbsolutePath(), (String) null, Uri.parse(file.getAbsolutePath()), (ContentValues) null);
                 } catch (Exception e) {

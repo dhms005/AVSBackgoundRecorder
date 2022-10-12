@@ -31,7 +31,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingControlCaptureService;
@@ -45,8 +45,8 @@ import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.Web
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.BetterActivityResult;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.databinding.ActivityMainBinding;
 import com.ds.audio.video.screen.backgroundrecorder.databinding.DialogFormatBinding;
@@ -138,7 +138,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
 
     private void readWritePermission() {
         if (Build.VERSION.SDK_INT >= 29 || hasReadWritePermissions(context, this.permsa)) {
-            CY_M_Admob_Full_AD_New.getInstance().showInter(context, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInter(context, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
                     startActivity(new Intent(context, GalleryActivity.class));
@@ -212,7 +212,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
                 methodRequiresTwoPermissionPhoto();
                 return;
             case R.id.cardWebCapture:
-                CY_M_Admob_Full_AD_New.getInstance().showInter(context, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(context, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         startActivity(new Intent(context, WebviewActivity.class));
@@ -223,7 +223,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
                 methodRequiresTwoPermissionPhoto();
                 return;
             case R.id.linEditor:
-                CY_M_Admob_Full_AD_New.getInstance().showInter(context, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(context, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         startActivity(new Intent(getActivity(), PhotoEditorActivity.class));
@@ -461,9 +461,9 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
 
             if (isMyServiceRunning(FloatingControlCaptureService.class)) {
                 prefs.edit().putBoolean(Const.PREFS_TOOLS_CAPTURE, false).apply();
-                intent.setAction(CY_M_Conts.ACTION_STOP_ScreenShot_Service);
+                intent.setAction(DevSpy_Conts.ACTION_STOP_ScreenShot_Service);
             } else {
-                intent.setAction(CY_M_Conts.ACTION_START_ScreenShot_Service);
+                intent.setAction(DevSpy_Conts.ACTION_START_ScreenShot_Service);
                 prefs.edit().putBoolean(Const.PREFS_TOOLS_CAPTURE, true).apply();
             }
 
@@ -504,9 +504,9 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
 
     private void doRecord() {
 
-        CY_M_Conts.ACTION_START_Service_Checker = "screenshot";
+        DevSpy_Conts.ACTION_START_Service_Checker = "screenshot";
 
-        if (AppPref.getShowButton(CY_M_MyApplication.getAppContext())) {
+        if (AppPref.getShowButton(DevSpy_MyApplication.getAppContext())) {
             prefs.edit().putBoolean(Const.PREFS_TOOLS_CAPTURE, true).apply();
         } else {
             prefs.edit().putBoolean(Const.PREFS_TOOLS_CAPTURE, false).apply();

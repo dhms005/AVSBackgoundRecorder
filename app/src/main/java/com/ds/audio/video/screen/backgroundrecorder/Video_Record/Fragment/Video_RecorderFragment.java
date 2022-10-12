@@ -26,14 +26,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
-import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingControlBrushService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBService;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.services.Video_RecorderService;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
@@ -43,7 +41,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
 
 public class Video_RecorderFragment extends Fragment {
@@ -75,7 +72,7 @@ public class Video_RecorderFragment extends Fragment {
     private BroadcastReceiver receiverStart = new BroadcastReceiver() {
 
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(CY_M_Conts.ACTION_START_VIDEO_SERVICE)) {
+            if (intent.getAction().equals(DevSpy_Conts.ACTION_START_VIDEO_SERVICE)) {
                 Log.e(Video_RecorderFragment.TAG, "START");
                 Video_RecorderFragment.this.startTimer();
             }
@@ -83,7 +80,7 @@ public class Video_RecorderFragment extends Fragment {
     };
     private BroadcastReceiver receiverStop = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(CY_M_Conts.ACTION_STOP_VIDEO_EXTRA)) {
+            if (intent.getAction().equals(DevSpy_Conts.ACTION_STOP_VIDEO_EXTRA)) {
                 Log.e(Video_RecorderFragment.TAG, "STOP");
                 Video_RecorderFragment.this.stopTimer();
             }
@@ -100,11 +97,11 @@ public class Video_RecorderFragment extends Fragment {
         super.onCreate(bundle);
         this.broadcastManagerStop = LocalBroadcastManager.getInstance(getContext());
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(CY_M_Conts.ACTION_STOP_VIDEO_EXTRA);
+        intentFilter.addAction(DevSpy_Conts.ACTION_STOP_VIDEO_EXTRA);
         this.broadcastManagerStop.registerReceiver(this.receiverStop, intentFilter);
         this.broadcastManagerStart = LocalBroadcastManager.getInstance(getContext());
         IntentFilter intentFilter2 = new IntentFilter();
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_VIDEO_SERVICE);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_VIDEO_SERVICE);
         this.broadcastManagerStart.registerReceiver(this.receiverStart, intentFilter2);
     }
 
@@ -130,7 +127,7 @@ public class Video_RecorderFragment extends Fragment {
         ButterKnife.bind(this, inflate);
         this.preHelper = new Video_SharedPreHelper(getContext());
         if (this.preHelper.haveTimeStart()) {
-            CY_M_Conts.isTimerRunning_Video = true;
+            DevSpy_Conts.isTimerRunning_Video = true;
             this.img_record.setImageResource(R.drawable.ic_record_stop);
 //            animationView.setVisibility(View.VISIBLE);
             this.tvClickRecorderFrag.setText(getString(R.string.click_to_stop));
@@ -162,7 +159,7 @@ public class Video_RecorderFragment extends Fragment {
         llCameraPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CY_M_Conts.isTimerRunning_Video) {
+                if (DevSpy_Conts.isTimerRunning_Video) {
                     if (llCamera.getVisibility() == View.GONE) {
                         llCamera.setVisibility(View.VISIBLE);
                     } else {
@@ -201,7 +198,7 @@ public class Video_RecorderFragment extends Fragment {
                                 LocalBroadcastManager instance = LocalBroadcastManager.getInstance(getActivity());
                                 Intent intent = new Intent();
                                 if (Build.VERSION.SDK_INT >= 23) {
-                                    intent.setAction(CY_M_Conts.ACTION_START_Video_Service);
+                                    intent.setAction(DevSpy_Conts.ACTION_START_Video_Service);
                                 }
                                 instance.sendBroadcast(intent);
                             } else {
@@ -215,7 +212,7 @@ public class Video_RecorderFragment extends Fragment {
                         Context context = Video_RecorderFragment.this.getContext();
                         Toasty.warning(context, "Permission Denied\n" + arrayList.toString(), 0).show();
                     }
-                })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(CY_M_Conts.permissions)).check();
+                })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(DevSpy_Conts.permissions)).check();
 
             }
         });
@@ -280,7 +277,7 @@ public class Video_RecorderFragment extends Fragment {
     private void doRecord() {
         img_record.setImageResource(R.drawable.ic_record_stop);
 
-        CY_M_Conts.ACTION_START_Service_Checker = "cctv";
+        DevSpy_Conts.ACTION_START_Service_Checker = "cctv";
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);

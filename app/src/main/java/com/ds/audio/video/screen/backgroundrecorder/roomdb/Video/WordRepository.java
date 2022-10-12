@@ -1,7 +1,7 @@
 package com.ds.audio.video.screen.backgroundrecorder.roomdb.Video;
 
-import static com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts.FROM_AUDIO;
-import static com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts.FROM_VIDEO;
+import static com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts.FROM_AUDIO;
+import static com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts.FROM_VIDEO;
 
 import android.app.Application;
 

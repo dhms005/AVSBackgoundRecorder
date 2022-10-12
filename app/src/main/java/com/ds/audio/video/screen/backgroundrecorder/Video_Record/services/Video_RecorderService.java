@@ -29,7 +29,7 @@ import androidx.core.app.TaskStackBuilder;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
@@ -121,18 +121,18 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
         } else {
 //            checkNotify = true;
 
-            if (SharePrefUtils.getString(CY_M_Conts.VIDEO_FROM_SCHEDULE, "0").equals("1")) {
-                if (!SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "").equals("")) {
+            if (SharePrefUtils.getString(DevSpy_Conts.VIDEO_FROM_SCHEDULE, "0").equals("1")) {
+                if (!SharePrefUtils.getString(DevSpy_Conts.CURRENT_TIME, "").equals("")) {
 //            mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, "")));
 
-                    Log.e("Time", "" + SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+                    Log.e("Time", "" + SharePrefUtils.getString(DevSpy_Conts.CURRENT_TIME, ""));
 
 //                    UserModel user = Video_Database_Helper.Video_getDataBy_Vtime(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
 //
 //                    useCam = user.getV_cam();
 //                    recordDuration = user.getV_duration();
 
-                    Video_Database_Helper.Video_deleteEntry(SharePrefUtils.getString(CY_M_Conts.CURRENT_TIME, ""));
+                    Video_Database_Helper.Video_deleteEntry(SharePrefUtils.getString(DevSpy_Conts.CURRENT_TIME, ""));
                     if (Video_ScheduleListActivity.adapter != null) {
                         Video_ScheduleListActivity.adapter.notifyDataSetChanged();
                     }
@@ -147,14 +147,14 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
                             Intent intent1 = new Intent(this, Video_AlarmReceiver.class);
 //            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
 //          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
-                            SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, users.get(0).getV_time());
+                            SharePrefUtils.putString(DevSpy_Conts.CURRENT_TIME, users.get(0).getV_time());
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                             } else {
                                 ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
                             }
                         } else {
-                            SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, "");
+                            SharePrefUtils.putString(DevSpy_Conts.CURRENT_TIME, "");
                         }
 
                     }, 3000);
@@ -216,12 +216,12 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
         super.onDestroy();
         this.sharedPreHelper.remove();
         stopForeground(true);
-        CY_M_Conts.mRecordingStarted_Other = false;
-        CY_M_Conts.isTimerRunning_Video = false;
+        DevSpy_Conts.mRecordingStarted_Other = false;
+        DevSpy_Conts.isTimerRunning_Video = false;
         LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 23) {
-            intent.setAction(CY_M_Conts.ACTION_STOP_VIDEO_EXTRA);
+            intent.setAction(DevSpy_Conts.ACTION_STOP_VIDEO_EXTRA);
         }
         instance.sendBroadcast(intent);
         releaseMediaRecorder();
@@ -241,7 +241,7 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
                 LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
                 Intent intent = new Intent();
                 if (Build.VERSION.SDK_INT >= 23) {
-                    intent.setAction(CY_M_Conts.ACTION_START_VIDEO_SERVICE);
+                    intent.setAction(DevSpy_Conts.ACTION_START_VIDEO_SERVICE);
                 }
                 instance.sendBroadcast(intent);
                 return;

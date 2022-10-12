@@ -22,12 +22,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_ActivityHomeMenu;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Model.VideoRecordModel;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterList;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterGrid;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
@@ -128,7 +127,7 @@ public class Video_SavedList_Activity extends AppCompatActivity {
             public void onImageClick(View view, final int i) {
 
 
-                CY_M_Admob_Full_AD_New.getInstance().showInter(Video_SavedList_Activity.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(Video_SavedList_Activity.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         Intent intent2 = new Intent(Video_SavedList_Activity.this, Video_SaveVideoActivity.class);
@@ -152,7 +151,7 @@ public class Video_SavedList_Activity extends AppCompatActivity {
         this.adapterGrid.setItemClickCallBack(new VideoRecordAdapterGrid.ItemClickCallBack() {
             @Override
             public void onImageClick(View view, final int i) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(Video_SavedList_Activity.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(Video_SavedList_Activity.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
 
@@ -338,7 +337,7 @@ public class Video_SavedList_Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

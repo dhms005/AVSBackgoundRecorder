@@ -18,9 +18,8 @@ import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Adapter.ScreenRecord_ViewPagerAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Fragment.ScreenRecord_RecorderFragment;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenRecorder_SharedPreHelper;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Banner_Ad;
@@ -56,7 +55,7 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(ScreenRecord_ActivityPager.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(ScreenRecord_ActivityPager.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         if (SharePrefUtils.getString(Constant_ad.PATTERN_NUMBER,"").equals("") ){
@@ -97,7 +96,7 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(ScreenRecord_ActivityPager.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(ScreenRecord_ActivityPager.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
 
@@ -150,7 +149,7 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

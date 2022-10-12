@@ -11,14 +11,14 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_BatterySaverActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_CPUCoolerActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_DeviceInfoActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_LanguageActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_SpeedBoosterActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Extra.CY_M_Activities.CY_M_SystemUsageActivity;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Home_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_BatterySaverActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_CPUCoolerActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_DeviceInfoActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_LanguageActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_SpeedBoosterActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Activities.DevSpy_SystemUsageActivity;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_Home_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
@@ -50,7 +50,7 @@ public class Tools_Tab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.cy_m_fragment_tools, container, false);
+        view = inflater.inflate(R.layout.devspy_fragment_tools, container, false);
         context = getContext();
 
         mNativeAdNew();
@@ -66,10 +66,10 @@ public class Tools_Tab extends Fragment {
         hide_camera_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_Camere_Home_Activity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_Camere_Home_Activity.class);
                         startActivity(intent);
                     }
                 });
@@ -79,10 +79,10 @@ public class Tools_Tab extends Fragment {
         btn_device_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_DeviceInfoActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_DeviceInfoActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -92,10 +92,10 @@ public class Tools_Tab extends Fragment {
         img_system_usage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_SystemUsageActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_SystemUsageActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -105,10 +105,10 @@ public class Tools_Tab extends Fragment {
         img_battery_saver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_BatterySaverActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_BatterySaverActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -118,10 +118,10 @@ public class Tools_Tab extends Fragment {
         img_speed_booster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_SpeedBoosterActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_SpeedBoosterActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -131,10 +131,10 @@ public class Tools_Tab extends Fragment {
         img_cpu_cooler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_CPUCoolerActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_CPUCoolerActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -144,10 +144,10 @@ public class Tools_Tab extends Fragment {
         img_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(getActivity(), new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(getActivity(), new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        Intent intent = new Intent(getActivity(), CY_M_LanguageActivity.class);
+                        Intent intent = new Intent(getActivity(), DevSpy_LanguageActivity.class);
                         startActivity(intent);
                     }
                 });

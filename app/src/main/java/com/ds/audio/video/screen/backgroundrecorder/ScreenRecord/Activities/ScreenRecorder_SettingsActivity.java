@@ -1,14 +1,12 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,13 +20,10 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_FirstScreen;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.managers.SharedPreferencesManager;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
@@ -221,12 +216,12 @@ public class ScreenRecorder_SettingsActivity extends AppCompatActivity {
                         this.previous_countdown = var2_2.toString();
                         return true;
                     } else {
-                        Toast.makeText((Context) CY_M_MyApplication.getAppContext(), (CharSequence) "Maximum value for countdown is 15 seconds", (int) 0).show();
+                        Toast.makeText((Context) DevSpy_MyApplication.getAppContext(), (CharSequence) "Maximum value for countdown is 15 seconds", (int) 0).show();
                         return false;
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
-                    Toast.makeText((Context) CY_M_MyApplication.getAppContext(), (CharSequence) "Please enter valid number", (int) 0).show();
+                    Toast.makeText((Context) DevSpy_MyApplication.getAppContext(), (CharSequence) "Please enter valid number", (int) 0).show();
                     return false;
                 }
             } else {

@@ -37,7 +37,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services.Audio_Recorder_Service;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.Video_Record_Background_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.NotificationHelper;
@@ -128,7 +128,7 @@ public class HBService extends Service implements HBRecorderListener {
         this.hbRecorder = new HBRecorder(this, this);
         setOutputPath();
         this.mScreenCaptureIntent = (Intent) intent.getParcelableExtra("android.intent.extra.INTENT");
-        this.mCheckServiesStart = CY_M_Conts.ACTION_START_Service_Checker;
+        this.mCheckServiesStart = DevSpy_Conts.ACTION_START_Service_Checker;
         if (this.hbRecorder.isBusyRecording()) {
             Utils.toast(getApplicationContext(), "Recording in progress", 1);
             return 2;
@@ -168,11 +168,11 @@ public class HBService extends Service implements HBRecorderListener {
 
         this.broadcastManagerStart = LocalBroadcastManager.getInstance(this);
         IntentFilter intentFilter2 = new IntentFilter();
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_Video_Service);
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_Audio_Service);
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_ScreenRecorder_Service);
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_ScreenShot_Service);
-        intentFilter2.addAction(CY_M_Conts.ACTION_STOP_ScreenShot_Service);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_Video_Service);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_Audio_Service);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_ScreenRecorder_Service);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_ScreenShot_Service);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_STOP_ScreenShot_Service);
         this.broadcastManagerStart.registerReceiver(this.receiverStart, intentFilter2);
 
         this.sharedPreHelper = new ScreenRecorder_SharedPreHelper(this);
@@ -295,7 +295,7 @@ public class HBService extends Service implements HBRecorderListener {
                     stopRecording();
                 }
 
-                if (CY_M_Conts.mRecordingStarted_Other) {
+                if (DevSpy_Conts.mRecordingStarted_Other) {
                     stop_audio_service();
                     stop_video_service();
                 }
@@ -551,7 +551,7 @@ public class HBService extends Service implements HBRecorderListener {
             this.mImgStart.setVisibility(0);
         }
 
-        if (CY_M_Conts.mRecordingStarted_Other) {
+        if (DevSpy_Conts.mRecordingStarted_Other) {
             this.mImgStart.setVisibility(8);
             this.mImgStop.setVisibility(0);
         }
@@ -632,7 +632,7 @@ public class HBService extends Service implements HBRecorderListener {
         LocalBroadcastManager instance = LocalBroadcastManager.getInstance(HBService.this);
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 23) {
-            intent.setAction(CY_M_Conts.ACTION_START_SCREEN_RECORDER_SERVICE);
+            intent.setAction(DevSpy_Conts.ACTION_START_SCREEN_RECORDER_SERVICE);
         }
         instance.sendBroadcast(intent);
 
@@ -662,7 +662,7 @@ public class HBService extends Service implements HBRecorderListener {
                 LocalBroadcastManager instance = LocalBroadcastManager.getInstance(HBService.this);
                 Intent intent = new Intent();
                 if (Build.VERSION.SDK_INT >= 23) {
-                    intent.setAction(CY_M_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA);
+                    intent.setAction(DevSpy_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA);
                 }
                 instance.sendBroadcast(intent);
 
@@ -675,8 +675,8 @@ public class HBService extends Service implements HBRecorderListener {
 //                startActivity(intent);
             }
         });
-        if (CY_M_Conts.isTimerRunning_ScreenRecorder) {
-            CY_M_Conts.isTimerRunning_ScreenRecorder = false;
+        if (DevSpy_Conts.isTimerRunning_ScreenRecorder) {
+            DevSpy_Conts.isTimerRunning_ScreenRecorder = false;
 //
         }
         this.sharedPreHelper.remove();
@@ -843,15 +843,15 @@ public class HBService extends Service implements HBRecorderListener {
     private BroadcastReceiver receiverStart = new BroadcastReceiver() {
 
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(CY_M_Conts.ACTION_START_Video_Service)) {
+            if (intent.getAction().equals(DevSpy_Conts.ACTION_START_Video_Service)) {
                 start_video_service();
-            } else if (intent.getAction().equals(CY_M_Conts.ACTION_START_Audio_Service)) {
+            } else if (intent.getAction().equals(DevSpy_Conts.ACTION_START_Audio_Service)) {
                 start_audio_service();
-            } else if (intent.getAction().equals(CY_M_Conts.ACTION_START_ScreenRecorder_Service)) {
+            } else if (intent.getAction().equals(DevSpy_Conts.ACTION_START_ScreenRecorder_Service)) {
                 start_screenRecorder_service();
-            } else if (intent.getAction().equals(CY_M_Conts.ACTION_START_ScreenShot_Service)) {
+            } else if (intent.getAction().equals(DevSpy_Conts.ACTION_START_ScreenShot_Service)) {
                 openCaptureControlService();
-            } else if (intent.getAction().equals(CY_M_Conts.ACTION_STOP_ScreenShot_Service)) {
+            } else if (intent.getAction().equals(DevSpy_Conts.ACTION_STOP_ScreenShot_Service)) {
                 if (Utils.isServiceRunning(FloatingControlCaptureService.class.getName(), getApplicationContext())) {
                     stopService(new Intent(HBService.this, FloatingControlCaptureService.class));
                 }
@@ -866,26 +866,26 @@ public class HBService extends Service implements HBRecorderListener {
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         intent.setAction("Recorder");
-        Log.e("#TESTSCHEDULE", "start_video_service-->   " + CY_M_Conts.isTimerRunning_Video);
-        if (CY_M_Conts.isTimerRunning_Video) {
-            CY_M_Conts.isTimerRunning_Video = false;
+        Log.e("#TESTSCHEDULE", "start_video_service-->   " + DevSpy_Conts.isTimerRunning_Video);
+        if (DevSpy_Conts.isTimerRunning_Video) {
+            DevSpy_Conts.isTimerRunning_Video = false;
             stopService(intent);
 //                    stopTimer();
             return;
         }
 
-        if (CY_M_Conts.Video_Backgorund_Forgroundchecker) {
+        if (DevSpy_Conts.Video_Backgorund_Forgroundchecker) {
 
             startService(intent);
         } else {
-            CY_M_Conts.mOpenAppChecker = false;
+            DevSpy_Conts.mOpenAppChecker = false;
             Intent intent1 = new Intent(this, Video_Record_Background_Activity.class);
             intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent1);
         }
-        SharePrefUtils.putString(CY_M_Conts.VIDEO_FROM_SCHEDULE, "0");
-        CY_M_Conts.isTimerRunning_Video = true;
-        CY_M_Conts.mRecordingStarted_Other = true;
+        SharePrefUtils.putString(DevSpy_Conts.VIDEO_FROM_SCHEDULE, "0");
+        DevSpy_Conts.isTimerRunning_Video = true;
+        DevSpy_Conts.mRecordingStarted_Other = true;
 
         toggleNavigationButton(8);
 
@@ -898,8 +898,8 @@ public class HBService extends Service implements HBRecorderListener {
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         intent.setAction("Recorder");
-        if (CY_M_Conts.isTimerRunning_Video) {
-            CY_M_Conts.isTimerRunning_Video = false;
+        if (DevSpy_Conts.isTimerRunning_Video) {
+            DevSpy_Conts.isTimerRunning_Video = false;
             stopService(intent);
             toggleNavigationButton(8);
 //                    stopTimer();
@@ -915,17 +915,17 @@ public class HBService extends Service implements HBRecorderListener {
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         intent.setAction("Recorder");
-        if (CY_M_Conts.isTimerRunning_Audio) {
-            CY_M_Conts.isTimerRunning_Audio = false;
+        if (DevSpy_Conts.isTimerRunning_Audio) {
+            DevSpy_Conts.isTimerRunning_Audio = false;
             stopService(intent);
 
 //                    stopTimer();
             return;
         }
-        SharePrefUtils.putString(CY_M_Conts.AUDIO_FROM_SCHEDULE, "0");
-        CY_M_Conts.isTimerRunning_Audio = true;
+        SharePrefUtils.putString(DevSpy_Conts.AUDIO_FROM_SCHEDULE, "0");
+        DevSpy_Conts.isTimerRunning_Audio = true;
         startService(intent);
-        CY_M_Conts.mRecordingStarted_Other = true;
+        DevSpy_Conts.mRecordingStarted_Other = true;
         toggleNavigationButton(8);
         // Toasty.success(HBService.this, getString(R.string.startAudioService), Toasty.LENGTH_LONG).show();
     }
@@ -936,8 +936,8 @@ public class HBService extends Service implements HBRecorderListener {
         intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         intent.setAction("Recorder");
-        if (CY_M_Conts.isTimerRunning_Audio) {
-            CY_M_Conts.isTimerRunning_Audio = false;
+        if (DevSpy_Conts.isTimerRunning_Audio) {
+            DevSpy_Conts.isTimerRunning_Audio = false;
             stopService(intent);
             toggleNavigationButton(8);
 //                    stopTimer();
@@ -949,15 +949,15 @@ public class HBService extends Service implements HBRecorderListener {
     private void start_screenRecorder_service() {
 
 
-        if (CY_M_Conts.isTimerRunning_ScreenRecorder) {
-            CY_M_Conts.isTimerRunning_ScreenRecorder = false;
+        if (DevSpy_Conts.isTimerRunning_ScreenRecorder) {
+            DevSpy_Conts.isTimerRunning_ScreenRecorder = false;
 //            stopService(intent);
 //                    stopTimer();
             stopRecording();
 
             return;
         }
-        CY_M_Conts.isTimerRunning_ScreenRecorder = true;
+        DevSpy_Conts.isTimerRunning_ScreenRecorder = true;
 //        startService(intent);
         showCountDown();
         toggleNavigationButton(8);
@@ -966,8 +966,8 @@ public class HBService extends Service implements HBRecorderListener {
 
     private void stop_screenRecorder_service() {
 
-        if (CY_M_Conts.isTimerRunning_ScreenRecorder) {
-            CY_M_Conts.isTimerRunning_ScreenRecorder = false;
+        if (DevSpy_Conts.isTimerRunning_ScreenRecorder) {
+            DevSpy_Conts.isTimerRunning_ScreenRecorder = false;
 //            stopService(intent);
 //                    stopTimer();
             stopRecording();

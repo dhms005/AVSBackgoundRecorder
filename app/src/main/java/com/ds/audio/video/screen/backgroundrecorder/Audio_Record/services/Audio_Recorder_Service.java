@@ -1,7 +1,5 @@
 package com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services;
 
-import static com.unity3d.services.core.properties.ClientProperties.getApplication;
-
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -19,10 +17,8 @@ import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.view.WindowManager;
 
 import androidx.core.app.NotificationCompat;
@@ -30,22 +26,17 @@ import androidx.core.app.TaskStackBuilder;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_ActivityPager;
-import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_Save_Schedule_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities.Audio_ScheduleListActivity;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Audio_AlarmReceiver;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.UserModel;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordRepository;
-import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 import java.io.File;
@@ -115,7 +106,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
 //        mRepository.deleteTimer(Double.parseDouble(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "")));
 
 
-        if (Build.VERSION.SDK_INT >= 23 && intent.getStringExtra(CY_M_Conts.CAMERA_USE) != null) {
+        if (Build.VERSION.SDK_INT >= 23 && intent.getStringExtra(DevSpy_Conts.CAMERA_USE) != null) {
 //            this.useCam = intent.getStringExtra(CY_M_Conts.CAMERA_USE);
 //            this.recordDuration = intent.getStringExtra(CY_M_Conts.CAMERA_DURATION);
         }
@@ -127,10 +118,10 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
         } else {
 //            checkNotify = true;
 
-            if (SharePrefUtils.getString(CY_M_Conts.AUDIO_FROM_SCHEDULE, "0").equals("1")){
-                if (!SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
+            if (SharePrefUtils.getString(DevSpy_Conts.AUDIO_FROM_SCHEDULE, "0").equals("1")){
+                if (!SharePrefUtils.getString(DevSpy_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
 
-                    Video_Database_Helper.Audio_deleteEntry(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, ""));
+                    Video_Database_Helper.Audio_deleteEntry(SharePrefUtils.getString(DevSpy_Conts.AUDIO_CURRENT_TIME, ""));
                     if (Audio_ScheduleListActivity.adapter != null){
                         Audio_ScheduleListActivity.adapter.notifyDataSetChanged();
                     }
@@ -143,14 +134,14 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
                             Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
 //            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
 //          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
-                            SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, users.get(0).getV_time());
+                            SharePrefUtils.putString(DevSpy_Conts.AUDIO_CURRENT_TIME, users.get(0).getV_time());
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                             } else {
                                 ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
                             }
                         }else {
-                            SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, "");
+                            SharePrefUtils.putString(DevSpy_Conts.AUDIO_CURRENT_TIME, "");
                         }
 
                     }, 3000);
@@ -214,12 +205,12 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
         super.onDestroy();
         this.sharedPreHelper.remove();
         stopForeground(true);
-        CY_M_Conts.mRecordingStarted_Other = false;
-        CY_M_Conts.isTimerRunning_Audio = false;
+        DevSpy_Conts.mRecordingStarted_Other = false;
+        DevSpy_Conts.isTimerRunning_Audio = false;
         LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 23) {
-            intent.setAction(CY_M_Conts.ACTION_STOP_AUDIO_EXTRA);
+            intent.setAction(DevSpy_Conts.ACTION_STOP_AUDIO_EXTRA);
         }
         instance.sendBroadcast(intent);
         releaseMediaRecorder();
@@ -238,7 +229,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
                 LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
                 Intent intent = new Intent();
                 if (Build.VERSION.SDK_INT >= 23) {
-                    intent.setAction(CY_M_Conts.ACTION_START_AUDIO_SERVICE);
+                    intent.setAction(DevSpy_Conts.ACTION_START_AUDIO_SERVICE);
                 }
                 instance.sendBroadcast(intent);
                 return;

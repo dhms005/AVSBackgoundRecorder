@@ -31,7 +31,7 @@ public class Extra_Main extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.cy_m_fragment_cctv_main, container, false);
+        view = inflater.inflate(R.layout.devspy_fragment_cctv_main, container, false);
         context = getContext();
         return view;
     }

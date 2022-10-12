@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
-import com.ds.audio.video.screen.backgroundrecorder.Utils.CY_M_SharedPref;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
@@ -77,7 +77,7 @@ public class ResultViewerActivity extends AppCompatActivity {
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
         this.binding = (AfterScreenshotCaptureBinding) DataBindingUtil.setContentView(this, R.layout.after_screenshot_capture);
-        CY_M_Conts.mOpenAppChecker = true;
+        DevSpy_Conts.mOpenAppChecker = true;
         setToolBar();
         this.dialog = new Dialog(this);
         this.binding.imageCaptured.setMaxScale(1.0f);
@@ -404,7 +404,7 @@ public class ResultViewerActivity extends AppCompatActivity {
             this.activityLauncher.launch(intent, new BetterActivityResult.OnActivityResult<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult activityResult) {
-                    CY_M_SharedPref.RESUME_OPEN_CHECKER = true;
+                    DevSpy_SharedPref.RESUME_OPEN_CHECKER = true;
                     if (activityResult.getResultCode() == -1) {
                         activityResult.getData();
                     }
@@ -487,12 +487,12 @@ public class ResultViewerActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        CY_M_SharedPref.RESUME_OPEN_CHECKER = false;
+        DevSpy_SharedPref.RESUME_OPEN_CHECKER = false;
     }
 
     @Override
     protected void onDestroy() {
-        CY_M_SharedPref.RESUME_OPEN_CHECKER = false;
+        DevSpy_SharedPref.RESUME_OPEN_CHECKER = false;
         super.onDestroy();
     }
 }

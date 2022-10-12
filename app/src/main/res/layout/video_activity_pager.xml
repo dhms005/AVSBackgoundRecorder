@@ -37,7 +37,7 @@
                 android:layout_weight="0.6"
                 android:fontFamily="@font/popins_reguler"
                 android:singleLine="true"
-                android:text="CCTV Recording"
+                android:text="Background Video Recorder"
                 android:textColor="@color/white"
                 android:textSize="18.0dip" />
 

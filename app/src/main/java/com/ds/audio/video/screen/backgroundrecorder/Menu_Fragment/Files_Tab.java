@@ -31,7 +31,7 @@ public class Files_Tab extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.cy_m_fragment_cctv_files_tab, container, false);
+        view = inflater.inflate(R.layout.devspy_fragment_cctv_files_tab, container, false);
         context = getContext();
         return view;
     }

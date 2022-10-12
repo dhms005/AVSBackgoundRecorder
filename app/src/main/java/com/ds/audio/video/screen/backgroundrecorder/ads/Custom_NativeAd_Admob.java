@@ -26,7 +26,7 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder;
 import com.bumptech.glide.Glide;
-import com.ds.audio.video.screen.backgroundrecorder.exit.CY_M_Utility;
+import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Ad_Key;
@@ -55,7 +55,7 @@ public class Custom_NativeAd_Admob {
                 @Override
                 public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
                     Log.e("AAAAAAAAAAAA", "nativeAd-->   " + nativeAd);
-                    CY_M_Utility._nativeAdBig = nativeAd;
+                    DevSpy_Utility._nativeAdBig = nativeAd;
                     inFlat_admobNativeAds(nativeAd, viewGroup, activity);
                 }
             });
@@ -69,7 +69,7 @@ public class Custom_NativeAd_Admob {
                     builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            CY_M_Utility._nativeAdBig = nativeAd;
+                            DevSpy_Utility._nativeAdBig = nativeAd;
                             inFlat_admobNativeAds(nativeAd, viewGroup, activity);
                         }
                     });
@@ -96,7 +96,7 @@ public class Custom_NativeAd_Admob {
             builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                 @Override
                 public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    CY_M_Utility._nativeAdSmall = nativeAd;
+                    DevSpy_Utility._nativeAdSmall = nativeAd;
                     inFlat_admobNativeSmallAds(nativeAd, viewGroup, activity);
                 }
             });
@@ -107,7 +107,7 @@ public class Custom_NativeAd_Admob {
                     builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            CY_M_Utility._nativeAdSmall = nativeAd;
+                            DevSpy_Utility._nativeAdSmall = nativeAd;
                             inFlat_admobNativeSmallAds(nativeAd, viewGroup, activity);
                         }
 
@@ -136,7 +136,7 @@ public class Custom_NativeAd_Admob {
                 @Override
                 public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
                     Log.e("CUSTOMER", "" + nativeAd);
-                    CY_M_Utility._nativeBanner = nativeAd;
+                    DevSpy_Utility._nativeBanner = nativeAd;
                     inFlat_admobNativeBannerAds(nativeAd, viewGroup, activity);
                 }
             });
@@ -148,7 +148,7 @@ public class Custom_NativeAd_Admob {
                     builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            CY_M_Utility._nativeBanner = nativeAd;
+                            DevSpy_Utility._nativeBanner = nativeAd;
                             inFlat_admobNativeBannerAds(nativeAd, viewGroup, activity);
                         }
 
@@ -176,7 +176,7 @@ public class Custom_NativeAd_Admob {
             builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                 @Override
                 public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    CY_M_Utility._nativeAdBig = nativeAd;
+                    DevSpy_Utility._nativeAdBig = nativeAd;
                     inFlat_admobNative100DPAds(nativeAd, viewGroup, activity);
                 }
             });
@@ -188,7 +188,7 @@ public class Custom_NativeAd_Admob {
                     builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            CY_M_Utility._nativeAdBig = nativeAd;
+                            DevSpy_Utility._nativeAdBig = nativeAd;
                             inFlat_admobNative100DPAds(nativeAd, viewGroup, activity);
                         }
                     });
@@ -215,7 +215,7 @@ public class Custom_NativeAd_Admob {
             builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                 @Override
                 public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    CY_M_Utility._nativeAdBig = nativeAd;
+                    DevSpy_Utility._nativeAdBig = nativeAd;
                     inFlat_admobNative400DPAds(nativeAd, viewGroup, activity);
                 }
             });
@@ -227,7 +227,7 @@ public class Custom_NativeAd_Admob {
                     builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            CY_M_Utility._nativeAdBig = nativeAd;
+                            DevSpy_Utility._nativeAdBig = nativeAd;
                             inFlat_admobNative400DPAds(nativeAd, viewGroup, activity);
                         }
                     });
@@ -776,15 +776,15 @@ public class Custom_NativeAd_Admob {
 
 
     public void _showCacheBigNativeAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_admobNativeAds(CY_M_Utility._nativeAdBig, viewGroup, activity);
+        inFlat_admobNativeAds(DevSpy_Utility._nativeAdBig, viewGroup, activity);
     }
 
     public void _showCacheSmallNativeAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_admobNativeSmallAds(CY_M_Utility._nativeAdSmall, viewGroup, activity);
+        inFlat_admobNativeSmallAds(DevSpy_Utility._nativeAdSmall, viewGroup, activity);
     }
 
     public void _showCacheNative400DpAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_admobNative400DPAds(CY_M_Utility._nativeAdSmall, viewGroup, activity);
+        inFlat_admobNative400DPAds(DevSpy_Utility._nativeAdSmall, viewGroup, activity);
     }
 
 
@@ -792,7 +792,7 @@ public class Custom_NativeAd_Admob {
         if (SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             return null;
         } else {
-            return CY_M_Utility._nativeAdBig;
+            return DevSpy_Utility._nativeAdBig;
         }
     }
 
@@ -800,7 +800,7 @@ public class Custom_NativeAd_Admob {
         if (SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             return null;
         } else {
-            return CY_M_Utility._nativeAdSmall;
+            return DevSpy_Utility._nativeAdSmall;
         }
     }
 
@@ -808,10 +808,10 @@ public class Custom_NativeAd_Admob {
         if (SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             return null;
         } else {
-            if (CY_M_Utility._nativeAdBig != null) {
-                return CY_M_Utility._nativeAdBig;
+            if (DevSpy_Utility._nativeAdBig != null) {
+                return DevSpy_Utility._nativeAdBig;
             } else {
-                return CY_M_Utility._nativeAdSmall;
+                return DevSpy_Utility._nativeAdSmall;
             }
         }
     }
@@ -842,7 +842,7 @@ public class Custom_NativeAd_Admob {
                     public void onNativeAdLoaded(@Nullable MaxNativeAdView maxNativeAdView, MaxAd maxAd) {
                         super.onNativeAdLoaded(maxNativeAdView, maxAd);
                         Log.e("AAAAAAAA", "onNativeAdLoaded");
-                        CY_M_Utility.maxNativeAdView = maxNativeAdView;
+                        DevSpy_Utility.maxNativeAdView = maxNativeAdView;
                         inFlat_AppLovinbNativeAds(maxNativeAdView, viewGroup, activity);
                         nativeAdLoader.destroy();
                     }
@@ -881,7 +881,7 @@ public class Custom_NativeAd_Admob {
                     @Override
                     public void onNativeAdLoaded(@Nullable MaxNativeAdView maxNativeAdView, MaxAd maxAd) {
                         super.onNativeAdLoaded(maxNativeAdView, maxAd);
-                        CY_M_Utility.maxNativeAdView = maxNativeAdView;
+                        DevSpy_Utility.maxNativeAdView = maxNativeAdView;
                         inFlat_AppLovinbNativeAds100DP(maxNativeAdView, viewGroup, activity);
                         nativeAdLoader.destroy();
                     }
@@ -913,7 +913,7 @@ public class Custom_NativeAd_Admob {
                     @Override
                     public void onNativeAdLoaded(@Nullable MaxNativeAdView maxNativeAdView, MaxAd maxAd) {
                         super.onNativeAdLoaded(maxNativeAdView, maxAd);
-                        CY_M_Utility.maxNativeAdView = maxNativeAdView;
+                        DevSpy_Utility.maxNativeAdView = maxNativeAdView;
                         inFlat_AppLovinbNativeAds400DP(maxNativeAdView, viewGroup, activity);
                         nativeAdLoader.destroy();
                     }
@@ -950,7 +950,7 @@ public class Custom_NativeAd_Admob {
                     @Override
                     public void onNativeAdLoaded(@Nullable MaxNativeAdView maxNativeAdView, MaxAd maxAd) {
                         super.onNativeAdLoaded(maxNativeAdView, maxAd);
-                        CY_M_Utility.maxNativeAdVieSmall = maxNativeAdView;
+                        DevSpy_Utility.maxNativeAdVieSmall = maxNativeAdView;
                         inFlat_AppLovinbSmallNativeAds(maxNativeAdView, viewGroup, activity);
                         nativeAdLoaderSmall.destroy();
                     }
@@ -987,7 +987,7 @@ public class Custom_NativeAd_Admob {
                     @Override
                     public void onNativeAdLoaded(@Nullable MaxNativeAdView maxNativeAdView, MaxAd maxAd) {
                         super.onNativeAdLoaded(maxNativeAdView, maxAd);
-                        CY_M_Utility.maxNativeAdVieNativeBanner = maxNativeAdView;
+                        DevSpy_Utility.maxNativeAdVieNativeBanner = maxNativeAdView;
                         inFlat_AppLovinbNativeBannerAds(maxNativeAdView, viewGroup, activity);
                         nativeAdLoaderNativeBanner.destroy();
                     }
@@ -1214,23 +1214,23 @@ public class Custom_NativeAd_Admob {
 
 
     public MaxNativeAdView CacheAppLovinNative() {
-        return CY_M_Utility.maxNativeAdView;
+        return DevSpy_Utility.maxNativeAdView;
     }
 
     public MaxNativeAdView CacheAppLovinNativeSmall() {
-        return CY_M_Utility.maxNativeAdVieSmall;
+        return DevSpy_Utility.maxNativeAdVieSmall;
     }
 
     public void _showCacheAppLovinNativeAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_AppLovinbNativeAds(CY_M_Utility.maxNativeAdView, viewGroup, activity);
+        inFlat_AppLovinbNativeAds(DevSpy_Utility.maxNativeAdView, viewGroup, activity);
     }
 
     public void _showCacheAppLovinNativeSmallAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_AppLovinbSmallNativeAds(CY_M_Utility.maxNativeAdVieSmall, viewGroup, activity);
+        inFlat_AppLovinbSmallNativeAds(DevSpy_Utility.maxNativeAdVieSmall, viewGroup, activity);
     }
 
 
-    public CY_M_CustomAdModel ESCustomAdModel;
+    public DevSpy_CustomAdModel ESCustomAdModel;
 
     public void setQurekaNativeBigAds(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
@@ -1245,7 +1245,7 @@ public class Custom_NativeAd_Admob {
             if (!SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("") && !SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("#ffffff")) {
                 (ad_call_to_action.getBackground()).setColorFilter(Color.parseColor(SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "")), PorterDuff.Mode.SRC_IN);
             }
-            ESCustomAdModel = CY_M_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
+            ESCustomAdModel = DevSpy_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
 
 //          Glide.with(activity).load(this.ESCustomAdModel.getApp_banner()).into(ad_media);
             ad_headline.setText(ESCustomAdModel.getApp_name());
@@ -1290,7 +1290,7 @@ public class Custom_NativeAd_Admob {
             ad_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CY_M_Utility.OpenCustomQurekaBrowser(activity);
+                    DevSpy_Utility.OpenCustomQurekaBrowser(activity);
                 }
             });
 
@@ -1312,7 +1312,7 @@ public class Custom_NativeAd_Admob {
             if (!SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("") && !SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("#ffffff")) {
                 (ad_call_to_action.getBackground()).setColorFilter(Color.parseColor(SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "")), PorterDuff.Mode.SRC_IN);
             }
-            ESCustomAdModel = CY_M_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
+            ESCustomAdModel = DevSpy_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
 
 
 //        Glide.with(activity).load(this.ESCustomAdModel.getApp_banner()).into(ad_media);
@@ -1353,7 +1353,7 @@ public class Custom_NativeAd_Admob {
             ad_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CY_M_Utility.OpenCustomQurekaBrowser(activity);
+                    DevSpy_Utility.OpenCustomQurekaBrowser(activity);
                 }
             });
 
@@ -1375,7 +1375,7 @@ public class Custom_NativeAd_Admob {
             if (!SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("") && !SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("#ffffff")) {
                 (ad_call_to_action.getBackground()).setColorFilter(Color.parseColor(SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "")), PorterDuff.Mode.SRC_IN);
             }
-            ESCustomAdModel = CY_M_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
+            ESCustomAdModel = DevSpy_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
 
             Glide.with(activity).load(this.ESCustomAdModel.getApp_logo()).into(ad_app_icon);
             ad_headline.setText(ESCustomAdModel.getApp_name());
@@ -1415,7 +1415,7 @@ public class Custom_NativeAd_Admob {
             ad_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CY_M_Utility.OpenCustomQurekaBrowser(activity);
+                    DevSpy_Utility.OpenCustomQurekaBrowser(activity);
                 }
             });
 
@@ -1438,7 +1438,7 @@ public class Custom_NativeAd_Admob {
             if (!SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("") && !SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "").equals("#ffffff")) {
                 (ad_call_to_action.getBackground()).setColorFilter(Color.parseColor(SharePrefUtils.getString(Constant_ad.NATIVE_COLOR, "")), PorterDuff.Mode.SRC_IN);
             }
-            ESCustomAdModel = CY_M_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
+            ESCustomAdModel = DevSpy_Admob_Full_AD_New.getInstance().getMyCustomAd("Interstitial");
 
 //        Glide.with(activity).load(this.ESCustomAdModel.getApp_banner()).into(ad_media);
             ad_headline.setText(ESCustomAdModel.getApp_name());
@@ -1482,7 +1482,7 @@ public class Custom_NativeAd_Admob {
             ad_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CY_M_Utility.OpenCustomQurekaBrowser(activity);
+                    DevSpy_Utility.OpenCustomQurekaBrowser(activity);
                 }
             });
 

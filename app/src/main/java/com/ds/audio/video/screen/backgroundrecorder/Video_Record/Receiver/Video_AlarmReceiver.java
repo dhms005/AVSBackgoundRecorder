@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.Video_Record_Background_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_ServiceHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.services.Video_RecorderService;
@@ -25,9 +25,9 @@ public class Video_AlarmReceiver extends BroadcastReceiver {
             Log.e("#TESTSCHEDULE", "isServiceRunning");
 
 
-            if (CY_M_Conts.Video_Backgorund_Forgroundchecker) {
+            if (DevSpy_Conts.Video_Backgorund_Forgroundchecker) {
 
-                SharePrefUtils.putString(CY_M_Conts.VIDEO_FROM_SCHEDULE, "1");
+                SharePrefUtils.putString(DevSpy_Conts.VIDEO_FROM_SCHEDULE, "1");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     context.startForegroundService(intent2);
                 } else {
@@ -35,7 +35,7 @@ public class Video_AlarmReceiver extends BroadcastReceiver {
                 }
 
             } else {
-                CY_M_Conts.mOpenAppChecker = false;
+                DevSpy_Conts.mOpenAppChecker = false;
                 Intent intent1 = new Intent(context, Video_Record_Background_Activity.class);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent1);

@@ -1,7 +1,5 @@
 package com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities;
 
-import static com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts.FROM_VIDEO;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -25,12 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Video_AlarmReceiver;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.ScheduleVideo;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
@@ -176,7 +174,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                     return;
             }
         } else {
-            CY_M_Admob_Full_AD_New.getInstance().showInter(mContext, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInter(mContext, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
                     ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) TedPermission.create().setPermissionListener(new PermissionListener() {
@@ -189,7 +187,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                         public void onPermissionDenied(List<String> arrayList) {
                             Toasty.warning(Video_Save_Schedule_Activity.this, "Permission Denied\n" + arrayList.toString(), 0).show();
                         }
-                    })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(CY_M_Conts.permissions)).check();
+                    })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(DevSpy_Conts.permissions)).check();
                 }
             });
         }
@@ -207,7 +205,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 Intent intent = new Intent(mContext, Video_AlarmReceiver.class);
 //                intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
 //                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
-                SharePrefUtils.putString(CY_M_Conts.CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
+                SharePrefUtils.putString(DevSpy_Conts.CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Video_Save_Schedule_Activity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                 } else {
@@ -241,7 +239,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
 
     @SuppressLint("SetTextI18n")
     private void showAlertDialog() {
-        View inflate = ((LayoutInflater) this.mContext.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.cy_m_dialog_seekbar, (ViewGroup) null);
+        View inflate = ((LayoutInflater) this.mContext.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.devspy_dialog_seekbar, (ViewGroup) null);
         AlertDialog.Builder cancelable = new AlertDialog.Builder(this.mContext).setView(inflate).setCancelable(true);
         final SeekBar seekBar = (SeekBar) inflate.findViewById(R.id.seekBar1);
         final TextView textView = (TextView) inflate.findViewById(R.id.tv_duration_dialog);

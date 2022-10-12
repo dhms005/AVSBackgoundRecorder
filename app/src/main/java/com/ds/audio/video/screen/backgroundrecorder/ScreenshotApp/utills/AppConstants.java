@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.core.net.MailTo;
 
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
 import java.io.File;
@@ -167,7 +167,7 @@ public class AppConstants {
             if (Build.VERSION.SDK_INT >= 24) {
                 InputStream inputStream = null;
                 try {
-                    inputStream = CY_M_MyApplication.getAppContext().getContentResolver().openInputStream(uri);
+                    inputStream = DevSpy_MyApplication.getAppContext().getContentResolver().openInputStream(uri);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

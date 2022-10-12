@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 public class SharedPreferencesManager {
     private static SharedPreferencesManager appPreferences;
@@ -15,7 +15,7 @@ public class SharedPreferencesManager {
             SharedPreferencesManager sharedPreferencesManager = new SharedPreferencesManager();
             appPreferences = sharedPreferencesManager;
             if (sharedPreferencesManager.sharedPreferences == null) {
-                Context context = CY_M_MyApplication.getAppContext();
+                Context context = DevSpy_MyApplication.getAppContext();
                 appPreferences.sharedPreferences = context.getSharedPreferences(context.getString(R.string.prefs), 0);
             }
         }

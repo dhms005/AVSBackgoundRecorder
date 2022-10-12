@@ -32,8 +32,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_ActivityHomeMenu;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_ActivityHomeMenu;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
@@ -100,10 +100,10 @@ public class Video_SaveVideoActivity extends AppCompatActivity {
 
         backHome.setOnClickListener(view -> {
 
-            CY_M_Admob_Full_AD_New.getInstance().showInter(Video_SaveVideoActivity.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInter(Video_SaveVideoActivity.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
-                    Intent intent = new Intent(Video_SaveVideoActivity.this, CY_M_ActivityHomeMenu.class);
+                    Intent intent = new Intent(Video_SaveVideoActivity.this, DevSpy_ActivityHomeMenu.class);
                     startActivity(intent);
                     finish();
                 }
@@ -345,7 +345,7 @@ public class Video_SaveVideoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         this.videoView.pause();
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

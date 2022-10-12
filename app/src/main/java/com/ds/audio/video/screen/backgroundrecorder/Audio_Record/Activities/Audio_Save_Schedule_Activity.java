@@ -1,8 +1,5 @@
 package com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Activities;
 
-import static com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts.FROM_AUDIO;
-import static com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts.FROM_VIDEO;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -28,12 +25,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_TimeHelper;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Receiver.Audio_AlarmReceiver;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.ScheduleVideo;
 import com.ds.audio.video.screen.backgroundrecorder.roomdb.Video.WordViewModel;
@@ -177,7 +172,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
                     return;
             }
         } else {
-            CY_M_Admob_Full_AD_New.getInstance().showInter(mContext, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInter(mContext, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
                     ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) ((TedPermission.Builder) TedPermission.create().setPermissionListener(new PermissionListener() {
@@ -192,7 +187,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
                             Log.e("#DEUBG", "onPermissionDenied");
                             Toasty.warning(Audio_Save_Schedule_Activity.this, "Permission Denied\n" + arrayList.toString(), 0).show();
                         }
-                    })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(CY_M_Conts.permissions)).check();
+                    })).setRationaleMessage(getString(R.string.need_permission))).setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")).setGotoSettingButtonText(getString(R.string.setting))).setPermissions(DevSpy_Conts.permissions)).check();
                 }
             });
         }
@@ -210,7 +205,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
                 Intent intent = new Intent(mContext, Audio_AlarmReceiver.class);
 //                intent.putExtra(CY_M_Conts.CAMERA_USE, String.valueOf(tvUseCam.equals(getString(R.string.front))));
 //                intent.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(duration * 60));
-                SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
+                SharePrefUtils.putString(DevSpy_Conts.AUDIO_CURRENT_TIME, String.valueOf(now.getTimeInMillis()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), PendingIntent.getBroadcast(Audio_Save_Schedule_Activity.this, 1, intent, PendingIntent.FLAG_IMMUTABLE));
                 } else {
@@ -235,7 +230,7 @@ public class Audio_Save_Schedule_Activity extends AppCompatActivity implements V
 
     @SuppressLint("SetTextI18n")
     private void showAlertDialog() {
-        View inflate = ((LayoutInflater) this.mContext.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.cy_m_dialog_seekbar, (ViewGroup) null);
+        View inflate = ((LayoutInflater) this.mContext.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.devspy_dialog_seekbar, (ViewGroup) null);
         AlertDialog.Builder cancelable = new AlertDialog.Builder(this.mContext).setView(inflate).setCancelable(true);
         final SeekBar seekBar = (SeekBar) inflate.findViewById(R.id.seekBar1);
         final TextView textView = (TextView) inflate.findViewById(R.id.tv_duration_dialog);

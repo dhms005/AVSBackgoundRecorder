@@ -61,7 +61,7 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name=".ads.CY_M_MyApplication"
+        android:name=".ads.DevSpy_MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:hardwareAccelerated="true"
@@ -81,23 +81,23 @@
             android:name=".Audio_Record.Activities.Audio_ScheduleListActivity"
             android:exported="false" />
         <activity
-            android:name=".CY_M_Activities.CY_M_FaqActivity"
+            android:name=".DevSpy_Activities.DevSpy_FaqActivity"
             android:exported="false" />
         <activity
-            android:name=".CY_M_Activities.CY_M_PermissionScreen"
+            android:name=".DevSpy_Activities.DevSpy_PermissionScreen"
             android:exported="false" />
         <activity
-            android:name=".CY_M_Activities.CY_M_FeatureActivity"
+            android:name=".DevSpy_Activities.DevSpy_FeatureActivity"
             android:exported="false" />
         <activity android:name=".Video_Record.Activities.Video_Save_Schedule_Activity" />
         <activity android:name=".Audio_Record.Activities.Audio_Save_Schedule_Activity" />
-        <activity android:name=".CY_M_Activities.CY_M_PatterLock_Activity" />
-        <activity android:name=".CY_M_Activities.CY_M_PatterLock_FirstScreen" />
+        <activity android:name=".DevSpy_Activities.DevSpy_PatterLock_Activity" />
+        <activity android:name=".DevSpy_Activities.DevSpy_PatterLock_FirstScreen" />
         <activity
-            android:name=".CY_M_Activities.InAppPurchaseActivity"
+            android:name=".DevSpy_Activities.InAppPurchaseActivity"
             android:exported="false" />
         <activity
-            android:name=".CY_M_Activities.ExploreActivity"
+            android:name=".DevSpy_Activities.ExploreActivity"
             android:exported="false" />
         <activity
             android:name=".InAppPurchase.Activities.InAppPurchase"
@@ -114,16 +114,13 @@
         <activity
             android:name=".Audio_Record.Activities.Audio_SaveAudioActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".CY_M_Activities.CY_M_Activity_SettingActivity"
-            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
 
         <activity
-            android:name=".CY_M_Activities.CY_M_Master_SplashScreen"
+            android:name=".DevSpy_Activities.DevSpy_Master_SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.Transparent">
             <intent-filter>
@@ -135,7 +132,7 @@
         </activity>
 
         <activity
-            android:name=".CY_M_Activities.CY_M_ActivityHomeMenu"
+            android:name=".DevSpy_Activities.DevSpy_ActivityHomeMenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_Menu" />
         <activity
@@ -175,7 +172,7 @@
             android:theme="@style/AppTheme.Setting" />
 
         <activity
-            android:name=".CY_M_Activities.CY_M_ActivityQuickStart"
+            android:name=".DevSpy_Activities.DevSpy_ActivityQuickStart"
             android:label="Quick record"
             android:screenOrientation="portrait">
 
@@ -213,37 +210,37 @@
         </provider>
 
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Camere_Test_Sensore_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_Camere_Test_Sensore_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Home_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_Home_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_HowTo_Work_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_HowTo_Work_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_Sensore_Detail_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_Sensore_Detail_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_TipaTricke_Detail_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_TipaTricke_Detail_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_camera_activity.CY_M_Camere_TipsAnd_Trick_Activity"
+            android:name=".Extra_camaradetctor.DevSpy_camera_activity.DevSpy_Camere_TipsAnd_Trick_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraDetecter"
+            android:name=".Extra_camaradetctor.DevSpy_Camera_detect.DevSpy_Camere_CameraDetecter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraDetectorByGraph"
+            android:name=".Extra_camaradetctor.DevSpy_Camera_detect.DevSpy_Camere_CameraDetectorByGraph"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraFinderSelection"
+            android:name=".Extra_camaradetctor.DevSpy_Camera_detect.DevSpy_Camere_CameraFinderSelection"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_CameraScene"
+            android:name=".Extra_camaradetctor.DevSpy_Camera_detect.DevSpy_Camere_CameraScene"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra_camaradetctor.CY_M_Camera_detect.CY_M_Camere_meterDetector"
+            android:name=".Extra_camaradetctor.DevSpy_Camera_detect.DevSpy_Camere_meterDetector"
             android:screenOrientation="portrait" />
 
         <uses-library
@@ -280,7 +277,7 @@
             android:theme="@style/AppTheme" />
 
         <service
-            android:name=".Utils.CY_M_FIRMessagingService"
+            android:name=".Utils.DevSpy_FIRMessagingService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -297,64 +294,64 @@
             android:theme="@style/AppTheme" />
         <!-- ....................................... Module Activity End...................................... -->
         <activity
-            android:name=".ads.CY_M_QurekaAd_Activity"
+            android:name=".ads.DevSpy_QurekaAd_Activity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_DeviceInfoActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_DeviceInfoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_SystemUsageActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_SystemUsageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_BatterySaverActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_BatterySaverActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_NPMActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_NPMActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_UPSActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_UPSActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_InUPSActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_InUPSActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_EPSActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_EPSActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_InEPSActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_InEPSActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_SpeedBoosterActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_SpeedBoosterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_CPUCoolerActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_CPUCoolerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_ScannerCPUActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_ScannerCPUActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_LanguageActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Extra.CY_M_Activities.CY_M_AppSettingActivity"
+            android:name=".Extra.DevSpy_Activities.DevSpy_AppSettingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CY_M_Activities.CY_M_FirstActivity"
+            android:name=".DevSpy_Activities.DevSpy_FirstActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CY_M_Activities.CY_M_Second_StartScreen"
+            android:name=".DevSpy_Activities.DevSpy_Second_StartScreen"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".exit.CY_M_RecomendedAppsDialog"
+            android:name=".exit.DevSpy_RecomendedAppsDialog"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".exit.CY_M_ThankYou_Screen"
+            android:name=".exit.DevSpy_ThankYou_Screen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ads.CY_M_PrivacyPolicyActivity"
+            android:name=".ads.DevSpy_PrivacyPolicyActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

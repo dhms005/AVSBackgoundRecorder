@@ -1,8 +1,6 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services;
 
 import android.app.Service;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -13,32 +11,24 @@ import android.media.ImageReader;
 import android.media.MediaActionSound;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
-import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.Service.FloatingService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.FileUtills;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
-import com.hbisoft.hbrecorder.HBRecorder;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Objects;
 
 public class FloatingSSCapService extends Service {
@@ -112,7 +102,7 @@ public class FloatingSSCapService extends Service {
         this.ssMediaProjection = mediaProjection;
 
         AudioManager audioManager = (AudioManager) FloatingSSCapService.this.getSystemService("audio");
-        if (AppPref.getScreenSound(CY_M_MyApplication.getAppContext()) && audioManager.getRingerMode() == 2) {
+        if (AppPref.getScreenSound(DevSpy_MyApplication.getAppContext()) && audioManager.getRingerMode() == 2) {
             new MediaActionSound().play(0);
         }
 
@@ -158,7 +148,7 @@ public class FloatingSSCapService extends Service {
 //            this.screenshotOutput = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + File.separator + Utils.VIDEO_DIRECTORY_NAME).getPath();
             this.screenshotOutput = AppConstants.getCachePath(this);
 
-            if (AppPref.getImageFormat(CY_M_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
+            if (AppPref.getImageFormat(DevSpy_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
                 extension = "jpeg";
             } else {
                 extension = "png";
@@ -235,7 +225,7 @@ public class FloatingSSCapService extends Service {
                     }
                     FloatingSSCapService.this.ssMediaProjection.unregisterCallback(MediaProjectionStopCallback.this);
 //                    Utils.toast(FloatingSSCapService.this.getApplicationContext(), "Screenshot Saved", 0);
-                    FileUtills.startScreens(CY_M_MyApplication.getAppContext(), finalPath);
+                    FileUtills.startScreens(DevSpy_MyApplication.getAppContext(), finalPath);
                 }
             });
         }

@@ -3,7 +3,7 @@ package com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 
 public class AppPref {
@@ -26,17 +26,17 @@ public class AppPref {
 
 
     public static void ClearAdStructurePref() {
-        SharedPreferences.Editor edit = CY_M_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).edit();
+        SharedPreferences.Editor edit = DevSpy_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).edit();
         edit.remove(AD_STRUCTURE);
         edit.apply();
     }
 
     public static boolean getIsAdfree() {
-        return CY_M_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).getBoolean(IS_ADFREE, false);
+        return DevSpy_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).getBoolean(IS_ADFREE, false);
     }
 
     public static void setIsAdfree(boolean z) {
-        SharedPreferences.Editor edit = CY_M_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).edit();
+        SharedPreferences.Editor edit = DevSpy_MyApplication.getAppContext().getSharedPreferences(PREF_NAME, 0).edit();
         edit.putBoolean(IS_ADFREE, z);
         edit.commit();
     }

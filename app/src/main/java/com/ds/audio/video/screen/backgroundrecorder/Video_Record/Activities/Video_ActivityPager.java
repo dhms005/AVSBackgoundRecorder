@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoViewPagerAdapter;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Fragment.Video_RecorderFragment;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
@@ -55,7 +55,7 @@ public class Video_ActivityPager extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(Video_ActivityPager.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(Video_ActivityPager.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         if (SharePrefUtils.getString(Constant_ad.PATTERN_NUMBER,"").equals("") ){
@@ -96,7 +96,7 @@ public class Video_ActivityPager extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(Video_ActivityPager.this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(Video_ActivityPager.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
 
@@ -148,7 +148,7 @@ public class Video_ActivityPager extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

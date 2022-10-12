@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.Service.FloatingService;
 
 public class ScreenshotNotificationReceiver extends BroadcastReceiver {
@@ -31,6 +31,6 @@ public class ScreenshotNotificationReceiver extends BroadcastReceiver {
     }
 
     private void closeStatus() {
-        CY_M_MyApplication.getAppContext().sendBroadcast(new Intent("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+        DevSpy_MyApplication.getAppContext().sendBroadcast(new Intent("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
     }
 }

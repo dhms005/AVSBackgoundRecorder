@@ -19,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatCheckedTextView;
@@ -30,12 +29,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_SharedPreHelper;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_FaqActivity;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_PatterLock_FirstScreen;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_FaqActivity;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_PatterLock_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_PatterLock_FirstScreen;
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_PrivacyPolicyActivity;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_PrivacyPolicyActivity;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
@@ -95,7 +94,7 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
         prefPrivacyPolicy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(Audio_Setting_Activity.this, CY_M_PrivacyPolicyActivity.class);
+                Intent intent = new Intent(Audio_Setting_Activity.this, DevSpy_PrivacyPolicyActivity.class);
                 startActivity(intent);
                 return false;
             }
@@ -115,7 +114,7 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
         prefFAQ.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(Audio_Setting_Activity.this, CY_M_FaqActivity.class);
+                Intent intent = new Intent(Audio_Setting_Activity.this, DevSpy_FaqActivity.class);
                 startActivity(intent);
                 return false;
             }
@@ -132,7 +131,7 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
         prefChangePattern.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(Audio_Setting_Activity.this, CY_M_PatterLock_FirstScreen.class);
+                Intent intent = new Intent(Audio_Setting_Activity.this, DevSpy_PatterLock_FirstScreen.class);
                 intent.putExtra("from", "change_pattern");
                 startActivity(intent);
                 return false;
@@ -144,10 +143,10 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if (defaultSharedPreferences.getBoolean("prefAppLock", false)) {
-                    Intent intent = new Intent(Audio_Setting_Activity.this, CY_M_PatterLock_Activity.class);
+                    Intent intent = new Intent(Audio_Setting_Activity.this, DevSpy_PatterLock_Activity.class);
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(Audio_Setting_Activity.this, CY_M_PatterLock_FirstScreen.class);
+                    Intent intent = new Intent(Audio_Setting_Activity.this, DevSpy_PatterLock_FirstScreen.class);
                     intent.putExtra("from", "setting");
                     startActivity(intent);
                 }
@@ -205,7 +204,7 @@ public class Audio_Setting_Activity extends PreferenceActivity implements Shared
 
     public void onBackPressed() {
 
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

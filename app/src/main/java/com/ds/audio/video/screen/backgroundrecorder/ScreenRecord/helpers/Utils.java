@@ -1,13 +1,9 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers;
 
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaMetadataRetriever;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -17,12 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 

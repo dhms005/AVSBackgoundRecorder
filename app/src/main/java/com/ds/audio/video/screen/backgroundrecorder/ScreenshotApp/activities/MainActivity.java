@@ -31,11 +31,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingControlCaptureService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBService;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.GetIntentForImage;
 import com.ds.audio.video.screen.backgroundrecorder.R;
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Build.VERSION.SDK_INT < 23) {
             startActivity(new Intent(this, GalleryActivity.class));
         } else if (Build.VERSION.SDK_INT >= 29 || hasReadWritePermissions(this, this.permsa)) {
-            CY_M_Admob_Full_AD_New.getInstance().showInter(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+            DevSpy_Admob_Full_AD_New.getInstance().showInter(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                 @Override
                 public void callbackCall() {
                     startActivity(new Intent(MainActivity.this, GalleryActivity.class));
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 methodRequiresTwoPermissionPhoto();
                 return;
             case R.id.cardWebCapture:
-                CY_M_Admob_Full_AD_New.getInstance().showInter(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         startActivity(new Intent(MainActivity.this, WebviewActivity.class));
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 methodRequiresTwoPermissionPhoto();
                 return;
             case R.id.linEditor:
-                CY_M_Admob_Full_AD_New.getInstance().showInter(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         startActivity(new Intent(MainActivity.this, PhotoEditorActivity.class));
@@ -480,7 +480,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
             Intent intent = new Intent();
             if (Build.VERSION.SDK_INT >= 23) {
-                intent.setAction(CY_M_Conts.ACTION_START_Audio_Service);
+                intent.setAction(DevSpy_Conts.ACTION_START_Audio_Service);
             }
             instance.sendBroadcast(intent);
         } else {
@@ -521,7 +521,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void doRecord() {
 
-        CY_M_Conts.ACTION_START_Service_Checker = "screenshot";
+        DevSpy_Conts.ACTION_START_Service_Checker = "screenshot";
 
         Intent intent = new Intent(this, HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
@@ -533,7 +533,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onBackPressed() {
-        CY_M_Admob_Full_AD_New.getInstance().showInterBack(this, new CY_M_Admob_Full_AD_New.MyCallback() {
+        DevSpy_Admob_Full_AD_New.getInstance().showInterBack(this, new DevSpy_Admob_Full_AD_New.MyCallback() {
             @Override
             public void callbackCall() {
                 finish();

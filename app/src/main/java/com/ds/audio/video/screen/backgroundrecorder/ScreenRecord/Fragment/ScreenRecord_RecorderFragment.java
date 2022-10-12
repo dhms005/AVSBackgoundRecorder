@@ -26,23 +26,17 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenRecorder_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBService;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_TimeHelper;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
 
 public class ScreenRecord_RecorderFragment extends Fragment {
@@ -75,7 +69,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         /* class com.ds.audio.video.screen.backgroundrecorder.CCTVfragment.CCTVRecorderFragment.AnonymousClass1 */
 
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(CY_M_Conts.ACTION_START_SCREEN_RECORDER_SERVICE)) {
+            if (intent.getAction().equals(DevSpy_Conts.ACTION_START_SCREEN_RECORDER_SERVICE)) {
                 Log.e(ScreenRecord_RecorderFragment.TAG, "START");
                 ScreenRecord_RecorderFragment.this.startTimer();
             }
@@ -83,7 +77,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
     };
     private BroadcastReceiver receiverStop = new BroadcastReceiver() {
           public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(CY_M_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA)) {
+            if (intent.getAction().equals(DevSpy_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA)) {
                 Log.e(ScreenRecord_RecorderFragment.TAG, "STOP");
                 ScreenRecord_RecorderFragment.this.stopTimer();
             }
@@ -100,11 +94,11 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         super.onCreate(bundle);
         this.broadcastManagerStop = LocalBroadcastManager.getInstance(getContext());
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(CY_M_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA);
+        intentFilter.addAction(DevSpy_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA);
         this.broadcastManagerStop.registerReceiver(this.receiverStop, intentFilter);
         this.broadcastManagerStart = LocalBroadcastManager.getInstance(getContext());
         IntentFilter intentFilter2 = new IntentFilter();
-        intentFilter2.addAction(CY_M_Conts.ACTION_START_SCREEN_RECORDER_SERVICE);
+        intentFilter2.addAction(DevSpy_Conts.ACTION_START_SCREEN_RECORDER_SERVICE);
         this.broadcastManagerStart.registerReceiver(this.receiverStart, intentFilter2);
     }
 
@@ -130,7 +124,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         ButterKnife.bind(this, inflate);
         this.preHelper = new ScreenRecorder_SharedPreHelper(getContext());
         if (this.preHelper.haveTimeStart()) {
-            CY_M_Conts.isTimerRunning_ScreenRecorder = true;
+            DevSpy_Conts.isTimerRunning_ScreenRecorder = true;
             this.img_record.setImageResource(R.drawable.ic_record_stop);
 //            animationView.setVisibility(View.VISIBLE);
             this.tvClickRecorderFrag.setText(getString(R.string.click_to_stop));
@@ -162,7 +156,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         llCameraPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CY_M_Conts.isTimerRunning_ScreenRecorder) {
+                if (DevSpy_Conts.isTimerRunning_ScreenRecorder) {
                     if (llCamera.getVisibility() == View.GONE) {
                         llCamera.setVisibility(View.VISIBLE);
                     } else {
@@ -196,7 +190,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
                     LocalBroadcastManager instance = LocalBroadcastManager.getInstance(getActivity());
                     Intent intent = new Intent();
                     if (Build.VERSION.SDK_INT >= 23) {
-                        intent.setAction(CY_M_Conts.ACTION_START_ScreenRecorder_Service);
+                        intent.setAction(DevSpy_Conts.ACTION_START_ScreenRecorder_Service);
                     }
                     instance.sendBroadcast(intent);
                 } else {
@@ -265,7 +259,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
     private void doRecord() {
         img_record.setImageResource(R.drawable.ic_record_stop);
 
-        CY_M_Conts.ACTION_START_Service_Checker = "screenRecord";
+        DevSpy_Conts.ACTION_START_Service_Checker = "screenRecord";
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);

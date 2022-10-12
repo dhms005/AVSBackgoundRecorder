@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_SaveVideoActivity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Model.VideoRecordModel;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public class VideoRecordAdapterGrid extends RecyclerView.Adapter<VideoRecordAdap
 
     @Override
     public VideoHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new VideoHolder(this.mLayoutInflater.inflate(R.layout.cy_m_grid_item_video, viewGroup, false));
+        return new VideoHolder(this.mLayoutInflater.inflate(R.layout.devspy_grid_item_video, viewGroup, false));
     }
 
     public void onBindViewHolder(VideoHolder videoHolder, int i) {
@@ -54,7 +54,7 @@ public class VideoRecordAdapterGrid extends RecyclerView.Adapter<VideoRecordAdap
         videoHolder.vidoplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(mContext, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(mContext, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         Intent intent = new Intent(mContext, Video_SaveVideoActivity.class);

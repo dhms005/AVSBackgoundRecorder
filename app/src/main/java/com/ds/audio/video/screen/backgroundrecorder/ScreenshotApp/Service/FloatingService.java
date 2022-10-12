@@ -37,8 +37,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.internal.view.SupportMenu;
 
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
-import com.ds.audio.video.screen.backgroundrecorder.Utils.CY_M_SharedPref;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.FloatingView.FloatingListener;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.FloatingView.FloatingViewManager;
@@ -135,7 +135,7 @@ public class FloatingService extends Service implements FloatingListener {
         this.takeScreenshot.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                CY_M_SharedPref.RESUME_OPEN_CHECKER = true;
+                DevSpy_SharedPref.RESUME_OPEN_CHECKER = true;
                 FloatingService.this.startProjection();
             }
         });
@@ -210,7 +210,7 @@ public class FloatingService extends Service implements FloatingListener {
 //        }
 
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.custrom_nitification);
-        if (AppPref.getMenu(CY_M_MyApplication.getAppContext())) {
+        if (AppPref.getMenu(DevSpy_MyApplication.getAppContext())) {
             remoteViews.setViewVisibility(R.id.linMains, 0);
         } else {
             remoteViews.setViewVisibility(R.id.linMains, 8);
@@ -314,7 +314,7 @@ public class FloatingService extends Service implements FloatingListener {
                         FloatingService.this.mImageReader = ImageReader.newInstance(i, i2, 1, 1);
                         FloatingService.this.virtualDisplay = FloatingService.sMediaProjection.createVirtualDisplay("screen-mirror", i, i2, i3, 9, FloatingService.this.mImageReader.getSurface(), (VirtualDisplay.Callback) null, FloatingService.this.mHandler);
                         AudioManager audioManager = (AudioManager) FloatingService.this.getSystemService("audio");
-                        if (AppPref.getScreenSound(CY_M_MyApplication.getAppContext()) && audioManager.getRingerMode() == 2) {
+                        if (AppPref.getScreenSound(DevSpy_MyApplication.getAppContext()) && audioManager.getRingerMode() == 2) {
                             new MediaActionSound().play(0);
                         }
                         FloatingService floatingService = FloatingService.this;
@@ -349,7 +349,7 @@ public class FloatingService extends Service implements FloatingListener {
         this.takeScreenshot.setVisibility(4);
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             public void run() {
-                if (AppPref.getImageFormat(CY_M_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
+                if (AppPref.getImageFormat(DevSpy_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
                     FloatingService.this.extension = "jpeg";
                 } else {
                     FloatingService.this.extension = "png";
@@ -368,12 +368,12 @@ public class FloatingService extends Service implements FloatingListener {
                         Bitmap createBitmap2 = Bitmap.createBitmap(createBitmap, 0, 0, FloatingService.this.metrics.widthPixels, createBitmap.getHeight());
                         FloatingService floatingService = FloatingService.this;
                         floatingService.path = floatingService.storeImage("WebFile." + FloatingService.this.extension, createBitmap2);
-                        if (AppPref.getShowButton(CY_M_MyApplication.getAppContext())) {
+                        if (AppPref.getShowButton(DevSpy_MyApplication.getAppContext())) {
                             FloatingService.this.takeScreenshot.setVisibility(View.VISIBLE);
                         } else {
                             FloatingService.this.takeScreenshot.setVisibility(View.GONE);
                         }
-                        FileUtills.startScreens(CY_M_MyApplication.getAppContext(), FloatingService.this.path);
+                        FileUtills.startScreens(DevSpy_MyApplication.getAppContext(), FloatingService.this.path);
                     }
                     if (image == null) {
                         return;

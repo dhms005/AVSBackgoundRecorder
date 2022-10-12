@@ -3,21 +3,19 @@ package com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_MyApplication;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.EditImageActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.GalleryActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.ResultViewerActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.adapters.DiaryImageData;
+
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 public class FileUtills {
     public static String lastName;
@@ -30,7 +28,7 @@ public class FileUtills {
         FileOutputStream fileOutputStream = new FileOutputStream(outputMediaFile);
         bitmap.compress(AppPref.getImageFormat(context).equalsIgnoreCase("jpeg") ? Bitmap.CompressFormat.JPEG : Bitmap.CompressFormat.PNG, AppPref.getImageQuality(context), fileOutputStream);
         fileOutputStream.close();
-        AppConstants.refreshFiles(CY_M_MyApplication.getAppContext(), outputMediaFile);
+        AppConstants.refreshFiles(DevSpy_MyApplication.getAppContext(), outputMediaFile);
         return outputMediaFile;
     }
 
@@ -43,8 +41,8 @@ public class FileUtills {
         if (!rootStoreDir.exists() && !rootStoreDir.mkdirs()) {
             return null;
         }
-        String str = AppPref.getPrefix(CY_M_MyApplication.getAppContext()) + "_" + System.currentTimeMillis() + AppPref.getImageFormat(CY_M_MyApplication.getAppContext());
-        if (AppPref.getImageFormat(CY_M_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
+        String str = AppPref.getPrefix(DevSpy_MyApplication.getAppContext()) + "_" + System.currentTimeMillis() + AppPref.getImageFormat(DevSpy_MyApplication.getAppContext());
+        if (AppPref.getImageFormat(DevSpy_MyApplication.getAppContext()).equalsIgnoreCase("JPG")) {
             lastName = ".jpeg";
         } else {
             lastName = ".png";

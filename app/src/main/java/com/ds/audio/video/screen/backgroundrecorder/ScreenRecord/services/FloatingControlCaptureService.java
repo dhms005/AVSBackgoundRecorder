@@ -31,7 +31,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.ScreenShotActivity;
@@ -289,7 +289,7 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
         if (!this.hbRecorder.isBusyRecording()) {
 
 
-            CY_M_Conts.mOpenAppChecker = false;
+            DevSpy_Conts.mOpenAppChecker = false;
 
             Intent intent = new Intent(this, ScreenShotActivity.class);
             intent.putExtra("android.intent.extra.INTENT", this.mScreenCaptureIntent);

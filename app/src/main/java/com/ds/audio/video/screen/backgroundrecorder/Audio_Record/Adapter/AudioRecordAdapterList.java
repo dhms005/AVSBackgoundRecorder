@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Model.AudioRecordModel;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_SaveVideoActivity;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Model.VideoRecordModel;
-import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.util.List;
@@ -48,7 +47,7 @@ public class AudioRecordAdapterList extends RecyclerView.Adapter<AudioRecordAdap
         audioHolder.vidoplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CY_M_Admob_Full_AD_New.getInstance().showInter(mContext, new CY_M_Admob_Full_AD_New.MyCallback() {
+                DevSpy_Admob_Full_AD_New.getInstance().showInter(mContext, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
                         Intent intent = new Intent(mContext, Video_SaveVideoActivity.class);
