@@ -216,7 +216,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 Context context = mContext;
                 Toast.makeText(context, "Start recorder at : " + Video_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
 
-                if (tvUseCam.equals(getString(R.string.front))){
+                if (tvUseCam.getText().equals(getString(R.string.front))){
                     Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "1");
                 }else {
                     Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "0");
@@ -228,7 +228,7 @@ public class Video_Save_Schedule_Activity extends AppCompatActivity implements V
                 Toast.makeText(Video_Save_Schedule_Activity.this, "Start recorder at : " + Video_TimeHelper.parseCalen2Str(now), Toast.LENGTH_SHORT).show();
 //                ScheduleVideo word = new ScheduleVideo(now.getTimeInMillis(), FROM_VIDEO, duration, String.valueOf(tvUseCam.equals(getString(R.string.front))));
 
-                if (tvUseCam.equals(getString(R.string.front))){
+                if (tvUseCam.getText().equals(getString(R.string.front))){
                     Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "1");
                 }else {
                     Video_Database_Helper.Video_insertEntry(String.valueOf(now.getTimeInMillis()), String.valueOf(duration * 60), "0");

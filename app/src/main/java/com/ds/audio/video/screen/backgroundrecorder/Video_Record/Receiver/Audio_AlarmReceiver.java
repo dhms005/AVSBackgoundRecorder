@@ -28,6 +28,7 @@ public class Audio_AlarmReceiver extends BroadcastReceiver {
 //        intent2.putExtra(CY_M_Conts.CAMERA_USE, intent.getStringExtra(CY_M_Conts.CAMERA_USE));
 //        intent2.putExtra(CY_M_Conts.CAMERA_DURATION, intent.getStringExtra(CY_M_Conts.CAMERA_DURATION));
         if (!Video_ServiceHelper.isServiceRunning(Audio_Recorder_Service.class, context)) {
+            SharePrefUtils.putString(CY_M_Conts.AUDIO_FROM_SCHEDULE, "1");
 //            Log.e("#TESTSCHEDULE", "isServiceRunning");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 context.startForegroundService(intent2);

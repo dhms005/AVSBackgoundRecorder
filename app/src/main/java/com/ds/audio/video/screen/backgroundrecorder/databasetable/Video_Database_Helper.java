@@ -8,8 +8,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 
 public class Video_Database_Helper {
@@ -146,8 +144,28 @@ public class Video_Database_Helper {
 
         String where = Schedule_Contant.v_time + "=?";
         int numberOFEntriesDeleted = db.delete(Video_TABLE_NAME, where, new String[]{v_time});
+
 //        toast("Number fo Entry Deleted Successfully : "+numberOFEntriesDeleted);
         return numberOFEntriesDeleted;
+    }
+
+    @SuppressLint("Range")
+    public static UserModel Video_getDataBy_Vtime(String v_time) {
+        String query = "SELECT * FROM " + Video_TABLE_NAME + " where " + Schedule_Contant.v_time + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(v_time)});
+        UserModel user = new UserModel();
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+
+                user.setID(cursor.getString(cursor.getColumnIndex("ID")));
+                user.setV_time(cursor.getString(cursor.getColumnIndex(Schedule_Contant.v_time)));
+                user.setV_duration(cursor.getString(cursor.getColumnIndex(Schedule_Contant.v_time)));
+                user.setV_cam(cursor.getString(cursor.getColumnIndex(Schedule_Contant.v_time)));
+            }
+            cursor.close();
+        }
+        return user;
     }
 
     // method to delete a Record in Tbale using Primary Key Here it is ID

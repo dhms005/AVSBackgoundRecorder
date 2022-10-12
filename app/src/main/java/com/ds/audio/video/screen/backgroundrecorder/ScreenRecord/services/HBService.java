@@ -39,14 +39,15 @@ import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_Fi
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services.Audio_Recorder_Service;
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Define.CY_M_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.Video_Record_Background_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.NotificationHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenRecorder_SharedPreHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenShot_Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.managers.SharedPreferencesManager;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Save_Schedule_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.services.Video_RecorderService;
+import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.google.android.material.badge.BadgeDrawable;
 import com.hbisoft.hbrecorder.Const;
 import com.hbisoft.hbrecorder.HBRecorder;
@@ -872,11 +873,23 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
+
+        if (CY_M_Conts.Video_Backgorund_Forgroundchecker) {
+
+            startService(intent);
+        } else {
+            CY_M_Conts.mOpenAppChecker = false;
+            Intent intent1 = new Intent(this, Video_Record_Background_Activity.class);
+            intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent1);
+        }
+        SharePrefUtils.putString(CY_M_Conts.VIDEO_FROM_SCHEDULE, "0");
         CY_M_Conts.isTimerRunning_Video = true;
-        startService(intent);
         CY_M_Conts.mRecordingStarted_Other = true;
+
         toggleNavigationButton(8);
-      //  Toasty.success(HBService.this, getString(R.string.startVideoService), Toasty.LENGTH_LONG).show();
+
+        //  Toasty.success(HBService.this, getString(R.string.startVideoService), Toasty.LENGTH_LONG).show();
     }
 
     private void stop_video_service() {
@@ -892,7 +905,7 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
-     //   Toasty.success(HBService.this, getString(R.string.stopVideoService), Toasty.LENGTH_LONG).show();
+        //   Toasty.success(HBService.this, getString(R.string.stopVideoService), Toasty.LENGTH_LONG).show();
 
     }
 
@@ -909,7 +922,7 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
-
+        SharePrefUtils.putString(CY_M_Conts.AUDIO_FROM_SCHEDULE, "0");
         CY_M_Conts.isTimerRunning_Audio = true;
         startService(intent);
         CY_M_Conts.mRecordingStarted_Other = true;
@@ -930,7 +943,7 @@ public class HBService extends Service implements HBRecorderListener {
 //                    stopTimer();
             return;
         }
-       // Toasty.success(HBService.this, getString(R.string.stopAudioService), Toasty.LENGTH_LONG).show();
+        // Toasty.success(HBService.this, getString(R.string.stopAudioService), Toasty.LENGTH_LONG).show();
     }
 
     private void start_screenRecorder_service() {
@@ -960,11 +973,11 @@ public class HBService extends Service implements HBRecorderListener {
             stopRecording();
             return;
         }
-       // Toasty.success(HBService.this, getString(R.string.stopScreenRecorderService), Toasty.LENGTH_LONG).show();
+        // Toasty.success(HBService.this, getString(R.string.stopScreenRecorderService), Toasty.LENGTH_LONG).show();
     }
 
     private void stopRecording() {
-       // Toasty.success(HBService.this, getString(R.string.stopRecording), Toasty.LENGTH_LONG).show();
+        // Toasty.success(HBService.this, getString(R.string.stopRecording), Toasty.LENGTH_LONG).show();
         toggleView(mWarermarkLayout, 8);
         mRecordingStarted = false;
         toggleNavigationButton(8);

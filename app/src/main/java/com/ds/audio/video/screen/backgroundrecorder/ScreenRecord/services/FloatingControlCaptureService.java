@@ -293,7 +293,7 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
 
             Intent intent = new Intent(this, ScreenShotActivity.class);
             intent.putExtra("android.intent.extra.INTENT", this.mScreenCaptureIntent);
-            intent.setFlags(268435456);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }

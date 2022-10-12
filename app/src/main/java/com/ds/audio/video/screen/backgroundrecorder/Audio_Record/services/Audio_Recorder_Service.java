@@ -127,32 +127,38 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
         } else {
 //            checkNotify = true;
 
-            if (!SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
+            if (SharePrefUtils.getString(CY_M_Conts.AUDIO_FROM_SCHEDULE, "0").equals("1")){
+                if (!SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, "").equals("")) {
 
-                Video_Database_Helper.Audio_deleteEntry(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, ""));
-                if (Audio_ScheduleListActivity.adapter != null){
-                    Audio_ScheduleListActivity.adapter.notifyDataSetChanged();
-                }
-                ArrayList<UserModel> users = Video_Database_Helper.Audio_getRows();
+                    Video_Database_Helper.Audio_deleteEntry(SharePrefUtils.getString(CY_M_Conts.AUDIO_CURRENT_TIME, ""));
+                    if (Audio_ScheduleListActivity.adapter != null){
+                        Audio_ScheduleListActivity.adapter.notifyDataSetChanged();
+                    }
+                    ArrayList<UserModel> users = Video_Database_Helper.Audio_getRows();
 
-                new Handler().postDelayed(() -> {
-                    //TODO Perform your action here
-                    if (users.size() > 0) {
+                    new Handler().postDelayed(() -> {
+                        //TODO Perform your action here
+                        if (users.size() > 0) {
 //                    Log.e("#TESTSCHEDULE", "2-->   " + Video_Save_Schedule_Activity.schedeluLisst.get(0).getTime());
-                        Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
+                            Intent intent1 = new Intent(this, Audio_AlarmReceiver.class);
 //            intent1.putExtra(CY_M_Conts.CAMERA_USE, Video_Save_Schedule_Activity.schedeluLisst.get(0).getCamera());
 //          intent1.putExtra(CY_M_Conts.CAMERA_DURATION, String.valueOf(Video_Save_Schedule_Activity.schedeluLisst.get(0).getDuration() * 60));
-                        SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, users.get(0).getV_time());
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
-                        } else {
-                            ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
+                            SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, users.get(0).getV_time());
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+                            } else {
+                                ((AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM)).set(AlarmManager.RTC_WAKEUP, Long.parseLong(users.get(0).getV_time()), PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT));
+                            }
+                        }else {
+                            SharePrefUtils.putString(CY_M_Conts.AUDIO_CURRENT_TIME, "");
                         }
-                    }
 
-                }, 3000);
+                    }, 3000);
+                }
             }
         }
+
+
         if (this.checkNotify) {
             if (chkVibration) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -209,6 +215,7 @@ public class Audio_Recorder_Service extends Service implements SurfaceHolder.Cal
         this.sharedPreHelper.remove();
         stopForeground(true);
         CY_M_Conts.mRecordingStarted_Other = false;
+        CY_M_Conts.isTimerRunning_Audio = false;
         LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 23) {

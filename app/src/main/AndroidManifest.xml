@@ -500,6 +500,12 @@
             android:launchMode="singleInstance"
             android:theme="@style/Theme_Transparent1" />
 
+        <activity
+            android:name=".ScreenRecord.Activities.Video_Record_Background_Activity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme_Transparent1" />
+
     </application>
 
 </manifest>

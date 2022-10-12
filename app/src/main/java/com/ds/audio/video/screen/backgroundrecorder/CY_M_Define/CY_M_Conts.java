@@ -16,6 +16,8 @@ public class CY_M_Conts {
     public static final String CAMERA_DURATION = "camera_duration";
     public static final String CURRENT_TIME = "current_time";
     public static final String AUDIO_CURRENT_TIME = "audio_current_time";
+    public static final String AUDIO_FROM_SCHEDULE = "AUDIO_FROM_SCHEDULE";
+    public static final String VIDEO_FROM_SCHEDULE = "VIDEO_FROM_SCHEDULE";
     public static final String CAMERA_USE = "camera_use";
     public static final String FIRST_RUN = "first_run";
     public static final String INTENT_KEY_FILE_PATH = "filepath";
@@ -52,4 +54,6 @@ public class CY_M_Conts {
 
     public static Boolean mRecordingStarted_Other = false;
     public static Boolean mOpenAppChecker = true;
+
+    public static boolean  Video_Backgorund_Forgroundchecker = false;
 }

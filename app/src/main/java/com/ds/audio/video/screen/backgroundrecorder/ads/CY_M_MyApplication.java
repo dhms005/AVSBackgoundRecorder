@@ -176,13 +176,23 @@ public class CY_M_MyApplication extends Application implements Application.Activ
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
+        CY_M_Conts.Video_Backgorund_Forgroundchecker = true;
+        Log.e("Foreground", "************* onMoveToForeground");
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
 
-            if (CY_M_Conts.mOpenAppChecker){
+            if (CY_M_Conts.mOpenAppChecker) {
                 appOpenManager.showAdIfAvailable(currentActivity);
             }
 
         }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    protected void onAppBackgrounded() {
+        //App in background
+        CY_M_Conts.Video_Backgorund_Forgroundchecker = false;
+        Log.e("Background", "************* backgrounded");
+        Log.e("Background", "************* ${isInForeground()}");
     }
 
     /**
