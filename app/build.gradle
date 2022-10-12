@@ -10,8 +10,8 @@ android {
         applicationId "com.ds.audio.video.screen.backgroundrecorder"
         minSdk 24
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

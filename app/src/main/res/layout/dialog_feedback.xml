@@ -45,8 +45,8 @@
                     android:hint="Please tell us where we can improve"
                     android:padding="@dimen/_7sdp"
                     android:textAlignment="textStart"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"

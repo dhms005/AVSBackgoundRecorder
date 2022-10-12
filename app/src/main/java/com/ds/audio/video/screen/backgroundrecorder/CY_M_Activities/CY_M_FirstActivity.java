@@ -203,21 +203,21 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
             registerMethod();
         }
 
-        String recommandedData = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATA, "");
-        String date = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATE, "");
-
-        if (date.equals("") || recommandedData.equals("")) {
-            getDataService();
-        } else if (isCurrentDate(date)) {
-            getDataService();
-        } else {
-            try {
-                JSONObject recommandedObject = new JSONObject(recommandedData.toString());
-                setData(recommandedObject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+//        String recommandedData = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATA, "");
+//        String date = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATE, "");
+//
+//        if (date.equals("") || recommandedData.equals("")) {
+//            getDataService();
+//        } else if (isCurrentDate(date)) {
+//            getDataService();
+//        } else {
+//            try {
+//                JSONObject recommandedObject = new JSONObject(recommandedData.toString());
+//                setData(recommandedObject);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         LinearLayout ll_qureka_ad = findViewById(R.id.ll_qureka_ad);
         ImageView img_qureka1 = findViewById(R.id.img_qureka1);
@@ -553,8 +553,8 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
                 mCardViewNewUpdateApp.setVisibility(View.GONE);
             } else {
                 if (SharePrefUtils.getString(Constant_ad.AD_EXIT_REC_APPS, "0").equals("1")) {
-                    text_title_new_update_app.setVisibility(View.VISIBLE);
-                    mCardViewNewUpdateApp.setVisibility(View.VISIBLE);
+                    text_title_new_update_app.setVisibility(View.GONE);
+                    mCardViewNewUpdateApp.setVisibility(View.GONE);
                 } else {
                     text_title_new_update_app.setVisibility(View.GONE);
                     mCardViewNewUpdateApp.setVisibility(View.GONE);
@@ -567,8 +567,8 @@ public class CY_M_FirstActivity extends FCMActivity implements PurchasesUpdatedL
                 text_title_treading_app.setVisibility(View.GONE);
                 mCardViewTreadingApp.setVisibility(View.GONE);
             } else {
-                text_title_treading_app.setVisibility(View.VISIBLE);
-                mCardViewTreadingApp.setVisibility(View.VISIBLE);
+                text_title_treading_app.setVisibility(View.GONE);
+                mCardViewTreadingApp.setVisibility(View.GONE);
                 mTreadingAppAdapter = new CY_M_RecomendedAppsDailogAdapter_New(CY_M_FirstActivity.this, typeThreeArrayList, 9, "2");
                 mRecyclerViewTreadingApp.setAdapter(mTreadingAppAdapter);
             }

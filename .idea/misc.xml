@@ -4,11 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_home_menu.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13802083333333334" />
+        <entry key="app/src/main/res/layout/after_screenshot_capture.xml" value="0.33" />
         <entry key="app/src/main/res/layout/audio_savedlist_activity.xml" value="0.3359375" />
         <entry key="app/src/main/res/layout/audio_schedule_list_activity.xml" value="0.3359375" />
         <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/cy_m_first_activity.xml" value="0.13802083333333334" />
+        <entry key="app/src/main/res/layout/cy_m_recomended_apps_dialog.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_feedback.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_schedule_video.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/item_video_list.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/video_black_activity.xml" value="0.13802083333333334" />
         <entry key="app/src/main/res/layout/video_saved_list_activity.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.1453125" />

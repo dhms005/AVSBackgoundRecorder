@@ -38,8 +38,8 @@ public class AppConstants {
             Intent intent = new Intent("android.intent.action.SENDTO");
             intent.setData(Uri.parse(MailTo.MAILTO_SCHEME));
             Intent intent2 = new Intent("android.intent.action.SENDTO");
-            intent2.putExtra("android.intent.extra.EMAIL", new String[]{"PARIHARBITTU9999@gmail.com"});
-            intent2.putExtra("android.intent.extra.SUBJECT", "Your Suggestion - CCTV Camera Recorder  (" + context.getPackageName() + ")");
+            intent2.putExtra("android.intent.extra.EMAIL", new String[]{"getapps5454@gmail.com"});
+            intent2.putExtra("android.intent.extra.SUBJECT", "Your Suggestion - AVS Background Recorder  (" + context.getPackageName() + ")");
             intent2.putExtra("android.intent.extra.TEXT", str + "\n\nDevice Manufacturer : " + str3 + "\nDevice Model : " + str2 + "\nAndroid Version : " + Build.VERSION.RELEASE + "\nApp Version : " + BuildConfig.VERSION_NAME);
             intent2.setSelector(intent);
             context.startActivity(intent2);

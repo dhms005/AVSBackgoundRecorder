@@ -1,22 +1,27 @@
 package com.ds.audio.video.screen.backgroundrecorder.exit;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,9 +34,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
 import com.ds.audio.video.screen.backgroundrecorder.CY_M_Activities.CY_M_Master_SplashScreen;
+import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
 import com.ds.audio.video.screen.backgroundrecorder.ads.CY_M_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
-import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.facebook.ads.AdView;
 import com.facebook.ads.NativeAd;
 import com.facebook.ads.NativeBannerAd;
@@ -88,6 +94,8 @@ public class CY_M_RecomendedAppsDialog extends AppCompatActivity {
     LinearLayout ll_rec_list;
     TextView tv_rec_text;
 
+    Dialog mail_report_dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,10 +115,10 @@ public class CY_M_RecomendedAppsDialog extends AppCompatActivity {
 
         mDeclaration();
 
-        if(SharePrefUtils.getString(Constant_ad.AD_EXIT_REC_APPS,"0").equals("1")){
-            ll_rec_list.setVisibility(View.VISIBLE);
-            tv_rec_text.setVisibility(View.VISIBLE);
-        }else{
+        if (SharePrefUtils.getString(Constant_ad.AD_EXIT_REC_APPS, "0").equals("1")) {
+            ll_rec_list.setVisibility(View.GONE);
+            tv_rec_text.setVisibility(View.GONE);
+        } else {
             ll_rec_list.setVisibility(View.GONE);
             tv_rec_text.setVisibility(View.GONE);
         }
@@ -118,26 +126,83 @@ public class CY_M_RecomendedAppsDialog extends AppCompatActivity {
         if (SharePrefUtils.getString(Constant_ad.AD_EXIT_NATIVE, "0").equals("0")) {
 
         } else {
-           mNativeAdNew();
+            mNativeAdNew();
         }
 
-        String recommandedData = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATA, "");
-        String date = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATE, "");
+        rate_Function();
 
-        if (date.equals("") || recommandedData.equals("")) {
-            getDataService();
+//        String recommandedData = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATA, "");
+//        String date = SharePrefUtils.getString(Constant_ad.RECOMMANDED_DATE, "");
+//
+//        if (date.equals("") || recommandedData.equals("")) {
+//            getDataService();
+//
+//        } else if (isCurrentDate(date)) {
+//            getDataService();
+//        } else {
+//
+//            try {
+//                JSONObject recommandedObject = new JSONObject(recommandedData.toString());
+//                setData(recommandedObject);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+    }
 
-        } else if (isCurrentDate(date)) {
-            getDataService();
-        } else {
+    private void rate_Function() {
 
-            try {
-                JSONObject recommandedObject = new JSONObject(recommandedData.toString());
-                setData(recommandedObject);
-            } catch (JSONException e) {
-                e.printStackTrace();
+        CardView cardBad = findViewById(R.id.cardBad);
+        CardView cardGood = findViewById(R.id.cardGood);
+        CardView cardExcellent = findViewById(R.id.cardExcellent);
+        this.mail_report_dialog = new Dialog(this);
+
+        cardBad.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (!CY_M_RecomendedAppsDialog.this.mail_report_dialog.isShowing()) {
+                    CY_M_RecomendedAppsDialog.this.openFeedBackDialog();
+                }
             }
-        }
+        });
+        cardGood.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                AppConstants.uriparse(CY_M_RecomendedAppsDialog.this, AppConstants.playStoreUrl);
+
+            }
+        });
+        cardExcellent.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                AppConstants.uriparse(CY_M_RecomendedAppsDialog.this, AppConstants.playStoreUrl);
+
+            }
+        });
+    }
+
+
+    public void openFeedBackDialog() {
+        this.mail_report_dialog.setContentView(R.layout.dialog_feedback);
+        this.mail_report_dialog.setCancelable(true);
+        this.mail_report_dialog.getWindow().setLayout(-1, -2);
+        this.mail_report_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        this.mail_report_dialog.show();
+        final EditText editText = (EditText) this.mail_report_dialog.findViewById(R.id.etFeedBack);
+        ((CardView) this.mail_report_dialog.findViewById(R.id.cardSent)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (!editText.getText().toString().trim().isEmpty()) {
+                    mail_report_dialog.dismiss();
+
+                    AppConstants.EmailUs(CY_M_RecomendedAppsDialog.this, editText.getText().toString());
+                    return;
+                }
+                Toast.makeText(CY_M_RecomendedAppsDialog.this, "Please Write Feedback.", 0).show();
+                editText.requestFocus();
+            }
+        });
+        ((CardView) this.mail_report_dialog.findViewById(R.id.cardCancel)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                mail_report_dialog.dismiss();
+            }
+        });
     }
 
 
@@ -200,7 +265,6 @@ public class CY_M_RecomendedAppsDialog extends AppCompatActivity {
                 }
 
 
-
 //                Intent intent = new Intent(RecomendedAppsDialog.this, Thanks_activity.class);
 //                startActivity(intent);
 //                finish();
@@ -215,8 +279,6 @@ public class CY_M_RecomendedAppsDialog extends AppCompatActivity {
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
     }
-
-
 
 
     private boolean isCurrentDate(String date) {
