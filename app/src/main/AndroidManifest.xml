@@ -103,12 +103,6 @@
             android:name=".InAppPurchase.Activities.InAppPurchase"
             android:exported="true" />
         <activity
-            android:name=".InAppPurchase.Activities.PurchaseItemActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".InAppPurchase.Activities.SubScribeItemActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Video_Record.Activities.Video_SaveVideoActivity"
             android:screenOrientation="portrait" />
         <activity

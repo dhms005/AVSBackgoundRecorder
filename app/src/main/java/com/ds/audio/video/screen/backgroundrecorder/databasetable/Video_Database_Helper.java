@@ -106,7 +106,6 @@ public class Video_Database_Helper {
         db = dbHelper.getReadableDatabase();
         Cursor projCursor = db.query(Video_TABLE_NAME, null, null, null, null, null, Schedule_Contant.v_time + " ASC", null);
         while (projCursor.moveToNext()) {
-
             user = new UserModel();
             user.setID(projCursor.getString(projCursor.getColumnIndex("ID")));
             user.setV_time(projCursor.getString(projCursor.getColumnIndex(Schedule_Contant.v_time)));

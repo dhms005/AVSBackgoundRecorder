@@ -27,14 +27,14 @@ public class InAppPurchase extends AppCompatActivity {
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(InAppPurchase.this, PurchaseItemActivity.class));
+              //  startActivity(new Intent(InAppPurchase.this, PurchaseItemActivity.class));
             }
         });
 
         btnSubscribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(InAppPurchase.this, SubScribeItemActivity.class));
+              //  startActivity(new Intent(InAppPurchase.this, SubScribeItemActivity.class));
             }
         });
     }

@@ -22,14 +22,20 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ConsumeParams;
+import com.android.billingclient.api.ConsumeResponseListener;
+import com.android.billingclient.api.ProductDetails;
+import com.android.billingclient.api.ProductDetailsResponseListener;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.QueryProductDetailsParams;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
 import com.ds.audio.video.screen.backgroundrecorder.InAppPurchase.utils.BillingClientSetup;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.collect.ImmutableList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +44,7 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
 
 
     ConstraintLayout tvPayment;
-    TextView tvSkipNow,tv_terms_of_service;
+    TextView tvSkipNow, tv_terms_of_service;
     ImageView imgClose;
 
     BillingClient billingClient;
@@ -55,7 +61,6 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
     TextView tv_3month_title, tv_6month_title, tv_9month_title, tv_lifetime_title;
     TextView tv_3month_des, tv_6month_des, tv_9month_des, tv_lifetime_des;
     TextView tv_3month_price, tv_6month_price, tv_9month_price, tv_lifetime_price;
-
 
 
     @Override
@@ -289,12 +294,12 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
             @Override
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    List<Purchase> purchases = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
-                    if (purchases.size() > 0) {
-                        for (Purchase purchase : purchases) {
-                            handleItemAlreadyPurchase(purchase);
-                        }
-                    }
+//                    List<Purchase> purchases = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
+//                    if (purchases.size() > 0) {
+//                        for (Purchase purchase : purchases) {
+//                            handleItemAlreadyPurchase(purchase);
+//                        }
+//                    }
                 } else {
                     Toast.makeText(InAppPurchaseActivity.this, "Error code->  " + billingResult.getResponseCode(), Toast.LENGTH_SHORT).show();
                 }
@@ -308,34 +313,89 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
     }
 
     private void handleItemAlreadyPurchase(Purchase purchases) {
-        if (purchases.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-            if (!purchases.isAcknowledged()) {
-                AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
+        ConsumeParams consumeParams =
+                ConsumeParams.newBuilder()
                         .setPurchaseToken(purchases.getPurchaseToken())
                         .build();
-                billingClient.acknowledgePurchase(acknowledgePurchaseParams, listener);
+
+        ConsumeResponseListener listener = new ConsumeResponseListener() {
+            @Override
+            public void onConsumeResponse(BillingResult billingResult, String purchaseToken) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    // Handle the success of the consume operation.
+                }
             }
-        }
+        };
+
+        billingClient.consumeAsync(consumeParams, listener);
+
+//        if (purchases.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+//            if (!purchases.isAcknowledged()) {
+//                AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
+//                        .setPurchaseToken(purchases.getPurchaseToken())
+//                        .build();
+//                billingClient.acknowledgePurchase(acknowledgePurchaseParams, listener);
+//            }
+//        }
     }
 
     private void loadAllSubscription(String subscriptionId) {
         if (billingClient.isReady()) {
-            SkuDetailsParams skuDetailsParams = SkuDetailsParams.newBuilder()
-                    .setSkusList(Arrays.asList(subscriptionId))
-                    .setType(BillingClient.SkuType.SUBS)
-                    .build();
-            billingClient.querySkuDetailsAsync(skuDetailsParams, (billingResult, list) -> {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                            .setSkuDetails(list.get(0))
-                            .build();
-                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
+            QueryProductDetailsParams queryProductDetailsParams = QueryProductDetailsParams.newBuilder()
+                    .setProductList(ImmutableList.of(QueryProductDetailsParams.Product.newBuilder()
+                            .setProductId(subscriptionId)
+                            .setProductType(BillingClient.ProductType.SUBS)
+                            .build())).build();
+            billingClient.queryProductDetailsAsync(
+                    queryProductDetailsParams,
+                    new ProductDetailsResponseListener() {
+                        public void onProductDetailsResponse(BillingResult billingResult,
+                                                             List<ProductDetails> productDetailsList) {
+                            // check billingResult
+                            // process returned productDetailsList
+                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                ImmutableList productDetailsParamsList =
+                                        ImmutableList.of(
+                                                BillingFlowParams.ProductDetailsParams.newBuilder()
+                                                        // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
+                                                        .setProductDetails(productDetailsList.get(0))
+                                                        // to get an offer token, call ProductDetails.getSubscriptionOfferDetails()
+                                                        // for a list of offers that are available to the user
+                                                        .setOfferToken(productDetailsList.get(0).getSubscriptionOfferDetails().toString())
+                                                        .build()
+                                        );
 
-                    showMessage(response);
-                } else {
-                    Toast.makeText(InAppPurchaseActivity.this, "Please try again after sometime...", Toast.LENGTH_SHORT).show();
-                }
-            });
+                                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                        .setProductDetailsParamsList(productDetailsParamsList)
+                                        .build();
+
+                                // Launch the billing flow
+                                BillingResult result = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams);
+                                showMessage(result.getResponseCode());
+                            }
+                        }
+                    }
+            );
+
+
+
+
+//            SkuDetailsParams skuDetailsParams = SkuDetailsParams.newBuilder()
+//                    .setSkusList(Arrays.asList(subscriptionId))
+//                    .setType(BillingClient.SkuType.SUBS)
+//                    .build();
+//            billingClient.querySkuDetailsAsync(skuDetailsParams, (billingResult, list) -> {
+//                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+//                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+//                            .setSkuDetails(list.get(0))
+//                            .build();
+//                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
+//
+//                    showMessage(response);
+//                } else {
+//                    Toast.makeText(InAppPurchaseActivity.this, "Please try again after sometime...", Toast.LENGTH_SHORT).show();
+//                }
+//            });
         } else {
             Toast.makeText(this, "Billing client not ready", Toast.LENGTH_SHORT).show();
         }
@@ -343,23 +403,60 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
 
     private void loadLifeTimePurchase(String purchaseID) {
         if (billingClient.isReady()) {
-            SkuDetailsParams params = SkuDetailsParams.newBuilder()
-                    .setSkusList(Arrays.asList(purchaseID))
-                    .setType(BillingClient.SkuType.INAPP)
-                    .build();
+            QueryProductDetailsParams queryProductDetailsParams = QueryProductDetailsParams.newBuilder()
+                    .setProductList(ImmutableList.of(QueryProductDetailsParams.Product.newBuilder()
+                            .setProductId(purchaseID)
+                            .setProductType(BillingClient.ProductType.INAPP)
+                            .build())).build();
+            billingClient.queryProductDetailsAsync(
+                    queryProductDetailsParams,
+                    new ProductDetailsResponseListener() {
+                        public void onProductDetailsResponse(@NonNull BillingResult billingResult,
+                                                             @NonNull List<ProductDetails> productDetailsList) {
+                            // check billingResult
+                            // process returned productDetailsList
+                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                ImmutableList productDetailsParamsList =
+                                        ImmutableList.of(
+                                                BillingFlowParams.ProductDetailsParams.newBuilder()
+                                                        // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
+                                                        .setProductDetails(productDetailsList.get(0))
+                                                        // to get an offer token, call ProductDetails.getSubscriptionOfferDetails()
+                                                        // for a list of offers that are available to the user
+                                                        .setOfferToken(productDetailsList.get(0).getSubscriptionOfferDetails().toString())
+                                                        .build()
+                                        );
 
-            billingClient.querySkuDetailsAsync(params, (billingResult, list) -> {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                            .setSkuDetails(list.get(0))
-                            .build();
+                                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                        .setProductDetailsParamsList(productDetailsParamsList)
+                                        .build();
 
-                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
-                    showMessage(response);
-                } else {
-                    Toast.makeText(InAppPurchaseActivity.this, "Error Codee-> " + billingResult.getResponseCode(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                                // Launch the billing flow
+                                BillingResult result = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams);
+                                showMessage(result.getResponseCode());
+                            }
+                        }
+                    }
+            );
+
+
+//            SkuDetailsParams params = SkuDetailsParams.newBuilder()
+//                    .setSkusList(Arrays.asList(purchaseID))
+//                    .setType(BillingClient.SkuType.INAPP)
+//                    .build();
+//
+//            billingClient.querySkuDetailsAsync(params, (billingResult, list) -> {
+//                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+//                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+//                            .setSkuDetails(list.get(0))
+//                            .build();
+//
+//                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
+//                    showMessage(response);
+//                } else {
+//                    Toast.makeText(InAppPurchaseActivity.this, "Error Codee-> " + billingResult.getResponseCode(), Toast.LENGTH_SHORT).show();
+//                }
+//            });
         }
     }
 
@@ -414,7 +511,7 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                     .setMessage(Html.fromHtml(DevSpy_SharedPref.TERMS_OF_SERVICES, Html.FROM_HTML_MODE_COMPACT))
                     .create()
                     .show();
-        }else {
+        } else {
             new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
                     .setTitle("Terms of Service")
                     .setCancelable(true)
