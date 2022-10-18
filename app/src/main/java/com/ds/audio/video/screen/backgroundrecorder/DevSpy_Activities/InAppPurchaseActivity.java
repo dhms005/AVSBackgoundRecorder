@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -294,12 +295,7 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
             @Override
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-//                    List<Purchase> purchases = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
-//                    if (purchases.size() > 0) {
-//                        for (Purchase purchase : purchases) {
-//                            handleItemAlreadyPurchase(purchase);
-//                        }
-//                    }
+
                 } else {
                     Toast.makeText(InAppPurchaseActivity.this, "Error code->  " + billingResult.getResponseCode(), Toast.LENGTH_SHORT).show();
                 }
@@ -329,14 +325,17 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
 
         billingClient.consumeAsync(consumeParams, listener);
 
-//        if (purchases.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-//            if (!purchases.isAcknowledged()) {
-//                AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
-//                        .setPurchaseToken(purchases.getPurchaseToken())
-//                        .build();
-//                billingClient.acknowledgePurchase(acknowledgePurchaseParams, listener);
-//            }
-//        }
+        AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams
+                .newBuilder()
+                .setPurchaseToken(purchases.getPurchaseToken())
+                .build();
+
+        billingClient.acknowledgePurchase(acknowledgePurchaseParams, billingResult -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                //user prefs to set premium
+                Toast.makeText(InAppPurchaseActivity.this, "Subscription activated, Enjoy!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadAllSubscription(String subscriptionId) {
@@ -354,21 +353,17 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                             // check billingResult
                             // process returned productDetailsList
                             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                ImmutableList productDetailsParamsList =
+                                ImmutableList<BillingFlowParams.ProductDetailsParams> productDetailsParamsList =
                                         ImmutableList.of(
                                                 BillingFlowParams.ProductDetailsParams.newBuilder()
-                                                        // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
                                                         .setProductDetails(productDetailsList.get(0))
-                                                        // to get an offer token, call ProductDetails.getSubscriptionOfferDetails()
-                                                        // for a list of offers that are available to the user
-                                                        .setOfferToken(productDetailsList.get(0).getSubscriptionOfferDetails().toString())
+                                                        .setOfferToken(productDetailsList.get(0).getSubscriptionOfferDetails().get(0).getOfferToken())
                                                         .build()
                                         );
 
                                 BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                                         .setProductDetailsParamsList(productDetailsParamsList)
                                         .build();
-
                                 // Launch the billing flow
                                 BillingResult result = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams);
                                 showMessage(result.getResponseCode());
@@ -376,26 +371,6 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                         }
                     }
             );
-
-
-
-
-//            SkuDetailsParams skuDetailsParams = SkuDetailsParams.newBuilder()
-//                    .setSkusList(Arrays.asList(subscriptionId))
-//                    .setType(BillingClient.SkuType.SUBS)
-//                    .build();
-//            billingClient.querySkuDetailsAsync(skuDetailsParams, (billingResult, list) -> {
-//                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-//                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-//                            .setSkuDetails(list.get(0))
-//                            .build();
-//                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
-//
-//                    showMessage(response);
-//                } else {
-//                    Toast.makeText(InAppPurchaseActivity.this, "Please try again after sometime...", Toast.LENGTH_SHORT).show();
-//                }
-//            });
         } else {
             Toast.makeText(this, "Billing client not ready", Toast.LENGTH_SHORT).show();
         }
@@ -413,7 +388,7 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                     new ProductDetailsResponseListener() {
                         public void onProductDetailsResponse(@NonNull BillingResult billingResult,
                                                              @NonNull List<ProductDetails> productDetailsList) {
-                            // check billingResult
+                             // check billingResult
                             // process returned productDetailsList
                             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                                 ImmutableList productDetailsParamsList =
@@ -423,14 +398,12 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                                                         .setProductDetails(productDetailsList.get(0))
                                                         // to get an offer token, call ProductDetails.getSubscriptionOfferDetails()
                                                         // for a list of offers that are available to the user
-                                                        .setOfferToken(productDetailsList.get(0).getSubscriptionOfferDetails().toString())
                                                         .build()
                                         );
 
                                 BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                                         .setProductDetailsParamsList(productDetailsParamsList)
                                         .build();
-
                                 // Launch the billing flow
                                 BillingResult result = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams);
                                 showMessage(result.getResponseCode());
@@ -438,25 +411,6 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                         }
                     }
             );
-
-
-//            SkuDetailsParams params = SkuDetailsParams.newBuilder()
-//                    .setSkusList(Arrays.asList(purchaseID))
-//                    .setType(BillingClient.SkuType.INAPP)
-//                    .build();
-//
-//            billingClient.querySkuDetailsAsync(params, (billingResult, list) -> {
-//                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-//                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-//                            .setSkuDetails(list.get(0))
-//                            .build();
-//
-//                    int response = billingClient.launchBillingFlow(InAppPurchaseActivity.this, billingFlowParams).getResponseCode();
-//                    showMessage(response);
-//                } else {
-//                    Toast.makeText(InAppPurchaseActivity.this, "Error Codee-> " + billingResult.getResponseCode(), Toast.LENGTH_SHORT).show();
-//                }
-//            });
         }
     }
 
@@ -502,22 +456,11 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
     }
 
     private void disclaimerDialog() {
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-                    .setTitle("Terms of Service")
-                    .setCancelable(true)
-                    .setMessage(Html.fromHtml(DevSpy_SharedPref.TERMS_OF_SERVICES, Html.FROM_HTML_MODE_COMPACT))
-                    .create()
-                    .show();
-        } else {
-            new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-                    .setTitle("Terms of Service")
-                    .setCancelable(true)
-                    .setMessage(Html.fromHtml(DevSpy_SharedPref.TERMS_OF_SERVICES))
-                    .create()
-                    .show();
-        }
+        new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+                .setTitle("Terms of Service")
+                .setCancelable(true)
+                .setMessage(Html.fromHtml(DevSpy_SharedPref.TERMS_OF_SERVICES, Html.FROM_HTML_MODE_COMPACT))
+                .create()
+                .show();
     }
 }

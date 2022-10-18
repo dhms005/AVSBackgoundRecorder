@@ -5,15 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
-
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services.Audio_Recorder_Service;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_ServiceHelper;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
 public class Audio_AlarmReceiver extends BroadcastReceiver {
-
-
     public void onReceive(Context context, Intent intent) {
         Log.e("#TESTSCHEDULE", "1-->   " + SharePrefUtils.getString(DevSpy_Conts.AUDIO_CURRENT_TIME, ""));
         Intent intent2 = new Intent(context, Audio_Recorder_Service.class);

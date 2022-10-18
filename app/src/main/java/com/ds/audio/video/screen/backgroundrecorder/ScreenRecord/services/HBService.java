@@ -875,7 +875,6 @@ public class HBService extends Service implements HBRecorderListener {
         }
 
         if (DevSpy_Conts.Video_Backgorund_Forgroundchecker) {
-
             startService(intent);
         } else {
             DevSpy_Conts.mOpenAppChecker = false;

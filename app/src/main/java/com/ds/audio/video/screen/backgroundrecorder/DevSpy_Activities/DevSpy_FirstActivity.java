@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -334,61 +335,43 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                     // check billingResult
                                     // process returned purchase list, e.g. display the plans user owns
                                     if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                        if (purchases.size() > 0) {
-                                            SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, true);
-                                            SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
-                                        } else {
-                                            SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            mNativeAdNew();
-                                            if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
-                                                Call_banner();
-                                            } else {
-                                                mNativeBanner();
-                                            }
-                                            if (SharePrefUtils.getString(Constant_ad.MEDIATION, "").equals("0")) {
-                                                ESCustom_full_ad_timer = new DevSpy_MyApplication().getmanagerFullAdTimer();
-                                                ESCustom_full_ad_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
-                                                load_full_ad();
-                                            } else {
-                                                custom_appLovin_timer = new DevSpy_MyApplication().getCustom_appLovin_timer();
-                                                custom_appLovin_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
-                                                load_app_Lovin_full_ad();
-                                            }
-                                        }
+                                        billingClient.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build(), new PurchasesResponseListener() {
+                                                    public void onQueryPurchasesResponse(@NonNull BillingResult billingResult, @NonNull List inAppPurchase) {
+                                                        // check billingResult
+                                                        // process returned purchase list, e.g. display the plans user owns
+                                                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                                            if (purchases.size() > 0 || inAppPurchase.size() > 0) {
+                                                                SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, true);
+                                                                SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
+                                                            } else {
+                                                                SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
+                                                                runOnUiThread(() -> {
+                                                                    mNativeAdNew();
+                                                                    if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
+                                                                        Call_banner();
+                                                                    } else {
+                                                                        mNativeBanner();
+                                                                    }
+                                                                    if (SharePrefUtils.getString(Constant_ad.MEDIATION, "").equals("0")) {
+                                                                        ESCustom_full_ad_timer = new DevSpy_MyApplication().getmanagerFullAdTimer();
+                                                                        ESCustom_full_ad_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
+                                                                        load_full_ad();
+                                                                    } else {
+                                                                        custom_appLovin_timer = new DevSpy_MyApplication().getCustom_appLovin_timer();
+                                                                        custom_appLovin_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
+                                                                        load_app_Lovin_full_ad();
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                        );
                                     }
                                 }
                             }
                     );
-                    billingClient.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build(), new PurchasesResponseListener() {
-                                public void onQueryPurchasesResponse(@NonNull BillingResult billingResult, @NonNull List purchases) {
-                                    // check billingResult
-                                    // process returned purchase list, e.g. display the plans user owns
-                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                        if (purchases.size() > 0) {
-                                            SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, true);
-                                            SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
-                                        }else {
-                                            SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            mNativeAdNew();
-                                            if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
-                                                Call_banner();
-                                            } else {
-                                                mNativeBanner();
-                                            }
-                                            if (SharePrefUtils.getString(Constant_ad.MEDIATION, "").equals("0")) {
-                                                ESCustom_full_ad_timer = new DevSpy_MyApplication().getmanagerFullAdTimer();
-                                                ESCustom_full_ad_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
-                                                load_full_ad();
-                                            } else {
-                                                custom_appLovin_timer = new DevSpy_MyApplication().getCustom_appLovin_timer();
-                                                custom_appLovin_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
-                                                load_app_Lovin_full_ad();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                    );
+
 
 //                    List<Purchase> subPurchases = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
 //                    List<Purchase> LifeTimePurchases = billingClient.queryPurchases(BillingClient.SkuType.INAPP).getPurchasesList();
@@ -542,8 +525,6 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                 )
                 .create()
                 .show();
-
-
     }
 
 
@@ -907,9 +888,6 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
-        if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
-            mNativeAdNew();
-        }
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
         mAppUpdateManager
                 .getAppUpdateInfo()
@@ -1244,52 +1222,58 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
     }
 
     private void mNativeAdNew() {
-        if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
-            ViewGroup.LayoutParams params = findViewById(R.id.Admob_Native_Frame_two).getLayoutParams();
-            params.height = (int) getResources().getDimension(R.dimen.native_16);
-            findViewById(R.id.Admob_Native_Frame_two).setLayoutParams(params);
-            if (SharePrefUtils.getInt(Constant_ad.NATIVEAD_TRASPARENT, 0) == 0) {
-                findViewById(R.id.Admob_Native_Frame_two).setBackground(getResources().getDrawable(R.drawable.z_ad_border));
+        try {
+            if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
+                ViewGroup.LayoutParams params = findViewById(R.id.Admob_Native_Frame_two).getLayoutParams();
+                params.height = (int) getResources().getDimension(R.dimen.native_16);
+                findViewById(R.id.Admob_Native_Frame_two).setLayoutParams(params);
+                if (SharePrefUtils.getInt(Constant_ad.NATIVEAD_TRASPARENT, 0) == 0) {
+                    findViewById(R.id.Admob_Native_Frame_two).setBackground(getResources().getDrawable(R.drawable.z_ad_border, null));
+                }
             }
+
+            if (SharePrefUtils.getString(Constant_ad.MEDIATION, "0").equals("0")) {
+                if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
+                    if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNativeSmall() == null) {
+                        new Custom_NativeAd_Admob().showNativeSmallAds(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    } else {
+                        DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheSmallNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    }
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("2")) {
+                    if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNative400Dp() == null) {
+                        new Custom_NativeAd_Admob().showNative400DpAds(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    } else {
+                        DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheNative400DpAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    }
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("3")) {
+                    if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNative400Dp() == null) {
+                        new Custom_NativeAd_Admob().showNative400DpAds(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    } else {
+                        DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheNative400DpAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    }
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("4")) {
+                    if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNativeSmall() == null) {
+                        new Custom_NativeAd_Admob().showNativeSmallAds(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    } else {
+                        DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheSmallNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                    }
+                }
+            } else {
+                if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
+                    new Custom_NativeAd_Admob().showAppLovinSmallNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("2")) {
+                    new Custom_NativeAd_Admob().showAppLovinNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("3")) {
+                    new Custom_NativeAd_Admob().showAppLovinNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("4")) {
+                    new Custom_NativeAd_Admob().showAppLovinSmallNativeAd(DevSpy_FirstActivity.this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        if (SharePrefUtils.getString(Constant_ad.MEDIATION, "0").equals("0")) {
-            if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
-                if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNativeSmall() == null) {
-                    new Custom_NativeAd_Admob().showNativeSmallAds(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                } else {
-                    DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheSmallNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                }
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("2")) {
-                if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNative400Dp() == null) {
-                    new Custom_NativeAd_Admob().showNative400DpAds(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                } else {
-                    DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheNative400DpAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                }
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("3")) {
-                if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNative400Dp() == null) {
-                    new Custom_NativeAd_Admob().showNative400DpAds(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                } else {
-                    DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheNative400DpAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                }
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("4")) {
-                if (DevSpy_Master_SplashScreen.custom_nativeAd_admob.CacheNativeSmall() == null) {
-                    new Custom_NativeAd_Admob().showNativeSmallAds(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                } else {
-                    DevSpy_Master_SplashScreen.custom_nativeAd_admob._showCacheSmallNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-                }
-            }
-        } else {
-            if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
-                new Custom_NativeAd_Admob().showAppLovinSmallNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("2")) {
-                new Custom_NativeAd_Admob().showAppLovinNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("3")) {
-                new Custom_NativeAd_Admob().showAppLovinNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-            } else if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("4")) {
-                new Custom_NativeAd_Admob().showAppLovinSmallNativeAd(this, (ViewGroup) findViewById(R.id.Admob_Native_Frame_two));
-            }
-        }
     }
 
     public void Call_banner() {

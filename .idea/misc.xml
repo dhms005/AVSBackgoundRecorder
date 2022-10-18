@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/shape_schedule_back.xml" value="0.1185" />
         <entry key="app/src/main/res/layout/activity_home_menu.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_in_app_purchase.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/after_screenshot_capture.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.25" />
         <entry key="app/src/main/res/layout/cy_m_dialog_seekbar.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecord_record_tab.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/screenrecorder_countdown.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/screenrecorder_recording.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/video_black_activity.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/video_black_activity.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_toolbar_settings.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25052083333333336" />
