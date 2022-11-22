@@ -1,5 +1,7 @@
 package com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define;
 
+import android.content.Intent;
+
 public class DevSpy_Conts {
     public static final String ACTION_START_SERVICE = "START_EXTRA";
     public static final String ACTION_STOP_EXTRA = "STOP_EXTRA";
@@ -56,4 +58,7 @@ public class DevSpy_Conts {
     public static Boolean mOpenAppChecker = true;
 
     public static boolean  Video_Backgorund_Forgroundchecker = false;
+
+    public static boolean hasPermissions = false;
+    public static Intent mScreenCaptureIntent = null;
 }

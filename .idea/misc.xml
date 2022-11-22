@@ -9,8 +9,10 @@
         <entry key="app/src/main/res/layout/after_screenshot_capture.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.25" />
         <entry key="app/src/main/res/layout/cy_m_dialog_seekbar.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/devspy_activity_inapp_purchase.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecord_record_tab.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_countdown.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/screenrecorder_option.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_recording.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.25052083333333336" />
@@ -18,6 +20,7 @@
         <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_toolbar_settings.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/z_qureka_layout_3.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/screenrecorder_pref_main.xml" value="0.25052083333333336" />
       </map>

@@ -76,7 +76,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
         }
     };
     private BroadcastReceiver receiverStop = new BroadcastReceiver() {
-          public void onReceive(Context context, Intent intent) {
+        public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(DevSpy_Conts.ACTION_STOP_SCREEN_RECORDER_EXTRA)) {
                 Log.e(ScreenRecord_RecorderFragment.TAG, "STOP");
                 ScreenRecord_RecorderFragment.this.stopTimer();
@@ -205,15 +205,18 @@ public class ScreenRecord_RecorderFragment extends Fragment {
     }
 
     public void startRecording() {
-        if (checkSelfPermission("android.permission.RECORD_AUDIO", 22) && checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE", 23)) {
-            this.hasPermissions = true;
-        }
-        if (this.hasPermissions) {
+        if (!DevSpy_Conts.hasPermissions) {
             if (this.isDrawOverlyAllowed) {
                 startActivityForResult(((MediaProjectionManager) getActivity().getSystemService("media_projection")).createScreenCaptureIntent(), PERMISSION_RECORD_DISPLAY);
                 return;
             }
             startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + getActivity().getPackageName())), 101);
+        } else {
+            if (checkSelfPermission("android.permission.RECORD_AUDIO", 22) && checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE", 23)) {
+                DevSpy_Conts.hasPermissions = true;
+                doRecord();
+                return;
+            }
         }
     }
 
@@ -238,7 +241,8 @@ public class ScreenRecord_RecorderFragment extends Fragment {
                 this.mScreenCaptureIntent = null;
                 return;
             }
-            this.mScreenCaptureIntent = intent;
+            DevSpy_Conts.hasPermissions = true;
+            DevSpy_Conts.mScreenCaptureIntent = intent;
             intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, resultCode);
             this.mScreenCaptureResultCode = resultCode;
             doRecord();
@@ -263,7 +267,7 @@ public class ScreenRecord_RecorderFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
-        intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
+        intent.putExtra("android.intent.extra.INTENT", DevSpy_Conts.mScreenCaptureIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             getActivity().startForegroundService(intent);

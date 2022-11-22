@@ -222,15 +222,17 @@ public class Video_RecorderFragment extends Fragment {
 
 
     public void startRecording() {
-        if (checkSelfPermission("android.permission.RECORD_AUDIO", 22) && checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE", 23)) {
-            this.hasPermissions = true;
-        }
-        if (this.hasPermissions) {
+        if (!DevSpy_Conts.hasPermissions) {
             if (this.isDrawOverlyAllowed) {
                 startActivityForResult(((MediaProjectionManager) getActivity().getSystemService(Context.MEDIA_PROJECTION_SERVICE)).createScreenCaptureIntent(), PERMISSION_RECORD_DISPLAY);
                 return;
             }
             startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + getActivity().getPackageName())), 101);
+        }else{
+            if (checkSelfPermission("android.permission.RECORD_AUDIO", 22) && checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE", 23)) {
+                DevSpy_Conts.hasPermissions = true;
+                doRecord();
+            }
         }
     }
 
@@ -252,10 +254,11 @@ public class Video_RecorderFragment extends Fragment {
         if (requestCode == PERMISSION_RECORD_DISPLAY) {
             if (resultCode != -1) {
 //                Utils.showSnackBarNotification(this.iv_record, getString(R.string.recordingPermissionNotGranted), -1);
-                this.mScreenCaptureIntent = null;
+                DevSpy_Conts.mScreenCaptureIntent = null;
                 return;
             }
-            this.mScreenCaptureIntent = intent;
+            DevSpy_Conts.hasPermissions = true;
+            DevSpy_Conts.mScreenCaptureIntent = intent;
             intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, resultCode);
             this.mScreenCaptureResultCode = resultCode;
             doRecord();
@@ -281,7 +284,7 @@ public class Video_RecorderFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
-        intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
+        intent.putExtra("android.intent.extra.INTENT", DevSpy_Conts.mScreenCaptureIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             getActivity().startForegroundService(intent);

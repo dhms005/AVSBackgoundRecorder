@@ -199,6 +199,20 @@ public class HBService extends Service implements HBRecorderListener {
         if (view != null) {
             this.mWindowManager.removeViewImmediate(view);
         }
+        try {
+            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mLayout);
+//            windowManager.removeView(mViewRoot);
+            // invalidate the view
+//            surfaceView.invalidate();
+            mLayout.invalidate();
+            // remove all views
+//            ((ViewGroup) surfaceView.getParent()).removeAllViews();
+            ((ViewGroup) mLayout.getParent()).removeAllViews();
+            // the above steps are necessary when you are adding and removing
+            // the view simultaneously, it might give some exceptions
+        } catch (Exception e) {
+            Log.d("CCTVRecorderFragment12", e.toString());
+        }
     }
 
 

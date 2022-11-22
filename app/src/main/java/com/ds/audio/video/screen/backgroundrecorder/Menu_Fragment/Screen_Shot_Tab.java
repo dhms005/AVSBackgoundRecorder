@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -92,6 +93,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
     int quality;
     DialogQualityBinding qualityBinding;
 
+    private boolean hasPermissions = false;
     private boolean isDrawOverlyAllowed = false;
     private static final int PERMISSION_RECORD_DISPLAY = 3006;
     private Intent mScreenCaptureIntent = null;
@@ -484,10 +486,11 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
         } else if (requestCode == PERMISSION_RECORD_DISPLAY) {
             if (resultCode != -1) {
 //                Utils.showSnackBarNotification(this.iv_record, getString(R.string.recordingPermissionNotGranted), -1);
-                this.mScreenCaptureIntent = null;
+                DevSpy_Conts.mScreenCaptureIntent = null;
                 return;
             }
-            this.mScreenCaptureIntent = intent;
+            DevSpy_Conts.hasPermissions = true;
+            DevSpy_Conts.mScreenCaptureIntent = intent;
             intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, resultCode);
             doRecord();
         } else if (requestCode == 101) {
@@ -515,7 +518,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
 
         Intent intent = new Intent(getActivity(), HBService.class);
         intent.putExtra(Utils.SCREEN_CAPTURE_INTENT_RESULT_CODE, 3006);
-        intent.putExtra("android.intent.extra.INTENT", mScreenCaptureIntent);
+        intent.putExtra("android.intent.extra.INTENT", DevSpy_Conts.mScreenCaptureIntent);
 //        getActivity().startService(intent);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             getActivity().startForegroundService(intent);
@@ -527,12 +530,26 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
     }
 
     public void startRecording() {
-        if (this.isDrawOverlyAllowed) {
-            startActivityForResult(((MediaProjectionManager) getActivity().getSystemService("media_projection")).createScreenCaptureIntent(), PERMISSION_RECORD_DISPLAY);
-            return;
+        if (!DevSpy_Conts.hasPermissions) {
+            if (this.isDrawOverlyAllowed) {
+                startActivityForResult(((MediaProjectionManager) getActivity().getSystemService("media_projection")).createScreenCaptureIntent(), PERMISSION_RECORD_DISPLAY);
+                return;
+            }
+            startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + getActivity().getPackageName())), 101);
+        }else{
+            if (checkSelfPermission("android.permission.RECORD_AUDIO", 22) && checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE", 23)) {
+                DevSpy_Conts.hasPermissions = true;
+                doRecord();
+            }
         }
-        startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + getActivity().getPackageName())), 101);
+    }
 
+    private boolean checkSelfPermission(String permission, int reqCode) {
+        if (ContextCompat.checkSelfPermission(getActivity(), permission) == 0) {
+            return true;
+        }
+        ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, reqCode);
+        return false;
     }
 
     private void checkDrawOverlyPermission() {
