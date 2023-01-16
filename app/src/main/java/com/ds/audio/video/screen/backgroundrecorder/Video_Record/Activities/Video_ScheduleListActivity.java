@@ -34,7 +34,6 @@ public class Video_ScheduleListActivity extends AppCompatActivity {
         setContentView(R.layout.video_schedule_list_activity);
 
         users = Video_Database_Helper.Video_getRows();
-
         recyclerView = (RecyclerView) findViewById(R.id.rvScheduleVideo);
         adapter = new Video_Schedule_ListAdapter(users);
         recyclerView.setHasFixedSize(true);

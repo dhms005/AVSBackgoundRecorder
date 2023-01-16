@@ -3,7 +3,7 @@ package com.github.mylibrary.Notification.Ads;
 public class Constant_ad {
     public static final String AD_URL = "https://play.google.com/store/apps/details?id=com.ffguide.game.firediamonds.dailyfreediamond.guideforfreediamond";
 
-    public static String PRIVACY_POLICY = "https://sites.google.com/view/getapps5454";
+    public static String PRIVACY_POLICY = "https://devspy54.blogspot.com/2022/10/privacy-policy.html";
     public static String RECOMMANDED_DATA = "rec_data" ;
     public static String RECOMMANDED_DATE = "recommanded_date" ;
     public static String APP_DATA = "app_data" ;

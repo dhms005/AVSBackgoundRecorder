@@ -8,7 +8,7 @@ public interface DevSpy_Constant {
 
 
 
-    public static final String PRIVACY_POLICY = "https://sites.google.com/view/getapps5454";
+    public static final String PRIVACY_POLICY = "https://devspy54.blogspot.com/2022/10/privacy-policy.html";
 
     public String APP_CODE = "6TJpbJ";
 

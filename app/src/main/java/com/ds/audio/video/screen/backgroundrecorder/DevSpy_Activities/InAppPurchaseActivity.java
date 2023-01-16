@@ -383,8 +383,7 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                             .setProductId(purchaseID)
                             .setProductType(BillingClient.ProductType.INAPP)
                             .build())).build();
-            billingClient.queryProductDetailsAsync(
-                    queryProductDetailsParams,
+            billingClient.queryProductDetailsAsync(queryProductDetailsParams,
                     new ProductDetailsResponseListener() {
                         public void onProductDetailsResponse(@NonNull BillingResult billingResult,
                                                              @NonNull List<ProductDetails> productDetailsList) {
@@ -400,7 +399,6 @@ public class InAppPurchaseActivity extends AppCompatActivity implements Purchase
                                                         // for a list of offers that are available to the user
                                                         .build()
                                         );
-
                                 BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                                         .setProductDetailsParamsList(productDetailsParamsList)
                                         .build();

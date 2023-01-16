@@ -116,7 +116,7 @@ public class DevSpy_ActivityHomeMenu extends AppCompatActivity implements Naviga
                 }
             }
         });
-        if (SharePrefUtils.getString("AD_NATIVE_PRE_LOAD","").equals("0")){
+        if (SharePrefUtils.getString(Constant_ad.AD_NATIVE_PRE_LOAD,"").equals("0")){
             drawer_premium.setVisibility(View.GONE);
         }else{
             drawer_premium.setVisibility(View.VISIBLE);
