@@ -107,6 +107,53 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
+                                <LinearLayout
+                                    android:id="@+id/lan5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:orientation="vertical"
+                                    android:visibility="visible">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/tv_screenshot_banner"></ImageView>
+
+                                    <TextView
+                                        android:id="@+id/tv_lan5_title_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_weight="1"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center"
+                                        android:marqueeRepeatLimit="marquee_forever"
+                                        android:maxLines="2"
+                                        android:text="@string/app_name"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/tv_lan5_dec_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:fontFamily="@font/poppins_regular"
+                                        android:paddingHorizontal="10dp"
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp"
+                                        android:text="Capture screen to take a clear Screenshot."
+                                        android:textColor="@color/white"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card1"
                                     android:layout_width="match_parent"
@@ -115,6 +162,7 @@
                                     android:layout_marginLeft="@dimen/_10sdp"
                                     android:layout_marginTop="@dimen/_minus30sdp"
                                     android:layout_marginRight="@dimen/_10sdp"
+
                                     app:cardBackgroundColor="@color/cardbg"
                                     app:cardCornerRadius="@dimen/_10sdp"
                                     app:cardElevation="0dp">
@@ -696,9 +744,9 @@
                                     android:id="@+id/startBtn"
                                     android:layout_width="@dimen/_60sdp"
                                     android:layout_height="@dimen/_60sdp"
+                                    android:layout_below="@+id/lan5"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="@dimen/_10sdp"
-
                                     app:cardBackgroundColor="@android:color/transparent"
                                     app:cardCornerRadius="@dimen/_10sdp"
                                     app:cardElevation="0dp">
@@ -1035,7 +1083,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
 
         </RelativeLayout>

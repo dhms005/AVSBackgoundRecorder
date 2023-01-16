@@ -410,7 +410,8 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
                                             Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
                                             startActivity(i);
                                         } else {
-                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
+//                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
+                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_PermissionScreen.class);
                                             startActivity(i);
                                         }
 

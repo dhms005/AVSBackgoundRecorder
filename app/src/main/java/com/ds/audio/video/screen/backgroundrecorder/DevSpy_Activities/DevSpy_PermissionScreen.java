@@ -48,6 +48,7 @@ public class DevSpy_PermissionScreen extends AppCompatActivity {
             public void onClick(View view) {
                 if (tvAccept.getText().toString().equalsIgnoreCase("ACCEPT")) {
                     if (Permission_check(DevSpy_PermissionScreen.this)) {
+                        SharePrefUtils.putBoolean(Constant_ad.FEATURE_SCREEN, true);
                         Intent i = new Intent(DevSpy_PermissionScreen.this, DevSpy_FirstActivity.class);
                         startActivity(i);
                     }
@@ -64,6 +65,7 @@ public class DevSpy_PermissionScreen extends AppCompatActivity {
         String[] PERMISSIONS = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.CAMERA
         };
 
@@ -95,7 +97,7 @@ public class DevSpy_PermissionScreen extends AppCompatActivity {
 //        Log.e("code123", "onActivityResult: app download failed"+requestCode);
         if (requestCode == 2) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    && grantResults[2] == PackageManager.PERMISSION_GRANTED && grantResults[3] == PackageManager.PERMISSION_GRANTED) {
                 tvAccept.setText("SCREEN OVERLAY\n PERMISSION");
             } else {
                 int permissionCount = SharePrefUtils.getInt(Constant_ad.PERMISSION_COUNT, 0) + 1;
@@ -135,6 +137,7 @@ public class DevSpy_PermissionScreen extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (SharePrefUtils.getBoolean(Constant_ad.PERMISSION, false)) {
+            SharePrefUtils.putBoolean(Constant_ad.FEATURE_SCREEN, true);
             Intent i = new Intent(DevSpy_PermissionScreen.this, DevSpy_FirstActivity.class);
             startActivity(i);
         }

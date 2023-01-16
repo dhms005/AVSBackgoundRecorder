@@ -28,7 +28,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class ScreenRecord_ActivityPager extends AppCompatActivity {
     TabLayout tabLayout;
-  ViewPager viewPager;
+    ViewPager viewPager;
     int[] iArr = {R.drawable.cctv};
     private ScreenRecorder_SharedPreHelper sharedPreHelper;
     LinearLayout mNativeBannerAd;
@@ -51,22 +51,22 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
         } else {
             mNativeBanner();
         }
-        ImageView setting=(ImageView) findViewById(R.id.setting);
+        ImageView setting = (ImageView) findViewById(R.id.setting);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DevSpy_Admob_Full_AD_New.getInstance().showInter(ScreenRecord_ActivityPager.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
                     public void callbackCall() {
-                        if (SharePrefUtils.getString(Constant_ad.PATTERN_NUMBER,"").equals("") ){
-                            editor.putBoolean("prefAppLock",false);
+                        if (SharePrefUtils.getString(Constant_ad.PATTERN_NUMBER, "").equals("")) {
+                            editor.putBoolean("prefAppLock", false);
                             editor.commit();
                         }
-                        if (SharePrefUtils.getBoolean(Constant_ad.PATTERN_CONFIRM,false)){
-                            editor.putBoolean("prefChangePattern",true);
+                        if (SharePrefUtils.getBoolean(Constant_ad.PATTERN_CONFIRM, false)) {
+                            editor.putBoolean("prefChangePattern", true);
                             editor.commit();
-                        }else{
-                            editor.putBoolean("prefChangePattern",false);
+                        } else {
+                            editor.putBoolean("prefChangePattern", false);
                             editor.commit();
                         }
                         Intent intent = new Intent(ScreenRecord_ActivityPager.this, ScreenRecorder_SettingsActivity.class);
@@ -76,7 +76,7 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
             }
         });
 
-        ImageView back=(ImageView) findViewById(R.id.back);
+        ImageView back = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,10 +140,8 @@ public class ScreenRecord_ActivityPager extends AppCompatActivity {
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(iArr[0]);
-     //   tabLayout.getTabAt(1).setIcon(iArr[1]);
+        //   tabLayout.getTabAt(1).setIcon(iArr[1]);
     }
-
-
 
 
     @Override
