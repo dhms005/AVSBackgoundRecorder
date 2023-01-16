@@ -36,6 +36,7 @@ import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingControlCaptureService;
+import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingSSCapService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.GetIntentForImage;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.EditImageActivity;
@@ -125,7 +126,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
 
         prefCheck();
         clicks();
-        setStartStopButton();
+//        setStartStopButton();
         this.isFromService = context.getIntent().getBooleanExtra("isFromService", false);
         Glide.with((FragmentActivity) context).load(Integer.valueOf(R.drawable.untitled)).into(this.binding.image);
         mNativeAdNew();
@@ -417,8 +418,9 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
     }
 
     public void setStartStopButton() {
+        Log.e("#DEBUG", "setStartStopButton: "+AppPref.getShowButton(getActivity()) );
         if (isMyServiceRunning(FloatingControlCaptureService.class)) {
-
+            Log.e("#DEBUG", "setStartStopButton: inside" );
             this.binding.txtStart.setText(getString(R.string.end_capture));
             this.binding.linStart.setBackground(context.getDrawable(R.drawable.stop_service));
             this.binding.imgStart.setImageResource(R.drawable.ss_btn_off);
@@ -428,6 +430,7 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
             this.binding.frmDisable.setVisibility(View.VISIBLE);
             return;
         }
+        Log.e("#DEBUG", "setStartStopButton: outside " );
         this.binding.txtStart.setText(getString(R.string.start_capture));
         this.binding.linStart.setBackground(context.getDrawable(R.drawable.start_service));
         this.binding.imgStart.setImageResource(R.drawable.ss_btn_on);

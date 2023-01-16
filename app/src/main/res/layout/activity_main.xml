@@ -286,7 +286,7 @@
                                                         android:layout_width="@dimen/_30sdp"
                                                         android:layout_height="@dimen/_30sdp"
                                                         android:layout_gravity="center_vertical"
-                                                        android:src="@drawable/switch_on" />
+                                                        android:src="@drawable/switch_off" />
                                                 </LinearLayout>
                                             </RelativeLayout>
 
@@ -755,14 +755,14 @@
                                         android:id="@+id/linStart"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/start_service">
+                                        android:background="@drawable/stop_service">
 
                                         <ImageView
                                             android:id="@+id/imgStart"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:padding="@dimen/_7sdp"
-                                            android:src="@drawable/ss_btn_on" />
+                                            android:src="@drawable/ss_btn_off" />
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
                             </RelativeLayout>

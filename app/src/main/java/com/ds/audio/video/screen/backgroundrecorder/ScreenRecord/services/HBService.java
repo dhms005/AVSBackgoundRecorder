@@ -38,6 +38,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services.Audio_Recorder_Service;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.Video_Record_Background_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.NotificationHelper;
@@ -87,6 +88,8 @@ public class HBService extends Service implements HBRecorderListener {
     public TextView mTvCountdown;
     Uri mUri;
     public View mViewRoot;
+    View countDownView;
+    View watermarkView;
     public View mWarermarkLayout;
     public WindowManager mWindowManager;
     WindowManager.LayoutParams paramCountdown;
@@ -200,16 +203,19 @@ public class HBService extends Service implements HBRecorderListener {
             this.mWindowManager.removeViewImmediate(view);
         }
         try {
+//            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(countDownView);
+            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mWarermarkLayout);
             ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mLayout);
-//            windowManager.removeView(mViewRoot);
-            // invalidate the view
-//            surfaceView.invalidate();
+//            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(watermarkView);
+//            countDownView.invalidate();
+//            mViewRoot.invalidate();
+//            watermarkView.invalidate();
+            mWarermarkLayout.invalidate();
             mLayout.invalidate();
-            // remove all views
-//            ((ViewGroup) surfaceView.getParent()).removeAllViews();
+//            ((ViewGroup) countDownView.getParent()).removeAllViews();
+            ((ViewGroup) mWarermarkLayout.getParent()).removeAllViews();
             ((ViewGroup) mLayout.getParent()).removeAllViews();
-            // the above steps are necessary when you are adding and removing
-            // the view simultaneously, it might give some exceptions
+//            ((ViewGroup) watermarkView.getParent()).removeAllViews();
         } catch (Exception e) {
             Log.d("CCTVRecorderFragment12", e.toString());
         }
@@ -241,8 +247,8 @@ public class HBService extends Service implements HBRecorderListener {
 
     private void initializeViews() {
         this.mViewRoot = LayoutInflater.from(this).inflate(R.layout.screenrecorder_recording, (ViewGroup) null);
-        View countDownView = LayoutInflater.from(this).inflate(R.layout.screenrecorder_countdown, (ViewGroup) null);
-        View watermarkView = LayoutInflater.from(this).inflate(R.layout.screenrecorder_watermark, (ViewGroup) null);
+        countDownView = LayoutInflater.from(this).inflate(R.layout.screenrecorder_countdown, (ViewGroup) null);
+        watermarkView = LayoutInflater.from(this).inflate(R.layout.screenrecorder_watermark, (ViewGroup) null);
         this.paramViewRoot.gravity = 8388627;
         this.paramViewRoot.x = 0;
         this.paramViewRoot.y = 0;

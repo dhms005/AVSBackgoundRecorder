@@ -1,5 +1,7 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services;
 
+import static com.unity3d.services.core.properties.ClientProperties.getActivity;
+
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -36,6 +38,7 @@ import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Ta
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.ScreenShotActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.ScreenShot_Video_FileHelper;
+import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
 import com.google.android.material.badge.BadgeDrawable;
 import com.hbisoft.hbrecorder.Const;
 import com.hbisoft.hbrecorder.HBRecorder;
@@ -227,7 +230,12 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
                 return false;
             }
         });
-        addBubbleView();
+
+        Log.e("#DEBUG", "onCreate: " + AppPref.getShowButton(this));
+        if (AppPref.getShowButton(this)) {
+            addBubbleView();
+        }
+
         this.handler.postDelayed(this.runnable, 3000);
         registerReceiver(this.receiverCapture, new IntentFilter(Const.ACTION_SCREEN_SHOT));
     }
@@ -300,7 +308,9 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
 
 
     public void onDestroy() {
-        removeBubbleView();
+        if (AppPref.getShowButton(this)) {
+            removeBubbleView();
+        }
         unregisterReceiver(this.receiverCapture);
         WindowManager windowManager2 = this.windowManager;
         if (windowManager2 != null) {
@@ -314,7 +324,7 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
 //        if (Screen_Shot_Tab.)
         if (Screen_Shot_Tab.getInstance() != null) {
 
-            Log.e("@@@@","Null getting");
+            Log.e("@@@@", "Null getting");
             Screen_Shot_Tab.getInstance().setStartStopButton();
         }
 

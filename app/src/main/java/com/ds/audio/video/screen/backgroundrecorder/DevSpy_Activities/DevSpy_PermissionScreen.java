@@ -55,7 +55,6 @@ public class DevSpy_PermissionScreen extends AppCompatActivity {
                 } else if (tvAccept.getText().toString().equalsIgnoreCase("SCREEN OVERLAY\n PERMISSION")) {
                     onViewClicked();
                 }
-
             }
         });
     }

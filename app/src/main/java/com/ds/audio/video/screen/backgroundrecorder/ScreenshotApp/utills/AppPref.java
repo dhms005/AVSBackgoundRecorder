@@ -142,7 +142,7 @@ public class AppPref {
     }
 
     public static boolean getShowButton(Context context) {
-        return context.getApplicationContext().getSharedPreferences(PREF_NAME, 0).getBoolean(FLOATING_BUTTON, true);
+        return context.getApplicationContext().getSharedPreferences(PREF_NAME, 0).getBoolean(FLOATING_BUTTON, false);
     }
 
     public static void setShowButton(Context context, boolean z) {
