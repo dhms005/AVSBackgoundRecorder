@@ -12,6 +12,7 @@
   <androidx.core.widget.NestedScrollView
       android:layout_width="match_parent"
       android:fillViewport="true"
+      android:layout_above="@id/fl_ad"
       android:layout_height="match_parent">
 
       <LinearLayout
@@ -239,6 +240,21 @@
                       android:visibility="gone" />
               </LinearLayout>
           </androidx.cardview.widget.CardView>
+
+          <TextView
+              android:id="@+id/tv_lan5_dec_text"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/_10sdp"
+              android:layout_marginLeft="@dimen/_10sdp"
+              android:layout_marginRight="@dimen/_10sdp"
+              android:fontFamily="@font/poppins_regular"
+              android:paddingHorizontal="10dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:text="AVS Background Recorder is a silent camera app which perform Automatic Recording Audio/Videos/Screen in the background even screen is off."
+              android:textColor="@color/white"
+              android:textSize="16dp" />
 
           <LinearLayout
               android:id="@+id/ll_rec_list"

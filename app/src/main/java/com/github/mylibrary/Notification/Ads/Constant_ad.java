@@ -140,6 +140,9 @@ public class Constant_ad {
     public static String FEATURE_SCREEN = "feature_screen";
     public static String PERMISSION = "PERMISSION";
 
+    public static String NATIVE_BUTTON = "native_btn";
+    public static String START_NOTIFICATION = "start_noty";
+    public static String ALERTNATE_AD = "alternate_ads";
 
 }
 

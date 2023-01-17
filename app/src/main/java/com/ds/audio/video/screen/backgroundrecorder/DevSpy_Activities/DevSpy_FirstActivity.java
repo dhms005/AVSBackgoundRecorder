@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -339,7 +340,8 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                             SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
                                         } else {
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            mNativeAdNew();
+                                            Log.e("from","in-app-call");
+//                                            mNativeAdNew();
                                             if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
                                                 Call_banner();
                                             } else {
@@ -369,7 +371,8 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                             SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
                                         }else {
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            mNativeAdNew();
+                                            Log.e("from","in-app-call");
+//                                            mNativeAdNew();
                                             if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
                                                 Call_banner();
                                             } else {
@@ -429,6 +432,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
 
             @Override
             public void onBillingServiceDisconnected() {
+                Log.e("from","error");
 //                Toast.makeText(CY_M_FirstActivity.this, "You are disconnect from billing server", Toast.LENGTH_SHORT).show();
             }
         });
@@ -908,6 +912,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
+            Log.e("from","resume");
             mNativeAdNew();
         }
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
@@ -1252,6 +1257,8 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                 findViewById(R.id.Admob_Native_Frame_two).setBackground(getResources().getDrawable(R.drawable.z_ad_border));
             }
         }
+
+        Log.e("from","method");
 
         if (SharePrefUtils.getString(Constant_ad.MEDIATION, "0").equals("0")) {
             if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {

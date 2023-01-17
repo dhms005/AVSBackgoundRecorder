@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DevSpy_Utility extends AppCompatActivity {
 
-    public static NativeAd _nativeAdBig, _nativeAdSmall, _nativeBanner;
+    public static NativeAd _nativeAdBig, _nativeAdSmall, _nativeBanner,_nativeAdBig400;
     public static Dialog dialog;
     private Context context;
     public static DevSpy_OnTaskCompleted listener;

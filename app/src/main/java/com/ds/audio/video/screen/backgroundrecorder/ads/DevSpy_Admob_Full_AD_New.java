@@ -86,6 +86,8 @@ public class DevSpy_Admob_Full_AD_New implements androidx.lifecycle.LifecycleObs
     private MaxInterstitialAd interstitialAppLovinAd;
     private int retryAttempt;
 
+    boolean isInterstitialAdLoad = false;
+
 
     public static DevSpy_Admob_Full_AD_New getInstance() {
         if (mInstance == null) {
@@ -747,58 +749,120 @@ public class DevSpy_Admob_Full_AD_New implements androidx.lifecycle.LifecycleObs
         int position1 = SharePrefUtils.getInt(Constant_ad.POSITION1, 0);
         int position2 = SharePrefUtils.getInt(Constant_ad.POSITION2, 0);
         int position3 = SharePrefUtils.getInt(Constant_ad.POSITION3, 0);
-
-        if (position1 == 0) {
-            if (interstitialOne != null) {
-                interstitialOne.show(context);
-            } else if (interstitialTwo != null) {
-                interstitialTwo.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                loadInterOne(context);
-                loadInterTwo(context);
-                loadAppLovinOne(context);
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
-                    if (myCallback != null) {
-                        myCallback.callbackCall();
-                        myCallback = null;
+        String alternative_ad = SharePrefUtils.getString(Constant_ad.ALERTNATE_AD, "0");
+        if (alternative_ad.equals("0")) {
+            if (position1 == 0) {
+                if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
                     }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    loadInterOne(context);
+                    loadInterTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            } else {
+                if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
+                    loadOpenAdOne(context);
+                    loadOpenAdTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
+                        loadInterOne(context);
+                        loadInterTwo(context);
+                    }
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
                 }
             }
         } else {
-            if (appOpenAdOne != null) {
-                appOpenAdOne.show(context);
-            } else if (appOpenAdTwo != null) {
-                appOpenAdTwo.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                loadOpenAdOne(context);
-                loadOpenAdTwo(context);
-                loadAppLovinOne(context);
-                if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
-                    loadInterOne(context);
-                    loadInterTwo(context);
-                }
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
-                    if (myCallback != null) {
-                        myCallback.callbackCall();
-                        myCallback = null;
+            isInterstitialAdLoad = !isInterstitialAdLoad;
+
+
+            if (isInterstitialAdLoad) {
+
+                Log.e("#DEBUG", "show isInterstitialAdLoad");
+                if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
                     }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    loadInterOne(context);
+                    loadInterTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            } else {
+
+                Log.e("#DEBUG", "show open ad");
+                if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
+                    loadOpenAdOne(context);
+                    loadOpenAdTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
+                        loadInterOne(context);
+                        loadInterTwo(context);
+                    }
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
                 }
             }
         }
+
     }
 
     public void _showInterAdDialog1(Activity context, MyCallback _myCallback) {
@@ -808,45 +872,81 @@ public class DevSpy_Admob_Full_AD_New implements androidx.lifecycle.LifecycleObs
         int position1 = SharePrefUtils.getInt(Constant_ad.POSITION1, 0);
         int position2 = SharePrefUtils.getInt(Constant_ad.POSITION2, 0);
         int position3 = SharePrefUtils.getInt(Constant_ad.POSITION3, 0);
+        String alternative_ad = SharePrefUtils.getString(Constant_ad.ALERTNATE_AD, "0");
 
-        if (position1 == 0) {
-            if (interstitialOne != null) {
-                interstitialOne.show(context);
-            } else if (interstitialTwo != null) {
-                interstitialTwo.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
-                    if (myCallback != null) {
-                        myCallback.callbackCall();
-                        myCallback = null;
+        if (alternative_ad.equals("0")) {
+            if (position1 == 0) {
+                if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
                     }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            } else {
+                if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
                 }
             }
-        } else {
-            if (appOpenAdOne != null) {
-                appOpenAdOne.show(context);
-            } else if (appOpenAdTwo != null) {
-                appOpenAdTwo.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+        }else {
+            isInterstitialAdLoad = !isInterstitialAdLoad;
+            if (isInterstitialAdLoad) {
+                if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
                     if (myCallback != null) {
                         myCallback.callbackCall();
                         myCallback = null;
                     }
+                }
+            } else {
+                if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    if (myCallback != null) {
+                        myCallback.callbackCall();
+                        myCallback = null;
+                    }
                 }
             }
         }
@@ -860,44 +960,105 @@ public class DevSpy_Admob_Full_AD_New implements androidx.lifecycle.LifecycleObs
         int position2 = SharePrefUtils.getInt(Constant_ad.POSITION2, 0);
         int position3 = SharePrefUtils.getInt(Constant_ad.POSITION3, 0);
 
-        if (position2 == 0) {
-            if (interstitialTwo != null) {
-                interstitialTwo.show(context);
-            } else if (interstitialOne != null) {
-                interstitialOne.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
-                    if (myCallback != null) {
-                        myCallback.callbackCall();
-                        myCallback = null;
+        String alternative_ad = SharePrefUtils.getString(Constant_ad.ALERTNATE_AD, "0");
+
+        if (alternative_ad.equals("0")) {
+
+            if (position2 == 0) {
+                if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
                     }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            } else {
+                if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
                 }
             }
-        } else {
-            if (appOpenAdTwo != null) {
-                appOpenAdTwo.show(context);
-            } else if (appOpenAdOne != null) {
-                appOpenAdOne.show(context);
-            } else if (interstitialAppLovinAd != null) {
-                if (interstitialAppLovinAd.isReady()) {
-                    interstitialAppLovinAd.showAd();
-                }
-            } else {
-                if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
-                    if (myCallback != null) {
-                        myCallback.callbackCall();
-                        myCallback = null;
+        }
+        else {
+            isInterstitialAdLoad = !isInterstitialAdLoad;
+            if (isInterstitialAdLoad) {
+                Log.e("#DEBUG", "show isInterstitialAdLoad");
+                if (interstitialOne != null) {
+                    interstitialOne.show(context);
+                } else if (interstitialTwo != null) {
+                    interstitialTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
                     }
                 } else {
-                    Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
-                    context.startActivity(intent);
+                    loadInterOne(context);
+                    loadInterTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            } else {
+                Log.e("#DEBUG", "show open ad");
+                if (appOpenAdOne != null) {
+                    appOpenAdOne.show(context);
+                } else if (appOpenAdTwo != null) {
+                    appOpenAdTwo.show(context);
+                } else if (interstitialAppLovinAd != null) {
+                    if (interstitialAppLovinAd.isReady()) {
+                        interstitialAppLovinAd.showAd();
+                    }
+                } else {
+                    loadOpenAdOne(context);
+                    loadOpenAdTwo(context);
+                    loadAppLovinOne(context);
+                    if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
+                        loadInterOne(context);
+                        loadInterTwo(context);
+                    }
+                    if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+                        if (myCallback != null) {
+                            myCallback.callbackCall();
+                            myCallback = null;
+                        }
+                    } else {
+                        Intent intent = new Intent(context, DevSpy_QurekaAd_Activity.class);
+                        context.startActivity(intent);
+                    }
                 }
             }
         }

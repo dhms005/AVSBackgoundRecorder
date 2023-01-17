@@ -421,9 +421,9 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
         Log.e("#DEBUG", "setStartStopButton: "+AppPref.getShowButton(getActivity()) );
         if (isMyServiceRunning(FloatingControlCaptureService.class)) {
             Log.e("#DEBUG", "setStartStopButton: inside" );
-            this.binding.txtStart.setText(getString(R.string.end_capture));
-            this.binding.linStart.setBackground(context.getDrawable(R.drawable.stop_service));
-            this.binding.imgStart.setImageResource(R.drawable.ss_btn_off);
+            this.binding.txtStart.setText(getString(R.string.start_capture));
+            this.binding.linStart.setBackground(context.getDrawable(R.drawable.start_service));
+            this.binding.imgStart.setImageResource(R.drawable.ss_btn_on);
 
             this.binding.linSound.setEnabled(false);
             this.binding.linFloatingView.setEnabled(false);
@@ -431,9 +431,9 @@ public class Screen_Shot_Tab extends Fragment implements View.OnClickListener {
             return;
         }
         Log.e("#DEBUG", "setStartStopButton: outside " );
-        this.binding.txtStart.setText(getString(R.string.start_capture));
-        this.binding.linStart.setBackground(context.getDrawable(R.drawable.start_service));
-        this.binding.imgStart.setImageResource(R.drawable.ss_btn_on);
+        this.binding.txtStart.setText(getString(R.string.end_capture));
+        this.binding.linStart.setBackground(context.getDrawable(R.drawable.stop_service));
+        this.binding.imgStart.setImageResource(R.drawable.ss_btn_off);
         this.binding.linSound.setEnabled(true);
         this.binding.linFloatingView.setEnabled(true);
         this.binding.frmDisable.setVisibility(View.GONE);

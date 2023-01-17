@@ -3,12 +3,17 @@ package com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities;
 import static com.github.mylibrary.Notification.Push.FCMActivity.isNetworkAvailable;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -24,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -347,6 +353,17 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putString(Constant_ad.AD_NATIVE_PRE_LOAD, ad_ids.getString("native_pre_load"));
             SharePrefUtils.putString(Constant_ad.AD_MULTIPLE_START, ad_ids.getString("multiple_start"));
 
+            SharePrefUtils.putString(Constant_ad.NATIVE_BUTTON, ad_ids.getString("native_btn"));
+            SharePrefUtils.putString(Constant_ad.START_NOTIFICATION, ad_ids.getString("start_noty"));
+            SharePrefUtils.putString(Constant_ad.ALERTNATE_AD, ad_ids.getString("alternate_ads"));
+            SharePrefUtils.putString(Constant_ad.NATIVE_COLOR, "#" + ad_ids.getString("native_color"));
+
+
+
+            if (SharePrefUtils.getString(Constant_ad.START_NOTIFICATION, "0").equals("1")) {
+                fireNotification();
+            }
+
             SharePrefUtils.putString(Constant_ad.AD_STATIC_AD_TITLE, "");
             SharePrefUtils.putString(Constant_ad.AD_STATIC_AD_BODY, "");
             SharePrefUtils.putString(Constant_ad.AD_STATIC_AD_ICON, "");
@@ -364,6 +381,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
 //            DIGICustom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
             custom_nativeAd_admob.showBigNativeAds(this, findViewById(R.id.Admob_Native_Frame_two));
             custom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
+            custom_nativeAd_admob.showNative400DpAds(this, findViewById(R.id.Admob_Native_Frame_two));
 
 
             if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 0 &&
@@ -450,6 +468,45 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+    }
+
+
+    public void fireNotification() {
+        NotificationManager mNotificationManager;
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
+        Intent ii = new Intent(getApplicationContext(), DevSpy_FirstActivity.class);
+        PendingIntent pendingIntent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            pendingIntent = PendingIntent.getActivity(DevSpy_Master_SplashScreen.this, 0, ii, PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            pendingIntent = PendingIntent.getActivity(DevSpy_Master_SplashScreen.this, 0, ii, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
+
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.bigText(getResources().getString(R.string.app_name));
+        bigText.setBigContentTitle(getResources().getString(R.string.app_name));
+//        bigText.setSummaryText("Text in detail");
+
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.app_icon);
+//        mBuilder.setContentTitle("Your Title");
+//        mBuilder.setContentText("Your text");
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setStyle(bigText);
+        mBuilder.setOngoing(true);
+        mBuilder.setAutoCancel(true);
+
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // === Removed some obsoletes
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "Your_channel_id";
+            NotificationChannel channel = new NotificationChannel(channelId, "Channel human readable title", NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+            mBuilder.setChannelId(channelId);
+        }
+        mNotificationManager.notify(0, mBuilder.build());
     }
 
     public void GetPublicIP() {

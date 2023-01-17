@@ -33,12 +33,12 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/_160sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/top_text" />
+                    android:src="@drawable/tv_start_screen_banner_1" />
 
 
                 <LinearLayout
@@ -120,6 +120,21 @@
                             android:paddingLeft="3dp"
                             android:paddingRight="3dp"
                             android:src="@drawable/btn_get_start" />
+
+                        <TextView
+                            android:id="@+id/tv_lan5_dec_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:paddingHorizontal="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="AVS Background Recorder allow you to record Audio/Videos/Screen in background mode or once the phone is locked."
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
 

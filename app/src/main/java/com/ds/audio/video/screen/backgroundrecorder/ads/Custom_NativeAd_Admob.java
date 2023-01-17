@@ -50,80 +50,88 @@ public class Custom_NativeAd_Admob {
     public void showBigNativeAds(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             String admobnative = SharePrefUtils.getString(Constant_ad.GOOGLE_NATIVE, Custom_Ad_Key.KEY_ADMOB_NATIVE);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-            builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    Log.e("AAAAAAAAAAAA", "nativeAd-->   " + nativeAd);
-                    DevSpy_Utility._nativeAdBig = nativeAd;
-                    inFlat_admobNativeAds(nativeAd, viewGroup, activity);
-                }
-            });
 
-            AdLoader adLoader = builder.withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError loadAdError) {
-
-                    Log.e("AAAAAAAAAAAA", "loadAdError-->   " + loadAdError);
-                    AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-                    builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+            AdLoader adLoader = new AdLoader.Builder(activity, admobnative)
+                    .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
-                        public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+                        public void onNativeAdLoaded(NativeAd nativeAd) {
+                            // Show the ad.
+//                        Log.e("call ads", "call loaded");
+//                        Log.e("call ads","call click "+nativeAd.getHeadline());
                             DevSpy_Utility._nativeAdBig = nativeAd;
                             inFlat_admobNativeAds(nativeAd, viewGroup, activity);
                         }
-                    });
-                    AdLoader adLoader = builder.withAdListener(new AdListener() {
+                    })
+                    .withAdListener(new AdListener() {
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        public void onAdFailedToLoad(LoadAdError adError) {
+                            // Handle the failure by logging, altering the UI, and so on.
                             if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
-                                setQurekaNativeBigAds(activity, viewGroup);
+
+                                if (!activity.isDestroyed()) {
+                                    setQurekaNativeBigAds(activity, viewGroup);
+                                }
+
                             }
                         }
-                    }).build();
-                    adLoader.loadAd(new AdRequest.Builder().build());
 
-                }
-            }).build();
+                        @Override
+                        public void onAdClicked() {
+                            super.onAdClicked();
+//                        Log.e("call ads", "call click");
+
+                            if (!activity.isDestroyed()) {
+                                showBigNativeAds(activity, viewGroup);
+
+                            }
+                        }
+                    })
+                    .build();
             adLoader.loadAd(new AdRequest.Builder().build());
+
         }
     }
 
     public void showNativeSmallAds(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             String admobnative = SharePrefUtils.getString(Constant_ad.GOOGLE_NATIVE, Custom_Ad_Key.KEY_ADMOB_NATIVE);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-            builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    DevSpy_Utility._nativeAdSmall = nativeAd;
-                    inFlat_admobNativeSmallAds(nativeAd, viewGroup, activity);
-                }
-            });
-            AdLoader adLoader = builder.withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError loadAdError) {
-                    AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-                    builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+
+            AdLoader adLoader = new AdLoader.Builder(activity, admobnative)
+                    .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
-                        public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+                        public void onNativeAdLoaded(NativeAd nativeAd) {
+                            // Show the ad.
+//                        Log.e("call ads", "call loaded");
+//                        Log.e("call ads","call click "+nativeAd.getHeadline());
                             DevSpy_Utility._nativeAdSmall = nativeAd;
                             inFlat_admobNativeSmallAds(nativeAd, viewGroup, activity);
                         }
-
-                    });
-                    AdLoader adLoader = builder.withAdListener(new AdListener() {
+                    })
+                    .withAdListener(new AdListener() {
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        public void onAdFailedToLoad(LoadAdError adError) {
+                            // Handle the failure by logging, altering the UI, and so on.
                             if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
-                                setQurekaNativeSmallAds(activity, viewGroup);
+
+                                if (!activity.isDestroyed()) {
+                                    setQurekaNativeSmallAds(activity, viewGroup);
+                                }
+
                             }
                         }
-                    }).build();
-                    adLoader.loadAd(new AdRequest.Builder().build());
 
-                }
-            }).build();
+                        @Override
+                        public void onAdClicked() {
+                            super.onAdClicked();
+//                        Log.e("call ads", "call click");
+
+                            if (!activity.isDestroyed()) {
+                                showNativeSmallAds(activity, viewGroup);
+
+                            }
+                        }
+                    })
+                    .build();
             adLoader.loadAd(new AdRequest.Builder().build());
         }
     }
@@ -131,119 +139,137 @@ public class Custom_NativeAd_Admob {
     public void showNativeBannerAd(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             String admobnative = SharePrefUtils.getString(Constant_ad.GOOGLE_NATIVE_BANNER, Custom_Ad_Key.KEY_ADMOB_NATIVE_BANNER);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-            builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    Log.e("CUSTOMER", "" + nativeAd);
-                    DevSpy_Utility._nativeBanner = nativeAd;
-                    inFlat_admobNativeBannerAds(nativeAd, viewGroup, activity);
-                }
-            });
-            AdLoader adLoader = builder.withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError loadAdError) {
-                    Log.e("CUSTOMER", "" + loadAdError.getMessage());
-                    AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-                    builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+
+            AdLoader adLoader = new AdLoader.Builder(activity, admobnative)
+                    .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
-                        public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+                        public void onNativeAdLoaded(NativeAd nativeAd) {
+                            // Show the ad.
+//                        Log.e("call ads", "call loaded");
+//                        Log.e("call ads","call click "+nativeAd.getHeadline());
                             DevSpy_Utility._nativeBanner = nativeAd;
                             inFlat_admobNativeBannerAds(nativeAd, viewGroup, activity);
                         }
-
-                    });
-                    AdLoader adLoader = builder.withAdListener(new AdListener() {
+                    })
+                    .withAdListener(new AdListener() {
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        public void onAdFailedToLoad(LoadAdError adError) {
+                            // Handle the failure by logging, altering the UI, and so on.
                             if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
-                                setQurekaNativeBannerAds(activity, viewGroup);
+
+                                if (!activity.isDestroyed()) {
+                                    setQurekaNativeBannerAds(activity, viewGroup);
+                                }
+
                             }
                         }
-                    }).build();
-                    adLoader.loadAd(new AdRequest.Builder().build());
 
-                }
-            }).build();
+                        @Override
+                        public void onAdClicked() {
+                            super.onAdClicked();
+//                        Log.e("call ads", "call click");
+
+                            if (!activity.isDestroyed()) {
+                                showNativeBannerAd(activity, viewGroup);
+
+                            }
+                        }
+                    })
+                    .build();
             adLoader.loadAd(new AdRequest.Builder().build());
+
         }
     }
 
     public void showNative100DpAds(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             String admobnative = SharePrefUtils.getString(Constant_ad.GOOGLE_NATIVE, Custom_Ad_Key.KEY_ADMOB_NATIVE);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-            builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    DevSpy_Utility._nativeAdBig = nativeAd;
-                    inFlat_admobNative100DPAds(nativeAd, viewGroup, activity);
-                }
-            });
 
-            AdLoader adLoader = builder.withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError loadAdError) {
-                    AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-                    builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+            AdLoader adLoader = new AdLoader.Builder(activity, admobnative)
+                    .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
-                        public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+                        public void onNativeAdLoaded(NativeAd nativeAd) {
+                            // Show the ad.
+//                        Log.e("call ads", "call loaded");
+//                        Log.e("call ads","call click "+nativeAd.getHeadline());
                             DevSpy_Utility._nativeAdBig = nativeAd;
                             inFlat_admobNative100DPAds(nativeAd, viewGroup, activity);
                         }
-                    });
-                    AdLoader adLoader = builder.withAdListener(new AdListener() {
+                    })
+                    .withAdListener(new AdListener() {
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
-//                        if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
-//                            setQurekaNativeBigAds(activity, viewGroup);
-//                        }
-                        }
-                    }).build();
-                    adLoader.loadAd(new AdRequest.Builder().build());
+                        public void onAdFailedToLoad(LoadAdError adError) {
+                            // Handle the failure by logging, altering the UI, and so on.
+                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
 
-                }
-            }).build();
+//                                if (!activity.isDestroyed()) {
+//                                    setQurekaNativeBannerAds(activity, viewGroup);
+//                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onAdClicked() {
+                            super.onAdClicked();
+//                        Log.e("call ads", "call click");
+
+                            if (!activity.isDestroyed()) {
+                                showNative100DpAds(activity, viewGroup);
+
+                            }
+                        }
+                    })
+                    .build();
             adLoader.loadAd(new AdRequest.Builder().build());
+
+
         }
     }
 
     public void showNative400DpAds(Activity activity, final ViewGroup viewGroup) {
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             String admobnative = SharePrefUtils.getString(Constant_ad.GOOGLE_NATIVE, Custom_Ad_Key.KEY_ADMOB_NATIVE);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-            builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                    DevSpy_Utility._nativeAdBig = nativeAd;
-                    inFlat_admobNative400DPAds(nativeAd, viewGroup, activity);
-                }
-            });
 
-            AdLoader adLoader = builder.withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError loadAdError) {
-                    AdLoader.Builder builder = new AdLoader.Builder(activity, admobnative);
-                    builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+            AdLoader adLoader = new AdLoader.Builder(activity, admobnative)
+                    .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
-                        public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                            DevSpy_Utility._nativeAdBig = nativeAd;
+                        public void onNativeAdLoaded(NativeAd nativeAd) {
+                            // Show the ad.
+//                        Log.e("call ads", "call loaded");
+//                        Log.e("call ads","call click "+nativeAd.getHeadline());
+                            DevSpy_Utility._nativeAdBig400 = nativeAd;
                             inFlat_admobNative400DPAds(nativeAd, viewGroup, activity);
                         }
-                    });
-                    AdLoader adLoader = builder.withAdListener(new AdListener() {
+                    })
+                    .withAdListener(new AdListener() {
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        public void onAdFailedToLoad(LoadAdError adError) {
+                            // Handle the failure by logging, altering the UI, and so on.
                             if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
-                                setQurekaNativeBig400DPAds(activity, viewGroup);
+
+                                if (!activity.isDestroyed()) {
+                                    setQurekaNativeBig400DPAds(activity, viewGroup);
+                                }
+
                             }
                         }
-                    }).build();
-                    adLoader.loadAd(new AdRequest.Builder().build());
 
-                }
-            }).build();
+                        @Override
+                        public void onAdClicked() {
+                            super.onAdClicked();
+//                        Log.e("call ads", "call click");
+
+                            if (!activity.isDestroyed()) {
+                                showNative400DpAds(activity, viewGroup);
+
+                            }
+                        }
+                    })
+                    .build();
             adLoader.loadAd(new AdRequest.Builder().build());
+
+
         }
     }
 
@@ -784,7 +810,7 @@ public class Custom_NativeAd_Admob {
     }
 
     public void _showCacheNative400DpAd(Activity activity, final ViewGroup viewGroup) {
-        inFlat_admobNative400DPAds(DevSpy_Utility._nativeAdSmall, viewGroup, activity);
+        inFlat_admobNative400DPAds(DevSpy_Utility._nativeAdBig400, viewGroup, activity);
     }
 
 
@@ -808,10 +834,10 @@ public class Custom_NativeAd_Admob {
         if (SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             return null;
         } else {
-            if (DevSpy_Utility._nativeAdBig != null) {
-                return DevSpy_Utility._nativeAdBig;
+            if (DevSpy_Utility._nativeAdBig400 != null) {
+                return DevSpy_Utility._nativeAdBig400;
             } else {
-                return DevSpy_Utility._nativeAdSmall;
+                return null;
             }
         }
     }
