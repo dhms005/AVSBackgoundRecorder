@@ -7,12 +7,12 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.EditImageActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.GalleryActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.activities.ResultViewerActivity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.adapters.DiaryImageData;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 import java.io.File;
 import java.io.FileOutputStream;

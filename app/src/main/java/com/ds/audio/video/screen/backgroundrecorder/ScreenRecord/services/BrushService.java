@@ -24,7 +24,6 @@ import com.raed.drawingview.BrushView;
 import com.raed.drawingview.DrawingView;
 import com.raed.drawingview.brushes.BrushSettings;
 
-
 import java.util.ArrayList;
 
 public class BrushService extends Service implements View.OnTouchListener, View.OnClickListener {

@@ -32,18 +32,17 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
+import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.Utils;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.FloatingControlCaptureService;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services.HBService;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.GetIntentForImage;
-import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.Service.FloatingService;
-
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppConstants;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.BetterActivityResult;
+import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.databinding.ActivityMainBinding;
 import com.ds.audio.video.screen.backgroundrecorder.databinding.DialogFormatBinding;
 import com.ds.audio.video.screen.backgroundrecorder.databinding.DialogPrefixBinding;
@@ -52,9 +51,9 @@ import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Banner_Ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 
-import java.util.List;
-
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;

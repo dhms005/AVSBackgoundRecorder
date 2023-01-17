@@ -37,8 +37,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.internal.view.SupportMenu;
 
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
-import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.FloatingView.FloatingListener;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.FloatingView.FloatingViewManager;
@@ -50,16 +48,18 @@ import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.Constants;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.FileUtills;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.ScreenshotNotificationReceiver;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 @Keep
 public class FloatingService extends Service implements FloatingListener {

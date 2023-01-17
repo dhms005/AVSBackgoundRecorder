@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Adapter.Audio_Schedule_ListAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.R;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.Video_Schedule_ListAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.UserModel;
 import com.ds.audio.video.screen.backgroundrecorder.databasetable.Video_Database_Helper;
 import com.github.mylibrary.Notification.Ads.Constant_ad;

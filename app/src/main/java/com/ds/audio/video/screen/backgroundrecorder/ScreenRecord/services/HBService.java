@@ -38,7 +38,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.Helper.Audio_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Audio_Record.services.Audio_Recorder_Service;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Define.DevSpy_Conts;
-import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.Activities.Video_Record_Background_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers.NotificationHelper;
@@ -203,19 +202,9 @@ public class HBService extends Service implements HBRecorderListener {
             this.mWindowManager.removeViewImmediate(view);
         }
         try {
-//            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(countDownView);
-            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mWarermarkLayout);
             ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mLayout);
-//            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(watermarkView);
-//            countDownView.invalidate();
-//            mViewRoot.invalidate();
-//            watermarkView.invalidate();
-            mWarermarkLayout.invalidate();
             mLayout.invalidate();
-//            ((ViewGroup) countDownView.getParent()).removeAllViews();
-            ((ViewGroup) mWarermarkLayout.getParent()).removeAllViews();
             ((ViewGroup) mLayout.getParent()).removeAllViews();
-//            ((ViewGroup) watermarkView.getParent()).removeAllViews();
         } catch (Exception e) {
             Log.d("CCTVRecorderFragment12", e.toString());
         }

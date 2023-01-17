@@ -1,11 +1,10 @@
 package com.ds.audio.video.screen.backgroundrecorder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
-import com.ds.audio.video.screen.backgroundrecorder.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 

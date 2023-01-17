@@ -2,6 +2,7 @@ package com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.adapters;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.Objects;
 
 public class DiaryImageData implements Parcelable {

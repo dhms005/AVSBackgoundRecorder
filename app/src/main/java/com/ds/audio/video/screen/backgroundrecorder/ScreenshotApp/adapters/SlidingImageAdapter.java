@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.viewpager.widget.PagerAdapter;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.github.chrisbanes.photoview.PhotoView;
+
 import java.io.File;
 import java.util.ArrayList;
 

@@ -1,10 +1,8 @@
 package com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,15 +28,13 @@ import com.android.billingclient.api.ProductDetailsResponseListener;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
-import com.android.billingclient.api.SkuDetailsParams;
-import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
 import com.ds.audio.video.screen.backgroundrecorder.InAppPurchase.utils.BillingClientSetup;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_SharedPref;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.collect.ImmutableList;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class InAppPurchaseActivity extends AppCompatActivity implements PurchasesUpdatedListener {

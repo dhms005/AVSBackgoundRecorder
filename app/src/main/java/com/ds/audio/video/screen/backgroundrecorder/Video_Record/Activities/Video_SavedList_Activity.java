@@ -22,13 +22,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterGrid;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterList;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_FileHelper;
 import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Model.VideoRecordModel;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterList;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Adapter.VideoRecordAdapterGrid;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
-import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Banner_Ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;

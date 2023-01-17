@@ -4,30 +4,28 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/shape_schedule_back.xml" value="0.1185" />
-        <entry key="app/src/main/res/drawable/stop_service.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_devspy_mpermission_screen.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/activity_devspy_mpermission_screen.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_home_menu.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_in_app_purchase.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3312820512820513" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/after_screenshot_capture.xml" value="0.23333333333333334" />
-        <entry key="app/src/main/res/layout/audio_record_tab.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.25" />
         <entry key="app/src/main/res/layout/cy_m_dialog_seekbar.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/devspy_activity_inapp_purchase.xml" value="0.2078125" />
-        <entry key="app/src/main/res/layout/devspy_first_activity.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/devspy_fragment_tools.xml" value="0.33645833333333336" />
-        <entry key="app/src/main/res/layout/devspy_recomended_apps_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/devspy_activity_inapp_purchase.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/devspy_recomended_apps_dialog.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/dialog_quality.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/screenrecord_record_tab.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_countdown.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/screenrecorder_floatbutton_control_capture.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/screenrecorder_option.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_recording.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_black_activity.xml" value="0.21203703703703702" />
-        <entry key="app/src/main/res/layout/video_record_tab.xml" value="0.33645833333333336" />
-        <entry key="app/src/main/res/layout/video_recorder_fragment.xml" value="0.3312820512820513" />
         <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_toolbar_settings.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/z_qureka_layout_3.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/screenrecorder_pref_main.xml" value="0.25052083333333336" />
       </map>

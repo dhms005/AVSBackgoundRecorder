@@ -29,7 +29,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.io.File;

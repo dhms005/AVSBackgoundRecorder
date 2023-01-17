@@ -22,6 +22,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import androidx.core.app.NotificationCompat;
@@ -230,6 +231,14 @@ public class Video_RecorderService extends Service implements SurfaceHolder.Call
             Intent intent2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
             intent2.setData(Uri.fromFile(outputmp4));
             sendBroadcast(intent2);
+        }
+
+        try {
+            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(surfaceView);
+            surfaceView.invalidate();
+            ((ViewGroup) surfaceView.getParent()).removeAllViews();
+        } catch (Exception e) {
+            Log.d("CCTVRecorderFragment", e.toString());
         }
     }
 

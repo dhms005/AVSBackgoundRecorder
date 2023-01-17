@@ -13,14 +13,14 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_SavedList_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
-import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ActivityPager;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_SavedList_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_ScheduleListActivity;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_Setting_Activity;
+import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 

@@ -25,7 +25,6 @@ import android.widget.ProgressBar;
 
 import androidx.exifinterface.media.ExifInterface;
 
-
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.lang.ref.WeakReference;

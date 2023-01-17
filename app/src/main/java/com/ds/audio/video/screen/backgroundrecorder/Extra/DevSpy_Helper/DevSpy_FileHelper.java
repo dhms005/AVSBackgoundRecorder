@@ -12,7 +12,6 @@ import android.os.StatFs;
 import android.provider.MediaStore;
 import android.text.format.Formatter;
 
-
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.io.File;

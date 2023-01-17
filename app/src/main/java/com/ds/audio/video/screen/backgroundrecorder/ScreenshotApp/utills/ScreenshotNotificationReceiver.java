@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.ds.audio.video.screen.backgroundrecorder.Menu_Fragment.Screen_Shot_Tab;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.Service.FloatingService;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_MyApplication;
 
 public class ScreenshotNotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {

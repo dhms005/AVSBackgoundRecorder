@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Model.DevSpy_ItemPower;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 

@@ -3,14 +3,11 @@ package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.helpers;
 import static com.ds.audio.video.screen.backgroundrecorder.Video_Record.Activities.Video_SaveVideoActivity.setToast;
 
 import android.app.Activity;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
-import android.provider.MediaStore;
 import android.text.format.Formatter;
 
 import androidx.core.content.FileProvider;
@@ -19,9 +16,6 @@ import com.ds.audio.video.screen.backgroundrecorder.BuildConfig;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class ScreenShot_Video_FileHelper {
     public static final String ERROR = "ERROR";

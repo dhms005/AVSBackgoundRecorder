@@ -1,7 +1,5 @@
 package com.ds.audio.video.screen.backgroundrecorder.ScreenRecord.services;
 
-import static com.unity3d.services.core.properties.ClientProperties.getActivity;
-
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -319,6 +317,14 @@ public class FloatingControlCaptureService extends Service implements View.OnCli
             if (view != null) {
                 windowManager2.removeView(view2);
             }
+        }
+
+        try {
+            ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mRemoveView);
+            mRemoveView.invalidate();
+            ((ViewGroup) mRemoveView.getParent()).removeAllViews();
+        } catch (Exception e) {
+            Log.d("CCTVRecorderFragment123", e.toString());
         }
 
 //        if (Screen_Shot_Tab.)

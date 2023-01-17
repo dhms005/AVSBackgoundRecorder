@@ -15,7 +15,6 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.applovin.mediation.MaxAd;
@@ -26,8 +25,8 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder;
 import com.bumptech.glide.Glide;
-import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Ad_Key;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;

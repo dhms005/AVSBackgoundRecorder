@@ -12,15 +12,15 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.adapters.AllImageAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.adapters.DiaryImageData;
-import com.ds.audio.video.screen.backgroundrecorder.databinding.ActivityGalleryBinding;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.AppPref;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.BetterActivityResult;
 import com.ds.audio.video.screen.backgroundrecorder.ScreenshotApp.utills.Constants;
+import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.databinding.ActivityGalleryBinding;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.Custom_Banner_Ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.Callable;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

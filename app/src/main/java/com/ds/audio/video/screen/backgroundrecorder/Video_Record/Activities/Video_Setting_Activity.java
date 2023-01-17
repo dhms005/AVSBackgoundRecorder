@@ -33,14 +33,15 @@ import androidx.cardview.widget.CardView;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_FaqActivity;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_PatterLock_Activity;
 import com.ds.audio.video.screen.backgroundrecorder.DevSpy_Activities.DevSpy_PatterLock_FirstScreen;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
-import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
-import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_PrivacyPolicyActivity;
 import com.ds.audio.video.screen.backgroundrecorder.R;
-;
+import com.ds.audio.video.screen.backgroundrecorder.Video_Record.Helper.Video_SharedPreHelper;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
+import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_PrivacyPolicyActivity;
 import com.github.mylibrary.Notification.Ads.Constant_ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.gun0912.tedpermission.PermissionListener;
+
+;
 
 public class Video_Setting_Activity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private Video_SharedPreHelper sharedPreHelper;

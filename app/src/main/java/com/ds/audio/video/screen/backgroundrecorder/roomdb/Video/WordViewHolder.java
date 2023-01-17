@@ -5,7 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
 class WordViewHolder extends RecyclerView.ViewHolder {

@@ -17,7 +17,6 @@ import com.android.billingclient.api.SkuDetails;
 import com.ds.audio.video.screen.backgroundrecorder.InAppPurchase.interfaces.IRecyclerClickListner;
 import com.ds.audio.video.screen.backgroundrecorder.R;
 
-
 import java.util.List;
 
 public class MyProductAdapter extends RecyclerView.Adapter<MyProductAdapter.MyViewHolder> {
