@@ -429,7 +429,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
                                             startActivity(i);
                                         } else {
 //                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
-                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_PermissionScreen.class);
+                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
                                             startActivity(i);
                                         }
 
@@ -454,7 +454,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 } else {
-                    Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
+                    Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
                     startActivity(i);
                     finish();
                 }
