@@ -62,7 +62,7 @@ public class DevSpy_Camere_CameraFinderSelection extends AppCompatActivity {
         });
 
         ImageView qureka_ad = findViewById(R.id.qureka_ad);
-        if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+        if (SharePrefUtils.getString(Constant_ad.QUREKA_BTN, "0").equals("0")) {
             qureka_ad.setVisibility(View.GONE);
         }
         Glide.with(this).load(getResources().getDrawable(R.drawable.qureka_button9)).into(qureka_ad);

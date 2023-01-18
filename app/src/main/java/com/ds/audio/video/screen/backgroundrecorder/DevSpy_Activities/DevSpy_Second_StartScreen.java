@@ -74,7 +74,7 @@ public class DevSpy_Second_StartScreen extends AppCompatActivity {
 
     private void load_qureka() {
         ImageView qureka_ad = findViewById(R.id.qureka_ad);
-        if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+        if (SharePrefUtils.getString(Constant_ad.QUREKA_BTN, "0").equals("0")) {
             qureka_ad.setVisibility(View.GONE);
         }
         Glide.with(this).load(getResources().getDrawable(R.drawable.qureka_button6)).into(qureka_ad);
@@ -91,7 +91,7 @@ public class DevSpy_Second_StartScreen extends AppCompatActivity {
         ImageView img_qureka2 = findViewById(R.id.img_qureka2);
         ImageView img_qureka3 = findViewById(R.id.img_qureka3);
 
-        if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+        if (SharePrefUtils.getString(Constant_ad.QUREKA_BTN, "0").equals("0")) {
             ll_qureka_ad.setVisibility(View.GONE);
         }
         Glide.with(this).load(getResources().getDrawable(R.drawable.qureka_button1)).into(img_qureka1);

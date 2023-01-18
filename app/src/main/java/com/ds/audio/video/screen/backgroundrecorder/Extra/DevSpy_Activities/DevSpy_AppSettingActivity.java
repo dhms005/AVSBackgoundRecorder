@@ -42,7 +42,7 @@ public class DevSpy_AppSettingActivity extends AppCompatActivity {
         }
         setContentView((int) R.layout.devspy_activity_app_setting);
         ImageView qureka_ad = findViewById(R.id.qureka_ad);
-        if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("0")) {
+        if (SharePrefUtils.getString(Constant_ad.QUREKA_BTN, "0").equals("0")) {
             qureka_ad.setVisibility(View.GONE);
         }
         Glide.with(this).load(getResources().getDrawable(R.drawable.qureka_button3)).into(qureka_ad);

@@ -357,7 +357,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putString(Constant_ad.START_NOTIFICATION, ad_ids.getString("start_noty"));
             SharePrefUtils.putString(Constant_ad.ALERTNATE_AD, ad_ids.getString("alternate_ads"));
             SharePrefUtils.putString(Constant_ad.NATIVE_COLOR, "#" + ad_ids.getString("native_color"));
-
+            SharePrefUtils.putString(Constant_ad.QUREKA_BTN, ad_ids.getString("qureka_btn"));
 
 
             if (SharePrefUtils.getString(Constant_ad.START_NOTIFICATION, "0").equals("1")) {

@@ -553,7 +553,7 @@ public class HBService extends Service implements HBRecorderListener {
         if (this.mRecordingStarted) {
             this.mImgStart.setVisibility(8);
             this.mImgStop.setVisibility(0);
-            this.mImgPause.setVisibility(0);
+            this.mImgPause.setVisibility(View.GONE);
         } else {
             this.mImgStop.setVisibility(8);
             this.mImgPause.setVisibility(8);

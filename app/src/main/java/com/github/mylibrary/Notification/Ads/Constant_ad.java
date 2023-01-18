@@ -143,6 +143,8 @@ public class Constant_ad {
     public static String NATIVE_BUTTON = "native_btn";
     public static String START_NOTIFICATION = "start_noty";
     public static String ALERTNATE_AD = "alternate_ads";
+    public static String QUREKA_BTN = "qureka_btn";
+
 
 }
 
