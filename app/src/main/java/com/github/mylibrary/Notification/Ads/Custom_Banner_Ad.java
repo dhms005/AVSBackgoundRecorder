@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.admanager.AdManagerAdRequest;
 import com.google.android.gms.ads.admanager.AdManagerAdView;
+
 @Keep
 public class Custom_Banner_Ad {
 
@@ -49,6 +50,48 @@ public class Custom_Banner_Ad {
         adView = new AdView(context);
         adView.setAdSize(AdSize.BANNER);
         adView.setAdUnitId(SharePrefUtils.getString(Constant_ad.GOOGLE_BANNER, Custom_Ad_Key.KEY_ADMOB_BANNER));
+
+        adContainer.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                reload_admob_banner_Ad_failedload(context, adContainer);
+                // Code to be executed when an ad request fails.
+                // reload_tapdaq_banner_Ad(context, adContainer);
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+    }
+
+    public void reload_admob_banner_Ad_failedload(final Activity context, final LinearLayout adContainer) {
+        adView = new AdView(context);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(SharePrefUtils.getString(Constant_ad.GOOGLE_BANNER2, Custom_Ad_Key.KEY_ADMOB_BANNER));
 
         adContainer.addView(adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -136,6 +179,58 @@ public class Custom_Banner_Ad {
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
+//                ImageView ad = new ImageView(context); // Create ad view
+                reload_admob_adpative_banner_Ad_failedload(context, adContainer);
+                // Code to be executed when an ad request fails.
+                //  reload_tapdaq_banner_Ad(context, adContainer);
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
+    }
+
+    public void reload_admob_adpative_banner_Ad_failedload(final Activity context, final LinearLayout adContainer) {
+
+//        Log.e("#DEBUG", "reload_admob_adpative_banner_Ad");
+
+        adManagerAdView = new AdManagerAdView(context);
+        adManagerAdView.setAdUnitId(SharePrefUtils.getString(Constant_ad.GOOGLE_BANNER2, Custom_Ad_Key.KEY_ADMOB_BANNER));
+        adContainer.addView(adManagerAdView);
+
+        AdManagerAdRequest adRequest =
+                (AdManagerAdRequest) new AdManagerAdRequest.Builder().build();
+
+        AdSize adaptiveSize = getAdSize(context);
+
+        adManagerAdView.setAdSizes(adaptiveSize, AdSize.BANNER);
+
+        adManagerAdView.loadAd(adRequest);
+
+        adManagerAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+//                Log.e("#DEBUG", "onAdLoaded");
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
                 ImageView ad = new ImageView(context); // Create ad view
 
                 // Code to be executed when an ad request fails.
@@ -164,7 +259,7 @@ public class Custom_Banner_Ad {
 
     public void reload_applovin_banner_ad(final Activity context, final LinearLayout adContainer) {
         String adID = SharePrefUtils.getString(Constant_ad.FACEBOOK_BANNER, Custom_Ad_Key.KEY_FACEBOOK_BANNER);
-        if(!adID.equals("")){
+        if (!adID.equals("")) {
             maxAdView = new MaxAdView(adID, context);
 //        maxAdView = new MaxAdView("1d2d4416f413635c", context);
             maxAdView.setListener(new MaxAdViewAdListener() {

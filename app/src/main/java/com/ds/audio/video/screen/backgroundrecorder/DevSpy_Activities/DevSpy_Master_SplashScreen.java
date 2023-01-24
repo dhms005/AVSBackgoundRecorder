@@ -27,7 +27,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
@@ -49,7 +51,11 @@ import com.github.mylibrary.Notification.Ads.Custom_Banner_Ad;
 import com.github.mylibrary.Notification.Ads.SharePrefUtils;
 import com.github.mylibrary.Notification.Push.PushUser;
 import com.github.mylibrary.Notification.Server.ServerConfig;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -96,6 +102,10 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
     private DevSpy_AdmobSplash_OpenAd appOpenAdManager;
     public static Custom_NativeAd_Admob custom_nativeAd_admob = new Custom_NativeAd_Admob();
 
+    Boolean Check_api_data = false;
+    Boolean Check_remote_data = false;
+    FirebaseRemoteConfig mFirebaseRemoteConfig;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +125,15 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
         } else {
             Internet_dialog();
         }
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(1)
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
+
+
     }
 
     @Override
@@ -254,6 +273,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
 
     public void setData(JSONObject response) {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(DevSpy_Master_SplashScreen.this);
+        Check_api_data = true;
 
         try {
 
@@ -279,14 +299,149 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             String google_appopen_3 = ad_ids.getString("google_appopen_3");
             String in_house = ad_ids.getString("in_house");
 
+            SharePrefUtils.putString(Constant_ad.AD_NATIVE_PRE_LOAD, ad_ids.getString("native_pre_load"));
+
+
+            if (ad_ids.getString("native_pre_load").equals("0")) {
+//            drawer_premium.setVisibility(View.GONE);
+
+                mFirebaseRemoteConfig.fetchAndActivate()
+                        .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Boolean> task) {
+                                if (task.isSuccessful()) {
+                                    boolean updated = task.getResult();
+                                    Log.e("remote", "Config params updated: " + updated);
+//                                    Toast.makeText(DevSpy_Master_SplashScreen.this, "Fetch and activate succeeded", Toast.LENGTH_SHORT).show();
+
+                                    Check_remote_data = true;
+
+                                    String AVS_appopen_on_off = FirebaseRemoteConfig.getInstance().getString("AVS_appopen_on_off");// empty string
+                                    String AVS_interstitial_on_off = FirebaseRemoteConfig.getInstance().getString("AVS_interstitial_on_off");// empty string
+                                    String AVS_native_on_off = FirebaseRemoteConfig.getInstance().getString("AVS_native_on_off");// empty string
+                                    String AVS_banner_on_off = FirebaseRemoteConfig.getInstance().getString("AVS_banner_on_off");// empty string
+
+
+                                    String AVS_interstitial_primary = FirebaseRemoteConfig.getInstance().getString("AVS_interstitial_primary");// empty string
+                                    String AVS_interstitial_secondary = FirebaseRemoteConfig.getInstance().getString("AVS_interstitial_secondary");// empty string
+
+                                    String AVS_native_primary = FirebaseRemoteConfig.getInstance().getString("AVS_native_primary");// empty string
+                                    String AVS_native_secondary = FirebaseRemoteConfig.getInstance().getString("AVS_native_secondary");// empty string
+
+                                    String AVS_banner_primary = FirebaseRemoteConfig.getInstance().getString("AVS_banner_primary");// empty string
+                                    String AVS_banner_secondary = FirebaseRemoteConfig.getInstance().getString("AVS_banner_secondary");// empty string
+
+
+                                    String AVS_appopen_primary = FirebaseRemoteConfig.getInstance().getString("AVS_appopen_primary");// empty string
+                                    String AVS_appopen_secondary = FirebaseRemoteConfig.getInstance().getString("AVS_appopen_secondary");// empty string
+
+                                    String AVS_interstitial_click_count = FirebaseRemoteConfig.getInstance().getString("AVS_interstitial_click_count");// empty string
+
+                                    Log.e("remote", "Config params updated: " + AVS_appopen_on_off);
+                                    Log.e("remote", "Config params updated: " + AVS_interstitial_click_count);
+
+                                    if (AVS_banner_on_off.equals("0")) {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER, "");
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER2, "");
+                                    } else {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER, AVS_banner_primary);
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER2, AVS_banner_secondary);
+                                    }
+
+
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_REWAREDED, rewared_ad);
+
+
+                                    if (AVS_native_on_off.equals("0")) {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE, "");
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE2, "");
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE_BANNER, "");
+                                    } else {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE, AVS_native_primary);
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE2, AVS_native_secondary);
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE_BANNER, AVS_native_primary);
+                                    }
+
+                                    if (AVS_appopen_on_off.equals("0")) {
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD, "");
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD2, "");
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD3, "");
+                                    } else {
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD, AVS_appopen_primary);
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD2, AVS_appopen_secondary);
+                                        SharePrefUtils.putString(Constant_ad.OPEN_AD3, google_appopen_3);
+                                    }
+
+                                    if (AVS_interstitial_on_off.equals("0")) {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD, "");
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD2, "");
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD3, "");
+                                    } else {
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD, AVS_interstitial_primary);
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD2, AVS_interstitial_secondary);
+                                        SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD3, google_fullad_3);
+                                    }
+
+                                    if (AVS_interstitial_on_off.equals("0")) {
+                                        SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, 0);
+                                        SharePrefUtils.putInt(Constant_ad.AD_COUNT, 999);
+                                    } else {
+                                        SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, Integer.parseInt(AVS_interstitial_click_count));
+                                        SharePrefUtils.putInt(Constant_ad.AD_COUNT, Integer.parseInt(AVS_interstitial_click_count));
+                                    }
+
+
+                                    call_ad();
+
+                                } else {
+                                    Toast.makeText(DevSpy_Master_SplashScreen.this, "Fetch failed",
+                                            Toast.LENGTH_SHORT).show();
+
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD, google_fullad);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD2, google_fullad_2);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD3, google_fullad_3);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER, google_banner);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE, google_native);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE_BANNER, google_native_banner);
+                                    SharePrefUtils.putString(Constant_ad.GOOGLE_REWAREDED, rewared_ad);
+                                    SharePrefUtils.putString(Constant_ad.OPEN_AD, open_ad_id);
+                                    SharePrefUtils.putString(Constant_ad.OPEN_AD2, google_appopen_2);
+                                    SharePrefUtils.putString(Constant_ad.OPEN_AD3, google_appopen_3);
+                                    try {
+                                        SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, Integer.parseInt(ad_ids.getString("back_ad_count")));
+                                        SharePrefUtils.putInt(Constant_ad.AD_COUNT, Integer.parseInt(ad_ids.getString("forward_ad_count")));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                    call_ad();
+                                }
+//                        displayWelcomeMessage();
+                            }
+                        });
+
+
+            } else {
+//            drawer_premium.setVisibility(View.VISIBLE);
+
+                SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD, google_fullad);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD2, google_fullad_2);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD3, google_fullad_3);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER, google_banner);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE, google_native);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE_BANNER, google_native_banner);
+                SharePrefUtils.putString(Constant_ad.GOOGLE_REWAREDED, rewared_ad);
+                SharePrefUtils.putString(Constant_ad.OPEN_AD, open_ad_id);
+                SharePrefUtils.putString(Constant_ad.OPEN_AD2, google_appopen_2);
+                SharePrefUtils.putString(Constant_ad.OPEN_AD3, google_appopen_3);
+                SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, Integer.parseInt(ad_ids.getString("back_ad_count")));
+                SharePrefUtils.putInt(Constant_ad.AD_COUNT, Integer.parseInt(ad_ids.getString("forward_ad_count")));
+
+            }
+
             SharePrefUtils.putString(Constant_ad.MEDIATION, mediation);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD, google_fullad);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD2, google_fullad_2);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD3, google_fullad_3);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_BANNER, google_banner);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE, google_native);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_NATIVE_BANNER, google_native_banner);
-            SharePrefUtils.putString(Constant_ad.GOOGLE_REWAREDED, rewared_ad);
+
 
             SharePrefUtils.putString(Constant_ad.GOOGLE_FULL_AD_SPLASH, google_splash_ad);
 //            if (!series_id.equals("")) {
@@ -295,9 +450,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putString(Constant_ad.FACEBOOK_FULL, fb_full_ad);
             SharePrefUtils.putString(Constant_ad.FACEBOOK_BANNER, fb_banner);
             SharePrefUtils.putString(Constant_ad.FACEBOOK_NATIVE, fb_full_native);
-            SharePrefUtils.putString(Constant_ad.OPEN_AD, open_ad_id);
-            SharePrefUtils.putString(Constant_ad.OPEN_AD2, google_appopen_2);
-            SharePrefUtils.putString(Constant_ad.OPEN_AD3, google_appopen_3);
+
 
             SharePrefUtils.putString(Constant_ad.IN_HOUSE, in_house);
             SharePrefUtils.putString(Constant_ad.OPEN_INTER, ad_ids.getString("open_inter"));
@@ -321,8 +474,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putString(Constant_ad.VPN_DETECT, ad_ids.getString("vpn_detect"));
 
             SharePrefUtils.putString(Constant_ad.AD_BUTTON_ANIM, ad_ids.getString("anim"));
-            SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, Integer.parseInt(ad_ids.getString("back_ad_count")));
-            SharePrefUtils.putInt(Constant_ad.AD_COUNT, Integer.parseInt(ad_ids.getString("forward_ad_count")));
+
 
             SharePrefUtils.putInt(Constant_ad.AD_BACK_TYPE, Integer.parseInt(ad_ids.getString("back_ad")));
             SharePrefUtils.putInt(Constant_ad.AD_FORWARD_TYPE, Integer.parseInt(ad_ids.getString("forward_ad")));
@@ -350,7 +502,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putInt(Constant_ad.NATIVEAD_TRASPARENT, Integer.parseInt(ad_ids.getString("transparent")));
 
             SharePrefUtils.putString(Constant_ad.AD_EXIT_REC_APPS, ad_ids.getString("rec_apps"));
-            SharePrefUtils.putString(Constant_ad.AD_NATIVE_PRE_LOAD, ad_ids.getString("native_pre_load"));
+
             SharePrefUtils.putString(Constant_ad.AD_MULTIPLE_START, ad_ids.getString("multiple_start"));
 
             SharePrefUtils.putString(Constant_ad.NATIVE_BUTTON, ad_ids.getString("native_btn"));
@@ -370,74 +522,10 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
             SharePrefUtils.putString(Constant_ad.AD_STATIC_AD_BANNER_ICON, "");
             SharePrefUtils.putString(Constant_ad.AD_STATIC_AD_PATH, "");
 
-
-            appOpenAdManager = new DevSpy_AdmobSplash_OpenAd(DevSpy_Master_SplashScreen.this);
-
-            if (SharePrefUtils.getBoolean(Constant_ad.FIRST_TIME, true)) {
-                DevSpy_MyApplication.getInstance().callAd();
+            if (ad_ids.getString("native_pre_load").equals("1")) {
+                call_ad();
             }
 
-//            DIGICustom_nativeAd_admob.showBigNativeAds(this, findViewById(R.id.Admob_Native_Frame_two));
-//            DIGICustom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
-            custom_nativeAd_admob.showBigNativeAds(this, findViewById(R.id.Admob_Native_Frame_two));
-            custom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
-            custom_nativeAd_admob.showNative400DpAds(this, findViewById(R.id.Admob_Native_Frame_two));
-
-
-            if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 0 &&
-                    SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 0) {
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
-            } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 0 &&
-                    SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 1) {
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
-            } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 1 &&
-                    SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 0) {
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
-            } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 1 &&
-                    SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 1) {
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
-                DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
-                if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
-                    DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
-                    DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
-                }
-            }
-
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    appOpenAdManager.showAdIfAvailable(DevSpy_Master_SplashScreen.this,
-                            new DevSpy_MyApplication.OnShowAdCompleteListener() {
-                                @Override
-                                public void onShowAdComplete() {
-                                    //       Intent mainIntent = new Intent(Master_SplashScreen.this, Start_Activity.class);
-                                    isSplashLoading = true;
-                                    if (defaultSharedPreferences.getBoolean("prefAppLock", false) &&
-                                            SharePrefUtils.getBoolean(Constant_ad.PATTERN_CONFIRM, false)) {
-                                        Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_PatterLock_FirstScreen.class);
-                                        i.putExtra("from", "splash");
-                                        startActivity(i);
-                                    } else {
-                                        if (SharePrefUtils.getBoolean(Constant_ad.FEATURE_SCREEN, false)) {
-                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
-                                            startActivity(i);
-                                        } else {
-//                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
-                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
-                                            startActivity(i);
-                                        }
-
-                                    }
-                                }
-                            });
-                }
-            }, 7000);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -463,6 +551,78 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
         }
     }
 
+    void call_ad() {
+
+        SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(DevSpy_Master_SplashScreen.this);
+
+        appOpenAdManager = new DevSpy_AdmobSplash_OpenAd(DevSpy_Master_SplashScreen.this);
+
+        if (SharePrefUtils.getBoolean(Constant_ad.FIRST_TIME, true)) {
+            DevSpy_MyApplication.getInstance().callAd();
+        }
+
+//            DIGICustom_nativeAd_admob.showBigNativeAds(this, findViewById(R.id.Admob_Native_Frame_two));
+//            DIGICustom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
+        custom_nativeAd_admob.showBigNativeAds(this, findViewById(R.id.Admob_Native_Frame_two));
+        custom_nativeAd_admob.showNativeSmallAds(this, findViewById(R.id.Admob_Native_Frame_two));
+        custom_nativeAd_admob.showNative400DpAds(this, findViewById(R.id.Admob_Native_Frame_two));
+
+
+        if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 0 &&
+                SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 0) {
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
+        } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 0 &&
+                SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 1) {
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
+        } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 1 &&
+                SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 0) {
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
+        } else if (SharePrefUtils.getInt(Constant_ad.POSITION1, 0) == 1 &&
+                SharePrefUtils.getInt(Constant_ad.POSITION2, 0) == 1) {
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdOne(DevSpy_Master_SplashScreen.this);
+            DevSpy_Admob_Full_AD_New.getInstance().loadOpenAdTwo(DevSpy_Master_SplashScreen.this);
+            if (SharePrefUtils.getString(Constant_ad.OPEN_INTER, "0").equals("1")) {
+                DevSpy_Admob_Full_AD_New.getInstance().loadInterOne(DevSpy_Master_SplashScreen.this);
+                DevSpy_Admob_Full_AD_New.getInstance().loadInterTwo(DevSpy_Master_SplashScreen.this);
+            }
+        }
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                appOpenAdManager.showAdIfAvailable(DevSpy_Master_SplashScreen.this,
+                        new DevSpy_MyApplication.OnShowAdCompleteListener() {
+                            @Override
+                            public void onShowAdComplete() {
+                                //       Intent mainIntent = new Intent(Master_SplashScreen.this, Start_Activity.class);
+                                isSplashLoading = true;
+                                if (defaultSharedPreferences.getBoolean("prefAppLock", false) &&
+                                        SharePrefUtils.getBoolean(Constant_ad.PATTERN_CONFIRM, false)) {
+                                    Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_PatterLock_FirstScreen.class);
+                                    i.putExtra("from", "splash");
+                                    startActivity(i);
+                                } else {
+                                    if (SharePrefUtils.getBoolean(Constant_ad.FEATURE_SCREEN, false)) {
+                                        Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
+                                        startActivity(i);
+                                    } else {
+//                                            Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FeatureActivity.class);
+                                        Intent i = new Intent(DevSpy_Master_SplashScreen.this, DevSpy_FirstActivity.class);
+                                        startActivity(i);
+                                    }
+
+                                }
+                            }
+                        });
+            }
+        }, 7000);
+    }
 
     @Override
     protected void onDestroy() {

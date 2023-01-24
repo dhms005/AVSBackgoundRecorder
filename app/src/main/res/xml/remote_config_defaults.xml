@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<defaults>
+  <entry>
+    <key>AVS_interstitial_click_count</key>
+    <value>3</value>
+  </entry>
+  <entry>
+    <key>AVS_interstitial_on_off</key>
+    <value>1</value>
+  </entry>
+  <entry>
+    <key>AVS_appopen_on_off</key>
+    <value>1</value>
+  </entry>
+  <entry>
+    <key>AVS_banner_secondary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_interstitial_primary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_interstitial_secondary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_native_primary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_banner_primary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_native_secondary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_native_on_off</key>
+    <value>1</value>
+  </entry>
+  <entry>
+    <key>AVS_appopen_primary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_appopen_secondary</key>
+    <value />
+  </entry>
+  <entry>
+    <key>AVS_banner_on_off</key>
+    <value>1</value>
+  </entry>
+</defaults>

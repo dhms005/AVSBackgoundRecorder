@@ -21,6 +21,7 @@ public class Constant_ad {
     public static String GOOGLE_FULL_AD_COUNT = "google_app_full2";
     public static String GOOGLE_FULL_AD_BACK = "google_app_full2";
     public static String GOOGLE_BANNER = "google_app_banner";
+    public static String GOOGLE_BANNER2 = "google_app_banner2";
     public static String GOOGLE_REWAREDED = "google_rewareded";
     public static String GOOGLE_FULL_AD_SPLASH = "google_app_full_splash";
     //public static String FACEBOOK_ID = "facebook_id";
@@ -33,6 +34,7 @@ public class Constant_ad {
     public static String FACEBOOK_NATIVE_BANNER = "facebook_native_banner";
     public static String FACEBOOK_DIALOG = "facebook_dialog";
     public static String GOOGLE_NATIVE="Google_native";
+    public static String GOOGLE_NATIVE2="Google_native2";
     public static String GOOGLE_NATIVE_BANNER = "Google_banner_Native";
     public static String MOPUB_FULL_AD = "mopub_full";
     public static String MOPUB_BANNER_AD = "mopub_banner";

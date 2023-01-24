@@ -338,7 +338,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                             SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
                                         } else {
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            Log.e("from","in-app-call");
+                                            Log.e("from", "in-app-call");
 //                                            mNativeAdNew();
                                             if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
                                                 Call_banner();
@@ -367,9 +367,9 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                         if (purchases.size() > 0) {
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, true);
                                             SharePrefUtils.putString(Constant_ad.NATIVE_SIZE, "5");
-                                        }else {
+                                        } else {
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
-                                            Log.e("from","in-app-call");
+                                            Log.e("from", "in-app-call");
 //                                            mNativeAdNew();
                                             if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
                                                 Call_banner();
@@ -430,7 +430,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
 
             @Override
             public void onBillingServiceDisconnected() {
-                Log.e("from","error");
+                Log.e("from", "error");
 //                Toast.makeText(CY_M_FirstActivity.this, "You are disconnect from billing server", Toast.LENGTH_SHORT).show();
             }
         });
@@ -910,7 +910,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
-            Log.e("from","resume");
+            Log.e("from", "resume");
             mNativeAdNew();
         }
         SharePrefUtils.putString(Constant_ad.AD_CHECK_RESUME, "1");
@@ -1114,7 +1114,8 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
         String[] PERMISSIONS = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA
+                Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO
         };
 
         if (!hasPermissions(context, PERMISSIONS)) {
@@ -1146,7 +1147,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
 //        Log.e("code123", "onActivityResult: app download failed"+requestCode);
         if (requestCode == 2) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    && grantResults[2] == PackageManager.PERMISSION_GRANTED && grantResults[3] == PackageManager.PERMISSION_GRANTED) {
 //                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
                 DevSpy_Admob_Full_AD_New.getInstance().showInter(DevSpy_FirstActivity.this, new DevSpy_Admob_Full_AD_New.MyCallback() {
                     @Override
@@ -1256,7 +1257,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
             }
         }
 
-        Log.e("from","method");
+        Log.e("from", "method");
 
         if (SharePrefUtils.getString(Constant_ad.MEDIATION, "0").equals("0")) {
             if (SharePrefUtils.getString(Constant_ad.NATIVE_SIZE, "2").equals("1")) {
