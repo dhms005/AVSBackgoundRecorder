@@ -30,6 +30,7 @@ import com.bumptech.glide.Glide;
 import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Adapters.DevSpy_RecyclerAdapter;
 import com.ds.audio.video.screen.backgroundrecorder.Extra.DevSpy_Model.DevSpy_Apps;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_LocaleHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.exit.DevSpy_Utility;
@@ -333,18 +334,24 @@ public class DevSpy_CPUCoolerActivity extends AppCompatActivity {
 
         Custom_Banner_Ad custom_banner_ad = new Custom_Banner_Ad();
         if (SharePrefUtils.getString(Constant_ad.AD_BANNER_TYPE, "0").equals("0")) {
-            if (custom_banner_ad.CheckAdCache() != null) {
-                custom_banner_ad.loadNativeAdFromCache(this, mAdView);
+                if (custom_banner_ad.CheckAdCache() != null) {
+                    custom_banner_ad.loadNativeAdFromCache(this, mAdView);
+                } else {
+                    ViewGroup.LayoutParams params = findViewById(R.id.mNativeBannerAd).getLayoutParams();
+                    params.height = (int) getResources().getDimension(R.dimen.simple_banner_1);
+                    findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
+                    custom_banner_ad.reload_admob_banner_Ad(this, mAdView);
+                }
             } else {
-                custom_banner_ad.reload_admob_banner_Ad(this, mAdView);
+                if (custom_banner_ad.Adaptive_CheckAdCache() != null) {
+                    custom_banner_ad.Adaptive_loadNativeAdFromCache(this, mAdView);
+                } else {
+                    ViewGroup.LayoutParams params = findViewById(R.id.mNativeBannerAd).getLayoutParams();
+                    params.height = DevSpy_LocaleHelper.banner_adpative_size(this);
+                    findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
+                    custom_banner_ad.reload_admob_adpative_banner_Ad(this, mAdView);
+                }
             }
-        } else {
-            if (custom_banner_ad.Adaptive_CheckAdCache() != null) {
-                custom_banner_ad.Adaptive_loadNativeAdFromCache(this, mAdView);
-            } else {
-                custom_banner_ad.reload_admob_adpative_banner_Ad(this, mAdView);
-            }
-        }
     }
 
     private void mNativeBanner() {

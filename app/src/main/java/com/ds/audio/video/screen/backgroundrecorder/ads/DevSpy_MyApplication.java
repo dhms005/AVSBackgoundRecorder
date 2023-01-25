@@ -484,7 +484,7 @@ public class DevSpy_MyApplication extends Application implements Application.Act
         }
 
         public void loadAdFailed(Context context) {
-            AD_UNIT_ID_Failed = SharePrefUtils.getString(Constant_ad.OPEN_AD, Custom_Ad_Key.KEY_AO_AD);
+            AD_UNIT_ID_Failed = SharePrefUtils.getString(Constant_ad.OPEN_AD2, Custom_Ad_Key.KEY_AO_AD);
 
             // AD_UNIT_ID = SharedPref.openads;
 

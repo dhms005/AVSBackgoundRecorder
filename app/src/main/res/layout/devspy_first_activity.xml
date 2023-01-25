@@ -180,7 +180,7 @@
                                         android:layout_weight="1"
                                         android:adjustViewBounds="true"
                                         android:src="@drawable/btn_more"
-                                        android:visibility="visible" />
+                                        android:visibility="gone" />
 
                                     <ImageView
                                         android:id="@+id/img_shareapp"

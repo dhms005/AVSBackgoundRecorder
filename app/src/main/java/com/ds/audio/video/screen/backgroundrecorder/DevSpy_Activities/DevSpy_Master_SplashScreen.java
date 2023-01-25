@@ -386,7 +386,7 @@ public class DevSpy_Master_SplashScreen extends AppCompatActivity {
                                         SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, 0);
                                         SharePrefUtils.putInt(Constant_ad.AD_COUNT, 999);
                                     } else {
-                                        SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, Integer.parseInt(AVS_interstitial_click_count));
+                                        SharePrefUtils.putInt(Constant_ad.AD_BACK_TOTAL_COUNT, 0);
                                         SharePrefUtils.putInt(Constant_ad.AD_COUNT, Integer.parseInt(AVS_interstitial_click_count));
                                     }
 

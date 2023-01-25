@@ -65,13 +65,13 @@ public class Custom_NativeAd_Admob {
                         @Override
                         public void onAdFailedToLoad(LoadAdError adError) {
                             // Handle the failure by logging, altering the UI, and so on.
-                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
+//                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
 
                                 if (!activity.isDestroyed()) {
                                     showBigNativeAds_FailedCall(activity, viewGroup);
                                 }
 
-                            }
+//                            }
                         }
 
                         @Override
@@ -155,13 +155,13 @@ public class Custom_NativeAd_Admob {
                         @Override
                         public void onAdFailedToLoad(LoadAdError adError) {
                             // Handle the failure by logging, altering the UI, and so on.
-                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
+//                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
 
                                 if (!activity.isDestroyed()) {
                                     showNativeSmallAds_FailedCall(activity, viewGroup);
                                 }
 
-                            }
+//                            }
                         }
 
                         @Override
@@ -379,13 +379,13 @@ public class Custom_NativeAd_Admob {
                         @Override
                         public void onAdFailedToLoad(LoadAdError adError) {
                             // Handle the failure by logging, altering the UI, and so on.
-                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
+//                            if (SharePrefUtils.getString(Constant_ad.AD_QUREKA_Ad, "0").equals("1")) {
 
                                 if (!activity.isDestroyed()) {
                                     showNative400DpAds_FailedCall(activity, viewGroup);
                                 }
 
-                            }
+//                            }
                         }
 
                         @Override

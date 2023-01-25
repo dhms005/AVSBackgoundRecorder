@@ -36,7 +36,7 @@ public class Video_Record_Tab extends Fragment {
     ImageView ll_start;
     ImageView ll_creation;
     ImageView img_setting;
-    ImageView btn_qureka;
+//    ImageView btn_qureka;
     ImageView ll_start_schedule;
 
     SharedPreferences defaultSharedPreferences;
@@ -63,7 +63,7 @@ public class Video_Record_Tab extends Fragment {
         this.ll_creation = (ImageView) view.findViewById(R.id.ll_creation);
         this.img_setting = (ImageView) view.findViewById(R.id.img_setting);
         this.ll_start_schedule = (ImageView) view.findViewById(R.id.ll_start_schedule);
-        this.btn_qureka = (ImageView) view.findViewById(R.id.btn_qureka);
+//        this.btn_qureka = (ImageView) view.findViewById(R.id.btn_qureka);
 
 
         this.ll_start.setOnClickListener(new View.OnClickListener() {
@@ -115,12 +115,12 @@ public class Video_Record_Tab extends Fragment {
             }
         });
 
-        btn_qureka.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DevSpy_Utility.OpenCustomQurekaBrowser(getActivity());
-            }
-        });
+//        btn_qureka.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DevSpy_Utility.OpenCustomQurekaBrowser(getActivity());
+//            }
+//        });
 
         ll_start_schedule.setOnClickListener(new View.OnClickListener() {
             @Override

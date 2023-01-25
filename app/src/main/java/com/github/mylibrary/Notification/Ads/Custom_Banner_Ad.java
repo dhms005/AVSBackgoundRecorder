@@ -64,6 +64,7 @@ public class Custom_Banner_Ad {
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
+                adContainer.removeAllViews();
                 reload_admob_banner_Ad_failedload(context, adContainer);
                 // Code to be executed when an ad request fails.
                 // reload_tapdaq_banner_Ad(context, adContainer);
@@ -166,6 +167,8 @@ public class Custom_Banner_Ad {
 
         AdSize adaptiveSize = getAdSize(context);
 
+        Log.e("@@@", "" + adaptiveSize.getHeight());
+
         adManagerAdView.setAdSizes(adaptiveSize, AdSize.BANNER);
 
         adManagerAdView.loadAd(adRequest);
@@ -180,6 +183,7 @@ public class Custom_Banner_Ad {
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
 //                ImageView ad = new ImageView(context); // Create ad view
+                adContainer.removeAllViews();
                 reload_admob_adpative_banner_Ad_failedload(context, adContainer);
                 // Code to be executed when an ad request fails.
                 //  reload_tapdaq_banner_Ad(context, adContainer);
@@ -345,6 +349,7 @@ public class Custom_Banner_Ad {
         int adWidth = (int) (widthPixels / density);
 
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(context, adWidth);
+
     }
 
 

@@ -25,6 +25,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,7 @@ import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.bumptech.glide.Glide;
 import com.ds.audio.video.screen.backgroundrecorder.InAppPurchase.utils.BillingClientSetup;
 import com.ds.audio.video.screen.backgroundrecorder.R;
+import com.ds.audio.video.screen.backgroundrecorder.Utils.DevSpy_LocaleHelper;
 import com.ds.audio.video.screen.backgroundrecorder.ads.Custom_NativeAd_Admob;
 import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Admob_Full_AD_New;
 import com.ds.audio.video.screen.backgroundrecorder.ads.DevSpy_Custom_AppLovin_Timer;
@@ -252,7 +254,11 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
             }
         });
 
-        CallADAPI();
+        if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
+            Call_banner();
+        } else {
+            mNativeBanner();
+        }
 
         timer_ad(SharePrefUtils.getInt(Constant_ad.MINUTE, 0), SharePrefUtils.getInt(Constant_ad.AD_TOTAL_SHOW_TOME, 0));
 
@@ -340,11 +346,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
                                             Log.e("from", "in-app-call");
 //                                            mNativeAdNew();
-                                            if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
-                                                Call_banner();
-                                            } else {
-                                                mNativeBanner();
-                                            }
+
                                             if (SharePrefUtils.getString(Constant_ad.MEDIATION, "").equals("0")) {
                                                 ESCustom_full_ad_timer = new DevSpy_MyApplication().getmanagerFullAdTimer();
                                                 ESCustom_full_ad_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
@@ -371,11 +373,7 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                                             SharePrefUtils.putBoolean(Constant_ad.IS_PURCHASE, false);
                                             Log.e("from", "in-app-call");
 //                                            mNativeAdNew();
-                                            if (SharePrefUtils.getString(Constant_ad.AD_BANNER_NATIVE, "0").equals("0")) {
-                                                Call_banner();
-                                            } else {
-                                                mNativeBanner();
-                                            }
+
                                             if (SharePrefUtils.getString(Constant_ad.MEDIATION, "").equals("0")) {
                                                 ESCustom_full_ad_timer = new DevSpy_MyApplication().getmanagerFullAdTimer();
                                                 ESCustom_full_ad_timer.reload_admob_full_Ad(DevSpy_FirstActivity.this);
@@ -931,23 +929,6 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
                         });
     }
 
-    public void CallADAPI() {
-        adDate = SharePrefUtils.getString(Constant_ad.AD_DATE, "");
-        String adData = SharePrefUtils.getString(Constant_ad.AD_DATA, "");
-
-        if (SharePrefUtils.getString(Constant_ad.AD_CALL, "0").equals("0")) {
-            if (adDate.equals("") || adData.equals("")) {
-                Custom_Ad_Call_Api.loadDataService(DevSpy_FirstActivity.this);
-            } else if (isCurrentDate(adDate)) {
-                Custom_Ad_Call_Api.loadDataService(DevSpy_FirstActivity.this);
-            } else {
-
-            }
-        } else {
-            Custom_Ad_Call_Api.loadDataService(DevSpy_FirstActivity.this);
-        }
-    }
-
 
     public void timer_ad(int total_minute, int total_show_count) {
         _showAdTimer = (total_minute * 60000) / total_show_count;
@@ -1300,18 +1281,44 @@ public class DevSpy_FirstActivity extends FCMActivity implements PurchasesUpdate
 
     public void Call_banner() {
         LinearLayout mAdView = (LinearLayout) findViewById(R.id.mNativeBannerAd);
+
+
+//        params.height = DevSpy_LocaleHelper.banner_adpative_size(this);
+
+        Log.e("Ads size", "" + DevSpy_LocaleHelper.banner_adpative_size(this));
+
+//        params.height = height;
+
+//        if (DevSpy_LocaleHelper.banner_adpative_size(this)>=90){
+//            params.height = (int) getResources().getDimension(R.dimen.simple_banner_3);;
+//            findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
+//        }else if(DevSpy_LocaleHelper.banner_adpative_size(this)>=60){
+//            params.height = (int) getResources().getDimension(R.dimen.simple_banner_2);;
+//            findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
+//        }else {
+//            params.height = (int) getResources().getDimension(R.dimen.simple_banner_1);;
+//            findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
+//        }
+
+
         Custom_Banner_Ad custom_banner_ad = new Custom_Banner_Ad();
         if (SharePrefUtils.getString(Constant_ad.MEDIATION, "0").equals("0")) {
             if (SharePrefUtils.getString(Constant_ad.AD_BANNER_TYPE, "0").equals("0")) {
                 if (custom_banner_ad.CheckAdCache() != null) {
                     custom_banner_ad.loadNativeAdFromCache(this, mAdView);
                 } else {
+                    ViewGroup.LayoutParams params = findViewById(R.id.mNativeBannerAd).getLayoutParams();
+                    params.height = (int) getResources().getDimension(R.dimen.simple_banner_1);
+                    findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
                     custom_banner_ad.reload_admob_banner_Ad(this, mAdView);
                 }
             } else {
                 if (custom_banner_ad.Adaptive_CheckAdCache() != null) {
                     custom_banner_ad.Adaptive_loadNativeAdFromCache(this, mAdView);
                 } else {
+                    ViewGroup.LayoutParams params = findViewById(R.id.mNativeBannerAd).getLayoutParams();
+                    params.height = DevSpy_LocaleHelper.banner_adpative_size(this);
+                    findViewById(R.id.mNativeBannerAd).setLayoutParams(params);
                     custom_banner_ad.reload_admob_adpative_banner_Ad(this, mAdView);
                 }
             }

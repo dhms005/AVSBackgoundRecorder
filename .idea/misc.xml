@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/cy_m_activity_inapp_purchase.xml" value="0.25" />
         <entry key="app/src/main/res/layout/cy_m_dialog_seekbar.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/devspy_activity_inapp_purchase.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/devspy_first_activity.xml" value="0.22" />
         <entry key="app/src/main/res/layout/devspy_recomended_apps_dialog.xml" value="0.165" />
         <entry key="app/src/main/res/layout/dialog_quality.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/screenrecord_record_tab.xml" value="0.25052083333333336" />
@@ -22,9 +23,13 @@
         <entry key="app/src/main/res/layout/screenrecorder_settings.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/screenrecorder_watermark.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_black_activity.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/layout/video_record_tab.xml" value="0.22" />
         <entry key="app/src/main/res/layout/video_schedule_list_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_scheduletime_activity.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/video_toolbar_settings.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/z_admob_native_new.xml" value="0.18125" />
+        <entry key="app/src/main/res/layout/z_admob_native_new_2.xml" value="0.18125" />
+        <entry key="app/src/main/res/layout/z_new_native_small_new.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/z_qureka_layout_3.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/cctv_pref_setting.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/xml/screenrecorder_pref_main.xml" value="0.25052083333333336" />

@@ -1,12 +1,18 @@
 package com.ds.audio.video.screen.backgroundrecorder.Utils;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+
+import com.google.android.gms.ads.AdSize;
 
 import java.util.Locale;
 
@@ -83,5 +89,55 @@ public class DevSpy_LocaleHelper {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         return context;
+    }
+
+    public static int banner_adpative_size(Activity context) {
+
+        Display display = context.getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        int var4;
+        if (adWidth > 655) {
+            var4 = Math.round((float) adWidth / 728.0F * 90.0F);
+        } else if (adWidth > 632) {
+            var4 = 81;
+        } else if (adWidth > 526) {
+            var4 = Math.round((float) adWidth / 468.0F * 60.0F);
+        } else if (adWidth > 432) {
+            var4 = 68;
+        } else {
+            var4 = Math.round((float) adWidth / 320.0F * 50.0F);
+        }
+
+        AdSize adaptiveSize = getAdSize(context);
+
+        Log.e("@@@", "" + adaptiveSize.getHeight());
+
+        float heightPixels = outMetrics.heightPixels;
+
+//        int adHeight = (int) (var4 * density);
+        int adHeight = (int) (adaptiveSize.getHeight() * density);
+        return adHeight;
+
+    }
+
+    private static AdSize getAdSize(Activity context) {
+
+        Display display = context.getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(context, adWidth);
+
     }
 }

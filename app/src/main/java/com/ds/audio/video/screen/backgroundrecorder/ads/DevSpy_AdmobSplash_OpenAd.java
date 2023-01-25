@@ -25,6 +25,7 @@ public class DevSpy_AdmobSplash_OpenAd implements Application.ActivityLifecycleC
     DevSpy_MyApplication myApplication;
     private static final String LOG_TAG = "AppOpenAdManager_2";
     private final String AD_UNIT_ID;
+    private final String AD_UNIT_ID2;
     private AppOpenAd appOpenAd = null;
     private boolean isLoadingAd = false;
     public boolean isShowingAd = false;
@@ -39,23 +40,16 @@ public class DevSpy_AdmobSplash_OpenAd implements Application.ActivityLifecycleC
      */
     public DevSpy_AdmobSplash_OpenAd(Context activity) {
         AD_UNIT_ID = SharePrefUtils.getString(Constant_ad.OPEN_AD, Custom_Ad_Key.KEY_AO_AD);
+        AD_UNIT_ID2 = SharePrefUtils.getString(Constant_ad.OPEN_AD2, Custom_Ad_Key.KEY_AO_AD);
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
         if (!SharePrefUtils.getBoolean(Constant_ad.IS_PURCHASE, false)) {
             loadAd(activity);
         }
     }
 
-    public DevSpy_AdmobSplash_OpenAd(DevSpy_MyApplication new_my_application, Context activity) {
-        AD_UNIT_ID = SharePrefUtils.getString(Constant_ad.OPEN_AD, Custom_Ad_Key.KEY_AO_AD);
-        this.myApplication = new_my_application;
-        this.myApplication.registerActivityLifecycleCallbacks(this);
-        ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-//        loadAd(activity);
-    }
-
 
     public void loadAd(Context context) {
-        if (isLoadingAd || isAdAvailable() ) {
+        if (isLoadingAd || isAdAvailable()) {
             return;
         }
         isLoadingAd = true;
@@ -63,6 +57,40 @@ public class DevSpy_AdmobSplash_OpenAd implements Application.ActivityLifecycleC
         AppOpenAd.load(
                 context,
                 AD_UNIT_ID,
+                request,
+                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
+                new AppOpenAd.AppOpenAdLoadCallback() {
+
+                    @Override
+                    public void onAdLoaded(AppOpenAd ad) {
+                        appOpenAd = ad;
+                        isLoadingAd = false;
+                        loadTime = (new Date()).getTime();
+
+                        //Toast.makeText(context, "onAdLoaded", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        isLoadingAd = false;
+                        loadAd2(context);
+                        //Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+    }
+
+    public void loadAd2(Context context) {
+        if (isLoadingAd || isAdAvailable()) {
+            return;
+        }
+        isLoadingAd = true;
+        AdRequest request = new AdRequest.Builder().build();
+        AppOpenAd.load(
+                context,
+                AD_UNIT_ID2,
                 request,
                 AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
                 new AppOpenAd.AppOpenAdLoadCallback() {
@@ -138,7 +166,7 @@ public class DevSpy_AdmobSplash_OpenAd implements Application.ActivityLifecycleC
         }
 
         // If the app open ad is not available yet, invoke the callback then load the ad.
-        if (!isAdAvailable() ) {
+        if (!isAdAvailable()) {
             onShowAdCompleteListener.onShowAdComplete();
 //            loadAd(activity);
             return;
